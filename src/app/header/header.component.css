@@ -1,0 +1,37 @@
+div#head {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: none;
+    padding: 16px;
+  }
+  
+  h1#headline1 {
+    margin: auto;
+    color: black;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    text-align: center;
+  }
+  
+  figure#logo_VirtualFridge {
+    text-align: center;
+    margin: auto;
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+  
+  figure#logo_VirtualFridge > img {
+    width: 25%;
+  }
+  
+  h1#headline2 {
+    margin: auto;
+    color: black;
+    grid-column-start: 3;
+    grid-column-end: 4;
+  }
+  /**/
+  h1 {
+    font-size: 50px;
+    text-align: center;
+  }
