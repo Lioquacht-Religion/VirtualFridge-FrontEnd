@@ -1,0 +1,25 @@
+h1 {
+    text-align: center;
+}
+.überschrift1, .überschrift2, .überschrift3{
+    margin-top: 50px;
+}
+
+
+.textbereich1, .textbereich2, .textbereich3{
+    border-style: solid;
+    border-width: 1px;
+    margin: 20px;
+    margin-bottom: 100px;
+}
+
+.text1, .text2, .text3{
+    text-align: justify;
+    margin: 20px;
+    font-size:large;
+    
+}
+
+a{
+    text-decoration:underline;
+}

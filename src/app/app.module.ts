@@ -7,6 +7,10 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from './footer/footer.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { MenuComponent } from './menu/menu.component';
+import { RecipeComponent } from './recipe/recipe.component';
+import { StorageComponent } from './storage/storage.component';
 
 
 
@@ -16,7 +20,11 @@ import { FooterComponent } from './footer/footer.component';
     LoginComponent,
     RegisterComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    NavigationComponent,
+    MenuComponent,
+    RecipeComponent,
+    StorageComponent
   ],
   imports: [
     BrowserModule,
