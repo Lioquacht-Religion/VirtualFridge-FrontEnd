@@ -19,7 +19,11 @@ h1 {
     font-size:large;
     
 }
-
 a{
-    text-decoration:underline;
+    font-weight: 600;
+}
+a:hover{
+    background-color: yellow;
+    color:black;
+    cursor:pointer;
 }
