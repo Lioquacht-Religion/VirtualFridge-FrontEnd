@@ -17,13 +17,13 @@
 <form id="createStorage">
 
     <label for="storageID">Lagername </label>
-    <input type="text" name="storageID" id="storageID" required>
+    <input type="text" name="storageID" id="storageID" [(ngModel)]="storagename" required>
 
     <label for="storageLocation">Lagerstandort</label>
     <input type="text" name="storageLocation" id="storageLocation">
 
     <div id="btn">
-        <input type="button" id="btn" value="Lager erstellen" onclick="addRow()">
+        <input type="button" id="btn" value="Lager erstellen" (click)="storeDataOnDB()">
     </div>
     
 </form>

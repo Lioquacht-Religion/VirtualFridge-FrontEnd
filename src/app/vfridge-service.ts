@@ -16,7 +16,10 @@ export class VFridgeService {
     }
 
     addData(postTask: Object) {
-        let endPoint = "https://virtual-fridge.herokuapp.com/api/v1.0/grocery?storName=Külschrank1&ownerEmail=seband@mail.com"
+        let endPoint = 
+        "https://virtual-fridge.herokuapp.com/api/v1.0/storage";// +
+        //"?storName=" + storname + 
+        //"&" + uemail;
         this.http.post(endPoint, postTask).subscribe(data => {
           console.log(data);
         });

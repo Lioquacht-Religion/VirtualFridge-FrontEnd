@@ -21,4 +21,19 @@ export class StorageComponent implements OnInit {
 
   }
 
+  storagename = '';
+
+  storeDataOnDB(): void {
+    //alert('Text changed to' + this.taskname + this.taskdescription + this.taskpriority);
+    let storageToCreate = {
+      name: this.storagename,
+      Owner: {
+        name: "Seb anderung",
+        email: "seband@mail.com",
+        password: "wordpass"
+      }
+    };
+    this.vfservice.addData(storageToCreate);
+    }
+
 }
