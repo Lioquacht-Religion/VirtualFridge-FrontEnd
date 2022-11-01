@@ -12,6 +12,9 @@ import { MenuComponent } from './menu/menu.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { StorageComponent } from './storage/storage.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { VFridgeService } from './vfridge-service';
 
 
 @NgModule({
@@ -28,9 +31,11 @@ import { StorageComponent } from './storage/storage.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [VFridgeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
