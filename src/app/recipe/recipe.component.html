@@ -1,1 +1,47 @@
-<p>recipe works!</p>
+<table class="table">
+    <tr>
+        <th>Rezeptname</th>
+        <th>Zutaten</th>
+        <th>Einheit</th>
+        <th>Menge</th>
+        <th>Anzahl</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td> <button id="delete-button">Löschen</button></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td> <button id="delete-button">Löschen</button></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td> <button id="delete-button">Löschen</button></td>
+    </tr>
+
+</table>
+<form id="createRecipe">
+
+    <label for="recipeID">Rezeptname</label>
+    <input type="text" name="recipeID" id="recipeID" required>
+
+    <label for="groceries">Zutaten</label>
+    <input type="text" name="groceries" id="groceries" required>
+
+    <div id="btn">
+        <input type="button" id="btn" value="Rezept erstellen" onclick="addRow()">
+    </div>
+    
+</form>

@@ -11,5 +11,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  login(): void {
+    localStorage.setItem('login_token', 'true');
+  }
 
 }

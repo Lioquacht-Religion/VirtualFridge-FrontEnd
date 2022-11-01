@@ -1,1 +1,38 @@
-<p>storage works!</p>
+<table class="table">
+    <tr>
+        <th>Lagername</th>
+        <th>Lagerstandort</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td> <button>Lager einsehen</button></td>
+        <td> <button id="delete-button">Löschen</button></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td> <button>Lager einsehen</button></td>
+        <td> <button id="delete-button">Löschen</button></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td> <button>Lager einsehen</button></td>
+        <td> <button id="delete-button">Löschen</button></td>
+    </tr>
+
+</table>
+<form id="createStorage">
+
+    <label for="storageID">Lagername </label>
+    <input type="text" name="storageID" id="storageID" required>
+
+    <label for="storageLocation">Lagerstandort</label>
+    <input type="text" name="storageLocation" id="storageLocation">
+
+    <div id="btn">
+        <input type="button" id="btn" value="Lager erstellen" onclick="addRow()">
+    </div>
+    
+</form>
