@@ -15,6 +15,8 @@ import { StorageComponent } from './storage/storage.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { VFridgeService } from './vfridge-service';
+import { StorageViewComponent } from './storage-view/storage-view.component';
+import { RecipeViewComponent } from './recipe-view/recipe-view.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { VFridgeService } from './vfridge-service';
     NavigationComponent,
     MenuComponent,
     RecipeComponent,
-    StorageComponent
+    StorageComponent,
+    StorageViewComponent,
+    RecipeViewComponent
   ],
   imports: [
     BrowserModule,
