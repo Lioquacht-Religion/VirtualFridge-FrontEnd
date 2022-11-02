@@ -16,7 +16,7 @@ export class StorageComponent implements OnInit {
     this.vfservice.getData().subscribe(
       data => { this.storages = data },
       err => console.log(err),
-      () => console.log('loading done.')
+      () => console.log('loading done.'+this.storages)
   );
 
   }
@@ -35,5 +35,11 @@ export class StorageComponent implements OnInit {
     };
     this.vfservice.addData(storageToCreate);
     }
+
+    deleteDataOnDB(UserID: number, StorID: number): void {
+      //alert('Text changed to' + this.taskname + this.taskdescription + this.taskpriority);
+
+      this.vfservice.deleteStorage(UserID, StorID);
+      }
 
 }
