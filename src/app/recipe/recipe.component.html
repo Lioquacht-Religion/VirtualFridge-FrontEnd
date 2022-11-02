@@ -1,35 +1,15 @@
 <table class="table">
     <tr>
         <th>Rezeptname</th>
-        <th>Zutaten</th>
-        <th>Einheit</th>
-        <th>Menge</th>
-        <th>Anzahl</th>
+        
     </tr>
     <tr>
         <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td> <button id="delete-button">Löschen</button></td>
+        <td> <button id="einseh-button">Rezept anzeigen</button></td>
+        <td> <button id="delete-button">Rezept löschen</button></td>
     </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td> <button id="delete-button">Löschen</button></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td> <button id="delete-button">Löschen</button></td>
-    </tr>
+   
+   
 
 </table>
 <form id="createRecipe">
@@ -38,7 +18,10 @@
     <input type="text" name="recipeID" id="recipeID" required>
 
     <label for="groceries">Zutaten</label>
-    <input type="text" name="groceries" id="groceries" required>
+    <textarea type="text" name="groceries" id="groceries" required></textarea>
+
+    <label for="description">Zubereitung</label>
+    <textarea type="description" name="description" id="description" required></textarea>
 
     <div id="btn">
         <input type="button" id="btn" value="Rezept erstellen" onclick="addRow()">

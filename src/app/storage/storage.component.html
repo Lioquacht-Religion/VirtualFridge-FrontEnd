@@ -1,17 +1,15 @@
 <table class="table">
     <tr>
         <th>Lagername</th>
-        <th>Lagerstandort</th>
+        <th>Lager ID</th>
     </tr>
-<div *ngFor="let storage of storages; index as i">
-    <tr>
-        <td>{{storage.name}}</td>
-        <td>{{storage.storageID}}</td>
+
+    <tr *ngFor="let storage of storages; index as i">
+        <td id="storage_name">{{storage.name}}</td>
+        <td id="storage_id">{{storage.storageID}}</td>
         <td> <button>Lager einsehen</button></td>
         <td> <button id="delete-button" (click)="deleteDataOnDB(9, storage.storageID)" >Löschen</button></td>
     </tr>
-</div>
-
 
 </table>
 <form id="createStorage">
@@ -19,8 +17,6 @@
     <label for="storageID">Lagername </label>
     <input type="text" name="storageID" id="storageID" [(ngModel)]="storagename" required>
 
-    <label for="storageLocation">Lagerstandort</label>
-    <input type="text" name="storageLocation" id="storageLocation">
 
     <div id="btn">
         <input type="button" id="btn" value="Lager erstellen" (click)="storeDataOnDB()">
