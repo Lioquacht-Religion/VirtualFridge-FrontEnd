@@ -4,7 +4,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#createRecipe {
+#createGroceries {
     display: block;
     padding: 20px;
     margin: 0 auto;
@@ -13,7 +13,7 @@
     color: black;
 }
 
-#createRecipe input {
+#createGroceries textarea, input{
     width: 100%;
     padding: 10px;
     border: 1px solid black;
@@ -24,35 +24,31 @@
     border-radius: 10px;
 }
 
-#btn {
+#btn , #btn2{
     cursor: pointer;
     text-align: center;
     color: green;
 }
 
-.table {
+.table2 {
     border-collapse: collapse;
     width: 40%;
     margin-top: 100px;
     /* nachschauen wegen abständen auf der main*/
     background-color: lightgray;
+    margin-bottom: 100px;
 }
 
-.table td,
-.table th {
+.table2 td,
+.table2 th {
     border: 2px solid black;
     height: 50px;
     text-align: center;
 }
 
-button#delete-button {
+input#groceries {
+    height: 100px;
+}
+button#delete-button{
     color: red;
-}
-
-button#einseh-button {
-    color: green;
-}
-
-label {
-    margin-left: 5px;
 }
