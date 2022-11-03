@@ -20,12 +20,14 @@ export class RegisterComponent implements OnInit {
   );
   }
 
-  input_email = '';
+  registerusername = '';
+  registeremail = '';
 
   storeDataOnDB(): void {
     //alert('Text changed to' + this.taskname + this.taskdescription + this.taskpriority);
     let emailToRegister = {
-      email: this.input_email,
+      username: this.registerusername,
+      email: this.registeremail,
       Owner: {
         name: "Seb anderung",
         email: "seband@mail.com",
