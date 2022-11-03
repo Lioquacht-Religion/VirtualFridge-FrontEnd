@@ -25,13 +25,13 @@ export class RegisterComponent implements OnInit {
 
   storeDataOnDB(): void {
     //alert('Text changed to' + this.taskname + this.taskdescription + this.taskpriority);
-    let emailToRegister = {
+    let dataToRegister = {
       name: this.registerusername,
       email: this.registeremail,
       password: "wordpass"
       
     };
-    this.vfservice.addRegisterData(emailToRegister);
+    this.vfservice.addRegisterData(dataToRegister);
     }
 
     deleteDataOnDB(UserID: number, StorID: number): void {
