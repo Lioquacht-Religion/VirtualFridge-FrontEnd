@@ -33,10 +33,10 @@
 .table2 {
     border-collapse: collapse;
     width: 40%;
-    margin-top: 100px;
+    margin-top: 50px;
     /* nachschauen wegen abständen auf der main*/
     background-color: lightgray;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 
 .table2 td,
@@ -52,3 +52,9 @@ input#groceries {
 button#delete-button{
     color: red;
 }
+p{
+    font-size: 18px;
+    text-align: center;
+    margin-top: 50px;
+}
+

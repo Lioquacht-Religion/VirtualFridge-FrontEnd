@@ -18,17 +18,6 @@ const routes: Routes = [
   { path: 'link_recipe', component: RecipeComponent },
   { path: 'link_storageview/:storageID', component: StorageViewComponent },
   { path: 'link_recipeview/:recipeID', component: RecipeViewComponent }
-  /*{
-    path: 'storage/:storage-view',
-    component: StorageComponent,
-    children: [
-      {path: '', redirectTo: 'link_storage'}, (1)
-      {path: 'link_storageview', component: StorageViewComponent},(2)
-
-    ]
-  },*/
-
-
 ];
 
 @NgModule({

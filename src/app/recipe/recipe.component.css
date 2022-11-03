@@ -56,3 +56,7 @@ button#einseh-button {
 label {
     margin-left: 5px;
 }
+a, :visited{
+    color: green;
+    text-decoration: none;
+}

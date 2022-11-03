@@ -44,3 +44,7 @@
 button#delete-button{
     color: red;
 }
+a, :visited{
+    color: green;
+    text-decoration: none;
+}
