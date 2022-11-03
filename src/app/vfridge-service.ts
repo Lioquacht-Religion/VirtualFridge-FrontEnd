@@ -31,7 +31,7 @@ export class VFridgeService {
 
       addRegisterData(postTask: Object) {
         let endPoint = 
-        "https://virtual-fridge.herokuapp.com/api/v1.0/storage";// +
+        "https://virtual-fridge.herokuapp.com/api/v1.0/user";// +
         //"?storName=" + storname + 
         //"&" + uemail;
         this.http.post(endPoint, postTask).subscribe(data => {

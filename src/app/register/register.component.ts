@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
         password: "wordpass"
       }
     };
-    this.vfservice.addData(emailToRegister);
+    this.vfservice.addRegisterData(emailToRegister);
     }
 
     deleteDataOnDB(UserID: number, StorID: number): void {
