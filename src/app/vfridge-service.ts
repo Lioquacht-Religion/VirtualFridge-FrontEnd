@@ -15,6 +15,10 @@ export class VFridgeService {
         return this.http.get('https://virtual-fridge.herokuapp.com/api/v1.0/user/storage/all?OwnerID=9');
     }
 
+    getUserData(l_email: String) {
+      return this.http.get('https://virtual-fridge.herokuapp.com/api/v1.0/user/email?email=' + l_email);
+  }
+
     getRecipeData() {
       return this.http.get('https://virtual-fridge.herokuapp.com/api/v1.0/recipe/all?userID=9');
     }
@@ -41,7 +45,7 @@ export class VFridgeService {
 
       addRegisterData(postTask: Object) {
         let endPoint = 
-        "https://virtual-fridge.herokuapp.com/api/v1.0/storage";// +
+        "https://virtual-fridge.herokuapp.com/api/v1.0/user";// +
         //"?storName=" + storname + 
         //"&" + uemail;
         this.http.post(endPoint, postTask).subscribe(data => {

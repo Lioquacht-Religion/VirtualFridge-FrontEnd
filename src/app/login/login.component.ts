@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VFridgeService } from '../vfridge-service';
 
 @Component({
   selector: 'an-login',
@@ -7,12 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  public user : any;
+  constructor(private vfservice: VFridgeService) { }
 
   ngOnInit(): void {
   }
+
+  loginemail = '';
+
+
   login(): void {
     localStorage.setItem('login_token', 'true');
+
+      this.vfservice.getUserData(this.loginemail).subscribe(
+        data => { this.user = data },
+        err => console.log(err),
+        () => console.log('loading done.'+this.user)
+    );
   }
+
+
 
 }
