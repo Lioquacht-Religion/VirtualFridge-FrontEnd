@@ -19,7 +19,7 @@
     <input type="text" name="recipeID" id="recipeID" [(ngModel)]="recipename" required>
 
     <div id="btn">
-        <input type="button" id="btn" value="Rezept anlegen" (click)="storeDataOnDB()">
+        <input type="button" id="btn" value="Rezept anlegen" (click)="storeDataOnDB()" onclick="window.location.reload();">
     </div>
     
 </form>
