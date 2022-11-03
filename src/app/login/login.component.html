@@ -1,4 +1,4 @@
-<div id="login-container">
+<div id="login-container" *ngfl="login_page">
   <h2>Login</h2>
   <form id="login-form">
     <p>
@@ -10,11 +10,11 @@
       <i class="validation"><span></span><span></span></i>
     </p>
     <p>
-      <input type="submit" id="login" value="einloggen" (click)="login()">
+      <input type="submit" id="login" value="einloggen" (click)="login()" [routerLink]="['link_menu']">
     </p>
   </form>
   <div id="create-account-wrap">
-    <p>Noch kein Mitglied? <a [routerLink]="['link_register']">Erstelle einen neuen Account</a>
+    <p>Noch kein Mitglied? <a [routerLink]="['../link_register']">Erstelle einen neuen Account</a>
     <p>
   </div>
 </div>
