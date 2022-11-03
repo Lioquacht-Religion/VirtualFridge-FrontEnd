@@ -16,15 +16,25 @@ export class VFridgeService {
     }
 
     getRecipeData() {
-      return this.http.get('https://virtual-fridge.herokuapp.com/api/v1.0/user/storage/all?OwnerID=9');
+      return this.http.get('https://virtual-fridge.herokuapp.com/api/v1.0/recipe/all?userID=9');
     }
 
-    addData(postTask: Object) {
+    addData(postStorage: Object) {
         let endPoint = 
         "https://virtual-fridge.herokuapp.com/api/v1.0/storage";// +
         //"?storName=" + storname + 
         //"&" + uemail;
-        this.http.post(endPoint, postTask).subscribe(data => {
+        this.http.post(endPoint, postStorage).subscribe(data => {
+          console.log(data);
+        });
+      }
+
+      addRecipeData(postRecipe: Object) {
+        let endPoint = 
+        "https://virtual-fridge.herokuapp.com/api/v1.0/recipe?OwnerID=9";// +
+        //"?storName=" + storname + 
+        //"&" + uemail;
+        this.http.post(endPoint, postRecipe).subscribe(data => {
           console.log(data);
         });
       }
@@ -44,6 +54,16 @@ export class VFridgeService {
         "https://virtual-fridge.herokuapp.com/api/v1.0/storage" +
         "?userID=" + userID + 
         "&storageID=" + storageID;
+        this.http.delete(endPoint).subscribe(data => {
+          console.log(data);
+        });
+      }
+
+      deleteRecipe(userID: number, recipeID: number) {
+        let endPoint = 
+        "https://virtual-fridge.herokuapp.com/api/v1.0/recipe" +
+        "?userID=" + userID + 
+        "&recipeID=" + recipeID;
         this.http.delete(endPoint).subscribe(data => {
           console.log(data);
         });

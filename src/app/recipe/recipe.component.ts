@@ -14,7 +14,7 @@ export class RecipeComponent implements OnInit {
   constructor(private vfservice: VFridgeService) { }
 
   ngOnInit(): void {
-    this.vfservice.getData().subscribe(
+    this.vfservice.getRecipeData().subscribe(
       data => { this.recipes = data },
       err => console.log(err),
       () => console.log('loading done.'+this.recipes)
@@ -22,25 +22,22 @@ export class RecipeComponent implements OnInit {
 
   }
 
-  storagename = '';
+  recipename = "";
+  recipedescr = "";
 
   storeDataOnDB(): void {
     //alert('Text changed to' + this.taskname + this.taskdescription + this.taskpriority);
-    let storageToCreate = {
-      name: this.storagename,
-      Owner: {
-        name: "Seb anderung",
-        email: "seband@mail.com",
-        password: "wordpass"
-      }
+    let recipeToCreate = {
+      name: this.recipename,
+      description: this.recipedescr
     };
-    this.vfservice.addData(storageToCreate);
+    this.vfservice.addRecipeData(recipeToCreate);
     }
 
-    deleteDataOnDB(UserID: number, StorID: number): void {
+    deleteDataOnDB(UserID: number, RecID: number): void {
       //alert('Text changed to' + this.taskname + this.taskdescription + this.taskpriority);
 
-      this.vfservice.deleteStorage(UserID, StorID);
+      this.vfservice.deleteRecipe(UserID, RecID);
       }
 
 

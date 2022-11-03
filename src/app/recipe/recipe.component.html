@@ -6,7 +6,7 @@
     <tr *ngFor="let recipe of recipes; index as i">
         <td>{{recipe.name}}</td>
         <td> <button id="einseh-button">Rezept anzeigen</button></td>
-        <td> <button id="delete-button">Rezept löschen</button></td>
+        <td> <button id="delete-button" (click) = "deleteDataOnDB(9, recipe.recipeID)">Rezept löschen</button></td>
     </tr>
    
    
@@ -15,16 +15,16 @@
 <form id="createRecipe">
 
     <label for="recipeID">Rezeptname</label>
-    <input type="text" name="recipeID" id="recipeID" required>
+    <input type="text" name="recipeID" id="recipeID" [(ngModel)]="recipename" required>
 
     <label for="groceries">Zutaten</label>
     <textarea type="text" name="groceries" id="groceries" required></textarea>
 
     <label for="description">Zubereitung</label>
-    <textarea type="description" name="description" id="description" required></textarea>
+    <textarea type="description" name="description" id="description" [(ngModel)]="recipedescr" required></textarea>
 
     <div id="btn">
-        <input type="button" id="btn" value="Rezept erstellen" onclick="addRow()">
+        <input type="button" id="btn" value="Rezept erstellen" (click)="storeDataOnDB()">
     </div>
     
 </form>
