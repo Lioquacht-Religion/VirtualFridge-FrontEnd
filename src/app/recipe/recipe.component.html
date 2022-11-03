@@ -17,14 +17,8 @@
     <label for="recipeID">Rezeptname</label>
     <input type="text" name="recipeID" id="recipeID" [(ngModel)]="recipename" required>
 
-    <label for="groceries">Zutaten</label>
-    <textarea type="text" name="groceries" id="groceries" required></textarea>
-
-    <label for="description">Zubereitung</label>
-    <textarea type="description" name="description" id="description" [(ngModel)]="recipedescr" required></textarea>
-
     <div id="btn">
-        <input type="button" id="btn" value="Rezept erstellen" (click)="storeDataOnDB()">
+        <input type="button" id="btn" value="Rezept anlegen" (click)="storeDataOnDB()">
     </div>
     
 </form>
