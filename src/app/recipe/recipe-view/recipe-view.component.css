@@ -2,6 +2,7 @@
     margin: auto;
     padding: auto;
     font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
 }
 
 #createGroceries {
@@ -13,7 +14,8 @@
     color: black;
 }
 
-#createGroceries textarea, input{
+#createGroceries textarea
+{
     width: 100%;
     padding: 10px;
     border: 1px solid black;
@@ -24,10 +26,17 @@
     border-radius: 10px;
 }
 
-#btn , #btn2{
-    cursor: pointer;
-    text-align: center;
+button#zutat-hinzufügen, #rezept-zubereiten{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    resize: vertical;
+    border-radius: 10px;
     color: green;
+
 }
 
 .table2 {
@@ -49,12 +58,55 @@
 input#groceries {
     height: 100px;
 }
-button#delete-button{
+
+button#delete-button {
     color: red;
 }
-p{
+
+p {
     font-size: 18px;
     text-align: center;
     margin-top: 50px;
+}
+
+.l-radio {
+    padding: 6px;
+    border-radius: 50px;
+    display: inline-flex;
+    cursor: pointer;
+    margin: 8px 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+input{
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background: none;
+    border: 0;
+    box-shadow: inset 0 0 0 1px;
+    box-shadow: inset 0 0 0 1.5px;
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+}
+
+:focus {
+    outline: none;
+}
+
+:checked {
+    box-shadow: inset 0 0 0 6px;
+}
+.zutatanzahl{
+    display: flex;
+    flex-direction: column;
+    align-items:left;
+}
+input#amount{
+    width: max-content;
+    border-style: none;
 }
 
