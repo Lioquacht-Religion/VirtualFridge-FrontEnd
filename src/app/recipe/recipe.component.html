@@ -3,8 +3,8 @@
         <th>Rezeptname</th>
         
     </tr>
-    <tr>
-        <td></td>
+    <tr *ngFor="let recipe of recipes; index as i">
+        <td>{{recipe.name}}</td>
         <td> <button id="einseh-button">Rezept anzeigen</button></td>
         <td> <button id="delete-button">Rezept löschen</button></td>
     </tr>
