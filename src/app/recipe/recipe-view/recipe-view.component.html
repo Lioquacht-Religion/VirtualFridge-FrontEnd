@@ -5,11 +5,11 @@
         <th>Menge</th>
         <th>Einheit</th>
     </tr>
-    <tr>
+    <tr *ngFor="let ingredient of ingredients; index as i">
+        <th>{{ingredient.name}}</th>
+        <th>{{ingredient.amount}}</th>
         <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th>{{ingredient.unit}}</th>
         <th><button id="delete-button">Zutat löschen</button></th>
     </tr>
 </table>

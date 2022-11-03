@@ -23,6 +23,10 @@ export class VFridgeService {
       return this.http.get('https://virtual-fridge.herokuapp.com/api/v1.0/recipe/all?userID=9');
     }
 
+    getIngredientData(l_recipeID: number) {
+      return this.http.get('https://virtual-fridge.herokuapp.com/api/v1.0/recipe/ingredient/all?recipeID='+l_recipeID);
+    }
+
     addData(postStorage: Object) {
         let endPoint = 
         "https://virtual-fridge.herokuapp.com/api/v1.0/storage";// +

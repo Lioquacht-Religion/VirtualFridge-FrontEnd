@@ -5,7 +5,8 @@
     </tr>
     <tr *ngFor="let recipe of recipes; index as i">
         <td>{{recipe.name}}</td>
-        <td> <button id="einseh-button">Rezept anzeigen</button></td>
+        <td> <a [routerLink]="['/link_recipeview', recipe.recipeID]">Rezept anzeigen</a>
+            <!--<button id="einseh-button">Rezept anzeigen</button>--></td>
         <td> <button id="delete-button" (click) = "deleteDataOnDB(9, recipe.recipeID)">Rezept löschen</button></td>
     </tr>
    

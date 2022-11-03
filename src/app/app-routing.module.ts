@@ -16,8 +16,8 @@ const routes: Routes = [
   { path: 'link_menu', component: MenuComponent },
   { path: 'link_storage', component: StorageComponent },
   { path: 'link_recipe', component: RecipeComponent },
-  { path: 'link_storageview', component: StorageViewComponent },
-  { path: 'link_recipeview', component: RecipeViewComponent }
+  { path: 'link_storageview/:storageID', component: StorageViewComponent },
+  { path: 'link_recipeview/:recipeID', component: RecipeViewComponent }
   /*{
     path: 'storage/:storage-view',
     component: StorageComponent,
