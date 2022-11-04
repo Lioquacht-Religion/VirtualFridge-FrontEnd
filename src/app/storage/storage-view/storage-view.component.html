@@ -1,4 +1,57 @@
-<table>
+<p>Hier ist das Lager zu sehen, welches ausgewählt wurde:</p>
 
-    
+<table class="table3">
+    <tr id="head">
+        <th>Lebensmittel</th>
+        <th>Menge</th>
+        <th>Einheit</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><button id="delete-button">Zutat löschen</button></td>
+    </tr>
+
+
 </table>
+<form id="createGroceries">
+    <label for="groceries">Zutat</label>
+    <textarea type="text" name="groceries" id="groceries" required></textarea>
+    <br/>
+    <br/>
+    <label for="Einheit">Einheit</label>
+    <br />
+    <div>
+      <label for="f-option" class="l-radio">
+        <input type="radio" id="f-option" name="selector" tabindex="1">
+        <span>&nbsp;Gramm</span>
+      </label>
+      <label for="s-option" class="l-radio">
+        <input type="radio" id="s-option" name="selector" tabindex="2">
+        <span>&nbsp;Milliliter</span>
+      </label>
+      <label for="t-option" class="l-radio">
+        <input type="radio" id="t-option" name="selector" tabindex="3">
+        <span>&nbsp;Stück</span>
+      </label>
+    </div>
+  
+    <div class="amount-container">
+      <label for="Anzahl" id="amount">Anzahl</label>
+      <br/>
+      <input type="number" id="amount" name="amount" min="1" max="1000">
+    </div>
+  
+    <div id="btn">
+      <button id="zutat-hinzufügen">Zutat hinzufügen</button>
+    </div>
+    <br />
+    <br />
+    <label for="description">Zubereitung</label>
+    <textarea type="description" name="description" id="description" required></textarea>
+  
+    <div id="btn2">
+      <button id="rezept-zubereiten">Rezeptzubereitung</button>
+    </div>
+  </form>

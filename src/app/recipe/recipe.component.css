@@ -11,6 +11,8 @@
     border-radius: 5px;
     background-color: lightgray;
     color: black;
+    margin-top: 50px;
+    font-weight: 600;
 }
 
 #createRecipe input {
@@ -34,10 +36,12 @@
     border-collapse: collapse;
     width: 40%;
     margin-top: 100px;
-    /* nachschauen wegen abständen auf der main*/
-    background-color: lightgray;
 }
-
+#head > th{
+    background-color: #333;
+    color: white;
+    font-weight: 600;
+}
 .table td,
 .table th {
     border: 2px solid black;
@@ -55,4 +59,8 @@ button#einseh-button {
 
 label {
     margin-left: 5px;
+}
+a, :visited{
+    color: green;
+    text-decoration: none;
 }
