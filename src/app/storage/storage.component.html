@@ -1,5 +1,5 @@
 <table class="table">
-    <tr>
+    <tr id="head">
         <th>Lagername</th>
         <th>Lager ID</th>
     </tr>
@@ -8,7 +8,7 @@
         <td id="storage_name">{{storage.name}}</td>
         <td id="storage_id">{{storage.storageID}}</td>
         <td> <button><a [routerLink]="['/link_storageview', storage.ownerID]">Lager einsehen</a></button></td>
-        <td> <button id="delete-button" (click)="deleteDataOnDB(9, storage.storageID)">Löschen</button></td>
+        <td> <button id="delete-button" (click)="deleteDataOnDB(9, storage.storageID)" onclick="window.location.reload();">Löschen</button></td>
     </tr>
 
 </table>
@@ -19,7 +19,7 @@
 
 
     <div id="btn">
-        <input type="button" id="btn" value="Lager erstellen" (click)="storeDataOnDB()">
+        <input type="button" id="btn" value="Lager erstellen" (click)="storeDataOnDB()" onclick="window.location.reload();">
     </div>
     
 </form>
