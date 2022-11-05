@@ -6,18 +6,18 @@
         <th>Menge</th>
         <th>Einheit</th>
     </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><button id="delete-button">Zutat löschen</button></td>
+    <tr *ngFor="let grocery of groceries; index as i">
+        <td>{{grocery.name}}</td>
+        <td>{{grocery.amount}}</td>
+        <td>{{grocery.unit}}</td>
+        <td><button id="delete-button" (click)="deleteDataOnDB(curStorageID, grocery.id)">Zutat löschen</button></td>
     </tr>
 
 
 </table>
 <form id="createGroceries">
     <label for="groceries">Zutat</label>
-    <textarea type="text" name="groceries" id="groceries" required></textarea>
+    <textarea type="text" name="groceries" id="groceries" [(ngModel)]="groceryname" required></textarea>
     <br/>
     <br/>
     <label for="Einheit">Einheit</label>
@@ -40,11 +40,11 @@
     <div class="amount-container">
       <label for="Anzahl" id="amount">Anzahl</label>
       <br/>
-      <input type="number" id="amount" name="amount" min="1" max="1000">
+      <input type="number" id="amount" name="amount" min="1" max="1000" [(ngModel)]="groceryamount">
     </div>
   
     <div id="btn">
-      <button id="zutat-hinzufügen">Zutat hinzufügen</button>
+      <button id="zutat-hinzufügen" (click)="storeDataOnDB()">Zutat hinzufügen</button>
     </div>
     <br />
     <br />

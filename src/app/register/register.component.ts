@@ -13,11 +13,11 @@ export class RegisterComponent implements OnInit {
   constructor(private vfservice: VFridgeService) { }
 
   ngOnInit(): void {
-    this.vfservice.getData().subscribe(
+    /*this.vfservice.getRegisterData().subscribe(
       data => { this.register_email = data },
       err => console.log(err),
       () => console.log('loading done.'+this.register_email)
-  );
+  );*/
   }
 
   registerusername = '';

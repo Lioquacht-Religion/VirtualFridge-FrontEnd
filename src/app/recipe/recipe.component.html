@@ -7,7 +7,7 @@
         <td> <button id="einseh-button"><a [routerLink]="['/link_recipeview', recipe.recipeID]">Rezept
                     anzeigen</a></button>
         </td>
-        <td> <button id="delete-button" (click)="deleteDataOnDB(9, recipe.recipeID)" onclick="window.location.reload();">Rezept löschen</button></td>
+        <td> <button id="delete-button" (click)="deleteDataOnDB(9, recipe.recipeID)">Rezept löschen</button></td>
     </tr>
 
 
@@ -19,7 +19,7 @@
     <input type="text" name="recipeID" id="recipeID" [(ngModel)]="recipename" required>
 
     <div id="btn">
-        <input type="button" id="btn" value="Rezept anlegen" (click)="storeDataOnDB()" onclick="window.location.reload();">
+        <input type="button" id="btn" value="Rezept anlegen" (click)="storeDataOnDB()">
     </div>
 
 </form>
