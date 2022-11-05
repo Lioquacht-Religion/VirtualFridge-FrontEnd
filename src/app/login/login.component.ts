@@ -21,7 +21,10 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('login_token', 'true');
 
       this.vfservice.getUserData(this.loginemail).subscribe(
-        data => { this.user = data; this.vfservice.user = data; },
+        data => { this.user = data; 
+          this.vfservice.user = data; 
+          localStorage.setItem('user', this.user.email)
+        },
         err => console.log(err),
         () => {console.log('loading done.'+this.user);
         if(this.user.email === this.loginemail){

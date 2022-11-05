@@ -11,7 +11,17 @@ const httpOptions = {
 export class VFridgeService {
   public user : any;
   public userLogined: boolean = true;
-    constructor(private http:HttpClient) {}
+    constructor(private http:HttpClient) {
+      this.userLogined = ('true' === localStorage.getItem('login_token'));
+      var uemail: any = localStorage.getItem("user");
+
+      this.getUserData(uemail).subscribe(
+        data => { this.user = data; },
+        err => console.log(err),
+        () => {console.log('loading done.'+this.user);
+        
+      } );
+    }
 
     getLogedCurUser(){
       return this.user;
