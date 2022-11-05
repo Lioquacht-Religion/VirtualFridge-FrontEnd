@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { VFridgeService } from '../vfridge-service';
 
 @Component({
@@ -7,13 +8,15 @@ import { VFridgeService } from '../vfridge-service';
   styleUrls: ['./storage.component.css']
 })
 export class StorageComponent implements OnInit {
-
+  public curUserID: number = 9;
   public storages : any;
 
-  constructor(private vfservice: VFridgeService) { }
+  constructor(private route: ActivatedRoute, private vfservice: VFridgeService) { 
+    this.route.params.subscribe(params => this.curUserID = params['userID']);
+  }
 
   ngOnInit(): void {
-    this.vfservice.getStorageData(9).subscribe(
+    this.vfservice.getStorageData(this.curUserID).subscribe(
       data => { this.storages = data },
       err => console.log(err),
       () => console.log('loading done.'+this.storages)
@@ -27,11 +30,11 @@ export class StorageComponent implements OnInit {
     //alert('Text changed to' + this.taskname + this.taskdescription + this.taskpriority);
     let storageToCreate = {
       name: this.storagename,
-      Owner: {
+      Owner: this.vfservice.getLogedCurUser() /*{
         name: "Seb anderung",
         email: "seband@mail.com",
         password: "wordpass"
-      }
+      }*/
     };
     this.vfservice.addStorageData(storageToCreate);
     //window.location.reload()

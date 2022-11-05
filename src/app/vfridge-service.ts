@@ -9,7 +9,13 @@ const httpOptions = {
 
 @Injectable()
 export class VFridgeService {
+  public user : any;
+  public userLogined: boolean = true;
     constructor(private http:HttpClient) {}
+
+    getLogedCurUser(){
+      return this.user;
+    }
 
     getStorageData(l_userID: number) {
         return this.http.get('https://virtual-fridge.herokuapp.com/api/v1.0/user/storage/all?OwnerID=' + l_userID);

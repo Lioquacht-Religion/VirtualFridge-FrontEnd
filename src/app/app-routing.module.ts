@@ -14,8 +14,8 @@ const routes: Routes = [
   { path: 'link_register', component: RegisterComponent },
   { path: 'link_login', component: LoginComponent },
   { path: 'link_menu', component: MenuComponent },
-  { path: 'link_storage', component: StorageComponent },
-  { path: 'link_recipe', component: RecipeComponent },
+  { path: 'link_storage/:userID', component: StorageComponent },
+  { path: 'link_recipe/:userID', component: RecipeComponent },
   { path: 'link_storageview/:storageID', component: StorageViewComponent },
   { path: 'link_recipeview/:recipeID', component: RecipeViewComponent }
 ];
