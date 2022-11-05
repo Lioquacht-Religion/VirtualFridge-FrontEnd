@@ -26,7 +26,6 @@ export class RecipeComponent implements OnInit {
   recipedescr = "";
 
   storeDataOnDB(): void {
-    //alert('Text changed to' + this.taskname + this.taskdescription + this.taskpriority);
     let recipeToCreate = {
       name: this.recipename,
       description: this.recipedescr

@@ -55,10 +55,18 @@ export class VFridgeService {
         });
       }
 
-      addIngredientData(postRecipe: Object, ingredientID: number) {
+      putRecipeData(putRecipe: Object) {
         let endPoint = 
-        "https://virtual-fridge.herokuapp.com/api/v1.0/recipe?OwnerID=" + ingredientID;
-        this.http.post(endPoint, postRecipe).subscribe(data => {
+        "https://virtual-fridge.herokuapp.com/api/v1.0/recipe";
+        this.http.put(endPoint, putRecipe).subscribe(data => {
+          console.log(data);
+        });
+      }
+
+      addIngredientData(postIngredient: Object, ingredientID: number) {
+        let endPoint = 
+        "https://virtual-fridge.herokuapp.com/api/v1.0/recipe/ingredient?RecipeID=" + ingredientID;
+        this.http.post(endPoint, postIngredient).subscribe(data => {
           console.log(data);
         });
       }
@@ -98,6 +106,15 @@ export class VFridgeService {
         "https://virtual-fridge.herokuapp.com/api/v1.0/recipe" +
         "?userID=" + userID + 
         "&recipeID=" + recipeID;
+        this.http.delete(endPoint).subscribe(data => {
+          console.log(data);
+        });
+      }
+      deleteIngredient(recipeID: number, ingredientID: number) {
+        let endPoint = 
+        "https://virtual-fridge.herokuapp.com/api/v1.0/ingredient" +
+        "?recipeID=" + recipeID + 
+        "&ingredientID=" + ingredientID;
         this.http.delete(endPoint).subscribe(data => {
           console.log(data);
         });

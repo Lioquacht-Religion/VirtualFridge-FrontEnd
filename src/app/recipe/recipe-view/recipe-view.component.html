@@ -10,7 +10,7 @@
     <th>{{ingredient.name}}</th>
     <th>{{ingredient.amount}}</th>
     <th>{{ingredient.unit}}</th>
-    <th><button id="delete-button">Zutat löschen</button></th>
+    <th><button id="delete-button" (click)="deleteDataOnDB(curRecipeID, ingredient.id)">Zutat löschen</button></th>
   </tr>
 </table>
 
@@ -20,7 +20,7 @@
 
 <form id="createGroceries">
   <label for="groceries">Zutat</label>
-  <textarea type="text" name="groceries" id="groceries" required></textarea>
+  <textarea type="text" name="groceries" id="groceries" [(ngModel)]="ingredientname" required></textarea>
   <br />
   <br />
   <label for="Einheit">Einheit</label>
@@ -43,11 +43,11 @@
   <div class="amount-container">
     <label for="Anzahl" id="amount">Anzahl</label>
     <br />
-    <input type="number" id="amount" name="amount" min="1" max="1000">
+    <input type="number" id="amount" name="amount" min="1" max="1000" [(ngModel)]="ingredientamount">
   </div>
 
   <div id="btn">
-    <button id="zutat-hinzufügen">Zutat hinzufügen</button>
+    <button id="zutat-hinzufügen" (click)="storeDataOnDB()">Zutat hinzufügen</button>
   </div>
   <br />
   <br />
