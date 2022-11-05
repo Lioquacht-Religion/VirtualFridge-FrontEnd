@@ -25,6 +25,40 @@ export class RecipeViewComponent implements OnInit {
       () => console.log('loading done.:'+this.curRecipeID+this.ingredients)
   );
 
+
+
   }
+
+  ingredientname = '';
+  ingredientamount = '';
+  ingredientunit = '';
+
+  public recipename = '';
+  public recipedescr = '';
+  public recipeID = '';
+
+  storeDataOnDB(): void {
+    let IngredientToCreate = {
+        name: this.ingredientname,
+        amount: this.ingredientamount,
+        unit: this.ingredientunit
+    };
+    this.vfservice.addIngredientData(IngredientToCreate, this.curRecipeID);
+    }
+
+    deleteDataOnDB(recipeID: number, ingredientID: number): void {
+      this.vfservice.deleteIngredient(recipeID, ingredientID);
+      this.ngOnInit();
+      }
+
+    changeDataOnDB(): void {
+        let IngredientToCreate = {
+            name: this.recipename,
+            description: this.recipedescr,
+            recipeID: this.recipeID
+        };
+        this.vfservice.putRecipeData(IngredientToCreate);
+        }
+      
 
 }

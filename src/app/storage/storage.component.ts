@@ -13,7 +13,7 @@ export class StorageComponent implements OnInit {
   constructor(private vfservice: VFridgeService) { }
 
   ngOnInit(): void {
-    this.vfservice.getData().subscribe(
+    this.vfservice.getStorageData(9).subscribe(
       data => { this.storages = data },
       err => console.log(err),
       () => console.log('loading done.'+this.storages)
@@ -33,7 +33,9 @@ export class StorageComponent implements OnInit {
         password: "wordpass"
       }
     };
-    this.vfservice.addData(storageToCreate);
+    this.vfservice.addStorageData(storageToCreate);
+    //window.location.reload()
+    this.ngOnInit();
     }
 
     deleteDataOnDB(UserID: number, StorID: number): void {
