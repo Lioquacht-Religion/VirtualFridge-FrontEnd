@@ -39,9 +39,8 @@ export class StorageComponent implements OnInit {
     }
 
     deleteDataOnDB(UserID: number, StorID: number): void {
-      //alert('Text changed to' + this.taskname + this.taskdescription + this.taskpriority);
-
       this.vfservice.deleteStorage(UserID, StorID);
+      this.ngOnInit();
       }
 
 }

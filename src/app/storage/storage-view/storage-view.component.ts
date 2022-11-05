@@ -17,6 +17,10 @@ export class StorageViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getDataFromDB();
+  }
+
+  getDataFromDB(){
     this.vfservice.getGroceryData(this.curStorageID).subscribe(
       data => { this.groceries = data },
       err => console.log(err),
@@ -28,18 +32,19 @@ export class StorageViewComponent implements OnInit {
   groceryamount = '';
   groceryunit = '';
 
-  storeDataOnDB(): void {
+  async storeDataOnDB(): Promise<void> {
     let GroceryToCreate = {
         name: this.groceryname,
         amount: this.groceryamount,
         unit: this.groceryunit
     };
-    this.vfservice.addGroceryData(GroceryToCreate, this.curStorageID);
+    await this.vfservice.addGroceryData(GroceryToCreate, this.curStorageID);
+    this.getDataFromDB();
     }
 
     deleteDataOnDB(storageID: number, groceryID: number): void {
       this.vfservice.deleteGrocery(storageID, groceryID);
-      this.ngOnInit();
+      this.getDataFromDB();
       }
 
 }

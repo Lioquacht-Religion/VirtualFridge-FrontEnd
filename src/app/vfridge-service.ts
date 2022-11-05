@@ -39,12 +39,12 @@ export class VFridgeService {
         });
       }
 
-      addGroceryData(postGrocery: Object, storageID: number) {
-        let endPoint = 
-        "https://virtual-fridge.herokuapp.com/api/v1.0/grocery/byID?storageID=" + storageID;
-        this.http.post(endPoint, postGrocery).subscribe(data => {
-          console.log(data);
-        });
+      async addGroceryData(postGrocery: Object, storageID: number): Promise<void> {
+          let endPoint = 
+          "https://virtual-fridge.herokuapp.com/api/v1.0/grocery/byID?storageID=" + storageID;
+          this.http.post(endPoint, postGrocery).subscribe(data => {
+            console.log(data);
+          });
       }
 
       addRecipeData(postRecipe: Object, userID: number) {
