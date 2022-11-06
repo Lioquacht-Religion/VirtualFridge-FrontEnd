@@ -52,9 +52,9 @@
   <br />
   <br />
   <label for="description">Zubereitung</label>
-  <textarea type="description" name="description" id="description" required></textarea>
+  <textarea type="description" name="description" id="description" [(ngModel)]="recipedescr" required>{{recipe.description}}</textarea>
 
   <div id="btn2">
-    <button id="rezept-zubereiten">Rezeptzubereitung</button>
+    <button id="rezept-zubereiten" (click)="changeDataOnDB()">Rezeptzubereitung</button>
   </div>
 </form>

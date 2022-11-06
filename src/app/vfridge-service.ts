@@ -43,6 +43,10 @@ export class VFridgeService {
       return this.http.get('https://virtual-fridge.herokuapp.com/api/v1.0/recipe/all?userID='+l_userID);
     }
 
+    getSingleRecipeData(l_recipeID: number) {
+      return this.http.get('https://virtual-fridge.herokuapp.com/api/v1.0/recipe/byID?recipeID='+l_recipeID);
+    }
+
     getIngredientData(l_recipeID: number) {
       return this.http.get('https://virtual-fridge.herokuapp.com/api/v1.0/recipe/ingredient/all?recipeID='+l_recipeID);
     }
