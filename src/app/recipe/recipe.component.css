@@ -37,11 +37,13 @@
     width: 40%;
     margin-top: 100px;
 }
-#head > th{
+
+#head>th {
     background-color: #333;
     color: white;
     font-weight: 600;
 }
+
 .table td,
 .table th {
     border: 2px solid black;
@@ -60,7 +62,31 @@ button#einseh-button {
 label {
     margin-left: 5px;
 }
-a, :visited{
+
+a,
+:visited {
     color: green;
     text-decoration: none;
+}
+
+#recipetip {
+    text-align: center;
+    cursor: pointer;
+}
+
+#btn_recipetip {
+    color: green;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+p{
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    margin-top: 50px;
 }

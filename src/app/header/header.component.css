@@ -3,31 +3,30 @@ div#head {
   flex-direction: column;
   padding: 20px;
   align-items: center;
-  
+
 }
-.überschrift{
+
+.überschrift {
   text-align: left;
   font-size: 35px;
 }
-
-
 
 figure#logo_VirtualFridge {
   text-align: center;
 
 }
 
-figure#logo_VirtualFridge > img {
+figure#logo_VirtualFridge>img {
   width: 15%;
 }
 
+@media screen and (max-width: 490px) {
 
-@media screen and (max-width: 490px){
-  
-  figure#logo_VirtualFridge > img {
+  figure#logo_VirtualFridge>img {
     width: 150px;
   }
-  .überschrift{
+
+  .überschrift {
     text-align: left;
     font-size: 20px;
   }
