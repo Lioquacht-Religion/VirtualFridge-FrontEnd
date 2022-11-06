@@ -7,7 +7,7 @@ import { StorageComponent } from './storage/storage.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { RecipeViewComponent } from './recipe/recipe-view/recipe-view.component';
 import { StorageViewComponent } from './storage/storage-view/storage-view.component';
-import { RecipeSuggestionComponent } from './recipe/recipe-suggestion/recipe-suggestion.component';
+import { RecipeSuggestionComponent } from './storage/storage-view/recipe-suggestion/recipe-suggestion.component';
 
 
 const routes: Routes = [
