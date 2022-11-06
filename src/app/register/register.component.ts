@@ -7,8 +7,7 @@ import { VFridgeService } from '../vfridge-service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
-  public register_email : any;
+  public user : any;
 
   constructor(private vfservice: VFridgeService) { }
 
@@ -40,4 +39,20 @@ export class RegisterComponent implements OnInit {
       this.vfservice.deleteStorage(UserID, StorID);
       }
 
+      login(): void {
+        localStorage.setItem('login_token', 'true');
+    
+          this.vfservice.getUserData(this.registeremail).subscribe(
+            data => { this.user = data; this.vfservice.user = data; },
+            err => console.log(err),
+            () => {console.log('loading done.'+this.user);
+            if(this.user.email === this.registeremail){
+              this.vfservice.userLogined = true;
+            }
+            else{this.vfservice.userLogined = false;}
+            
+          }
+        );
+
+}
 }

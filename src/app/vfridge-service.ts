@@ -9,7 +9,23 @@ const httpOptions = {
 
 @Injectable()
 export class VFridgeService {
-    constructor(private http:HttpClient) {}
+  public user : any;
+  public userLogined: boolean = true;
+    constructor(private http:HttpClient) {
+      this.userLogined = ('true' === localStorage.getItem('login_token'));
+      var uemail: any = localStorage.getItem("user");
+
+      this.getUserData(uemail).subscribe(
+        data => { this.user = data; },
+        err => console.log(err),
+        () => {console.log('loading done.'+this.user);
+        
+      } );
+    }
+
+    getLogedCurUser(){
+      return this.user;
+    }
 
     getStorageData(l_userID: number) {
         return this.http.get('https://virtual-fridge.herokuapp.com/api/v1.0/user/storage/all?OwnerID=' + l_userID);
@@ -39,12 +55,12 @@ export class VFridgeService {
         });
       }
 
-      addGroceryData(postGrocery: Object, storageID: number) {
-        let endPoint = 
-        "https://virtual-fridge.herokuapp.com/api/v1.0/grocery/byID?storageID=" + storageID;
-        this.http.post(endPoint, postGrocery).subscribe(data => {
-          console.log(data);
-        });
+      async addGroceryData(postGrocery: Object, storageID: number): Promise<void> {
+          let endPoint = 
+          "https://virtual-fridge.herokuapp.com/api/v1.0/grocery/byID?storageID=" + storageID;
+          this.http.post(endPoint, postGrocery).subscribe(data => {
+            console.log(data);
+          });
       }
 
       addRecipeData(postRecipe: Object, userID: number) {

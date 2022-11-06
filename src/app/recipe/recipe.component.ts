@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { VFridgeService } from '../vfridge-service';
 
 
@@ -8,13 +9,15 @@ import { VFridgeService } from '../vfridge-service';
   styleUrls: ['./recipe.component.css']
 })
 export class RecipeComponent implements OnInit {
-
+  public curUserID: number = 9;
   public recipes : any;
 
-  constructor(private vfservice: VFridgeService) { }
-
+  constructor(private route: ActivatedRoute, private vfservice: VFridgeService) { 
+    this.route.params.subscribe(params => this.curUserID = params['userID']);
+  }
+  
   ngOnInit(): void {
-    this.vfservice.getRecipeData(9).subscribe(
+    this.vfservice.getRecipeData(this.curUserID).subscribe(
       data => { this.recipes = data },
       err => console.log(err),
       () => console.log('loading done.'+this.recipes)
@@ -30,13 +33,11 @@ export class RecipeComponent implements OnInit {
       name: this.recipename,
       description: this.recipedescr
     };
-    this.vfservice.addRecipeData(recipeToCreate, 9);
+    this.vfservice.addRecipeData(recipeToCreate, this.curUserID);
     this.ngOnInit();
     }
 
     deleteDataOnDB(UserID: number, RecID: number): void {
-      //alert('Text changed to' + this.taskname + this.taskdescription + this.taskpriority);
-
       this.vfservice.deleteRecipe(UserID, RecID);
       }
 
