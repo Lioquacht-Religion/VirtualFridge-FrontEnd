@@ -1,0 +1,38 @@
+* {
+    margin: auto;
+    padding: auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p{
+    text-align:center;
+    margin-top: 50px;
+    font-weight: 600;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 40%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+#head {
+    background-color: #333;
+    color: white;
+    font-weight: 600;
+}
+
+.table td,
+.table th {
+    border: 2px solid black;
+    height: 50px;
+    text-align: center;
+}
+#zelle_name, #zelle_zutat, #zelle_zubereitung {
+    padding: 20px, 20px;
+    margin: 20px;
+}
+i{
+    text-align: justify-all;
+}
