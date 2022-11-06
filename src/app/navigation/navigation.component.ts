@@ -19,6 +19,7 @@ export class NavigationComponent implements OnInit {
 
   logOff(){
     this.vfservice.userLogined = false;
+    localStorage.clear();
   }
 
 }
