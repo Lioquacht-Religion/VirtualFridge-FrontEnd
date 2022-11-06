@@ -9,13 +9,13 @@ import { RecipeComponent } from '../recipe.component';
   styleUrls: ['./recipe-view.component.css']
 })
 export class RecipeViewComponent implements OnInit {
-
   public recipe : any;
   public ingredients : any;
   public curRecipeID : number = 0;
 
-  constructor(private route: ActivatedRoute, private vfservice: VFridgeService, 
-    public recComp :RecipeComponent) {
+  public recipedescr: String = "";
+
+  constructor(private route: ActivatedRoute, private vfservice: VFridgeService, ) {
     this.route.params.subscribe(params => this.curRecipeID = params['recipeID']);
 
   }
@@ -24,12 +24,14 @@ export class RecipeViewComponent implements OnInit {
     this.vfservice.getIngredientData(this.curRecipeID).subscribe(
       data => { this.ingredients = data },
       err => console.log(err),
-      () => console.log('loading done.:'+this.curRecipeID+this.ingredients)
+      () => console.log('loading done.:'+this.curRecipeID+this.ingredients)   
   );
-  this.recipe = 
-  this.recComp.recipes.find(
-    (x: { recipeid: number; name: String, description: String }) => 
-    x.recipeid === this.curRecipeID);
+
+  this.vfservice.getSingleRecipeData(this.curRecipeID).subscribe(
+    data => { this.recipe = data; this.recipedescr = this.recipe.description},
+    err => console.log(err),
+    () => console.log('loading done.:'+this.curRecipeID+this.recipe)
+  );
 
   }
 
@@ -54,8 +56,9 @@ export class RecipeViewComponent implements OnInit {
     changeDataOnDB(): void {
         let RecipeToChange = {
             name: this.recipe.name,
-            description: this.recipe.descr,
-            recipeID: this.curRecipeID
+            description: this.recipedescr,
+            recipeID: this.curRecipeID,
+            authorID: this.recipe.authorID
         };
         console.log(this.recipe.name+this.recipe.descr);
         this.vfservice.putRecipeData(RecipeToChange);
