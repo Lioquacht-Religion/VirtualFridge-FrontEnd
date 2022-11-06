@@ -39,7 +39,7 @@ import { RecipeViewComponent } from './recipe/recipe-view/recipe-view.component'
     HttpClientModule,
     FormsModule
   ],
-  providers: [VFridgeService],
+  providers: [VFridgeService, RecipeComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
