@@ -7,6 +7,7 @@ import { StorageComponent } from './storage/storage.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { RecipeViewComponent } from './recipe/recipe-view/recipe-view.component';
 import { StorageViewComponent } from './storage/storage-view/storage-view.component';
+import { RecipeSuggestionComponent } from './recipe/recipe-suggestion/recipe-suggestion.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'link_storage/:userID', component: StorageComponent },
   { path: 'link_recipe/:userID', component: RecipeComponent },
   { path: 'link_storageview/:storageID', component: StorageViewComponent },
-  { path: 'link_recipeview/:recipeID', component: RecipeViewComponent }
+  { path: 'link_recipeview/:recipeID', component: RecipeViewComponent },
+  {path: 'link_recipesuggestion' , component: RecipeSuggestionComponent }
 ];
 
 @NgModule({
