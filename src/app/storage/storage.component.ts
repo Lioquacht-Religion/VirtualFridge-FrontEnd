@@ -30,6 +30,7 @@ export class StorageComponent implements OnInit {
     //alert('Text changed to' + this.taskname + this.taskdescription + this.taskpriority);
     let storageToCreate = {
       name: this.storagename,
+      ownerid: this.curUserID,
       Owner: this.vfservice.getLogedCurUser() /*{
         name: "Seb anderung",
         email: "seband@mail.com",
