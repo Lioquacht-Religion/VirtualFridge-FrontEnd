@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { VFridgeService } from './vfridge-service';
 import { StorageViewComponent } from './storage/storage-view/storage-view.component';
 import { RecipeViewComponent } from './recipe/recipe-view/recipe-view.component';
+import { RecipeSuggestionComponent } from './recipe/recipe-suggestion/recipe-suggestion.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { RecipeViewComponent } from './recipe/recipe-view/recipe-view.component'
     RecipeComponent,
     StorageComponent,
     StorageViewComponent,
-    RecipeViewComponent
+    RecipeViewComponent,
+    RecipeSuggestionComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,7 @@ import { RecipeViewComponent } from './recipe/recipe-view/recipe-view.component'
     HttpClientModule,
     FormsModule
   ],
-  providers: [VFridgeService],
+  providers: [VFridgeService, RecipeComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
