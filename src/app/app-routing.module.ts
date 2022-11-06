@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'link_recipe/:userID', component: RecipeComponent },
   { path: 'link_storageview/:storageID', component: StorageViewComponent },
   { path: 'link_recipeview/:recipeID', component: RecipeViewComponent },
-  {path: 'link_recipesuggestion' , component: RecipeSuggestionComponent }
+  {path: 'link_recipesuggestion/:storageID' , component: RecipeSuggestionComponent }
 ];
 
 @NgModule({

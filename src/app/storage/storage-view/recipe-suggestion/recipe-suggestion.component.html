@@ -1,23 +1,27 @@
 <p>Ihr vorgeschlagenes Rezept <br />(basierend auf ihren vorhandenen Lebensmitteln):</p>
 
-<table class="table">
+<table class="table" *ngFor="let recipe of recsugs; index as i">
     <tr>
         <td id="head">Name</td>
     </tr>
     <tr>
-        <td id="zelle_name"><i></i></td>
+        <td id="zelle_name"><i>{{recipe.name}}</i></td>
     </tr>
     <tr>
         <td id="head">Zutaten</td>
     </tr>
     <tr>
-        <td id="zelle_zutaten"><i></i> </td>
+        <td id="zelle_zutaten">
+            <i *ngFor="let groc of recipe.ingredients; index as i">
+                {{groc.name}} : {{groc.amount}}{{groc.unit}},
+            </i>
+         </td>
     </tr>
     <tr>
          <td id="head">Zubereitung</td>
     </tr>
     <tr>
-        <td id="zelle_zubereitung"><i></i></td>
+        <td id="zelle_zubereitung"><i>{{recipe.description}}</i></td>
     </tr>
    
 </table>

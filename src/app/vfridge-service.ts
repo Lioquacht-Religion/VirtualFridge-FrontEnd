@@ -139,4 +139,8 @@ export class VFridgeService {
           console.log(data);
         });
       }
+      getRecSugData(l_userID: number, l_storageID: number) {
+        return this.http.get('https://virtual-fridge.herokuapp.com/api/v1.0/storage/recipe/suggestion?userID='+ 
+        l_userID +'&storageID='+l_storageID);
+      }
 }
