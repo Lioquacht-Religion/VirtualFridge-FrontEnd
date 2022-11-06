@@ -16,7 +16,7 @@
 
 </table>
 <form id="createGroceries">
-  <label for="groceries">Zutat</label>
+  <label for="groceries">Lebensmittel</label>
   <textarea type="text" name="groceries" id="groceries" [(ngModel)]="groceryname" required></textarea>
   <br />
   <br />
@@ -44,16 +44,10 @@
   </div>
 
   <div id="btn">
-    <button id="zutat-hinzufügen" (click)="storeDataOnDB()">Zutat hinzufügen</button>
+    <button id="zutat-hinzufügen" (click)="storeDataOnDB()">Lebensmittel hinzufügen</button>
   </div>
   <br />
   <br />
-  <label for="description">Zubereitung</label>
-  <textarea type="description" name="description" id="description" required></textarea>
-
-  <div id="btn2">
-    <button id="rezept-zubereiten">Rezeptzubereitung</button>
-  </div>
 </form>
 <p>Sie wollen ein Rezept vorgeschlagen bekommen?</p>
 
