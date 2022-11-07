@@ -8,6 +8,7 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { RecipeViewComponent } from './recipe/recipe-view/recipe-view.component';
 import { StorageViewComponent } from './storage/storage-view/storage-view.component';
 import { RecipeSuggestionComponent } from './storage/storage-view/recipe-suggestion/recipe-suggestion.component';
+import { AccEditComponent } from './acc-edit/acc-edit.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'link_recipe/:userID', component: RecipeComponent },
   { path: 'link_storageview/:storageID', component: StorageViewComponent },
   { path: 'link_recipeview/:recipeID', component: RecipeViewComponent },
-  {path: 'link_recipesuggestion/:storageID' , component: RecipeSuggestionComponent }
+  {path: 'link_recipesuggestion/:storageID' , component: RecipeSuggestionComponent },
+  {path: 'link_acc-edit' , component : AccEditComponent}
 ];
 
 @NgModule({

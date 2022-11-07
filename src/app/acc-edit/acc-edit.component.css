@@ -1,0 +1,23 @@
+* {
+    margin: auto;
+    padding: auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+p{
+    font-weight: 600;
+}
+
+form#acc_edit-container{
+   text-align: center;
+}
+
+textarea{
+    
+    margin: 10px;
+}
+button {
+    cursor: pointer;
+    text-align: center;
+    color: green;
+    border-radius: 10px;
+}

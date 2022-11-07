@@ -24,3 +24,11 @@ ul {
 	background-color: #e5e619;
     color: black;
   }
+img#acc_verwaltung{
+	width: 25px;
+	border-radius: 12px;
+	background-color: white;
+}
+li#account_verwaltung{
+	float: right;
+}
