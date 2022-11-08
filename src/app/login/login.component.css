@@ -83,18 +83,11 @@ h2 {
     position: relative;
     display: inline-block;
     text-align: center;
+    margin-bottom: 20px;
   }
   
   input[type="submit"]:hover {
     background-color: dodgerblue;
-  }
-  
-  #create-account-wrap {
-    background-color: lightgray;
-    color: black;
-    font-size: 14px;
-    width: 100%;
-    padding: 10px 0;
-    border-radius: 0 0 4px 4px;
 
   }
+  

@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     var name = this.loginusername;
     var email = this.loginemail;
     if (name == "" || name == null || email == "" || email == null) {
-      alert("Field must be filled out");
+      alert("Das Feld muss ausgefüllt sein!");
       
     }
     else{

@@ -32,3 +32,7 @@ img#acc_verwaltung{
 li#account_verwaltung{
 	float: right;
 }
+
+li#abmeldenButton{
+	float: right;
+}
