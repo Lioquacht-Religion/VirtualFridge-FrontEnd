@@ -37,10 +37,10 @@ export class StorageComponent implements OnInit {
         password: "wordpass"
       }*/
     };
-    alert(this.vfservice.getLogedCurUser().id+":"+this.curUserID);
+    //alert(this.vfservice.getLogedCurUser().id+":"+this.curUserID);
     this.vfservice.addStorageData(storageToCreate);
     //window.location.reload()
-    //this.ngOnInit();
+    this.ngOnInit();
     }
 
     deleteDataOnDB(UserID: number, StorID: number): void {
