@@ -64,7 +64,7 @@ h2 {
   .validation {
     display: none;
     position: absolute;
-    content: " ";
+    content: "";
     height: 60px;
     width: 30px;
     right: 15px;

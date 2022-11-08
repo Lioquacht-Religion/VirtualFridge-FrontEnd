@@ -1,8 +1,8 @@
 <div id="login-container">
   <h2>Login</h2>
-  <form id="login-form">
+  <form id="login-form" name="loginForm" >
     <p>
-      <input type="benutzername" id="benutzername" name="benutzername" placeholder="Benutzername" required><i
+      <input type="benutzername" id="benutzername" name="benutzername" placeholder="Benutzername" [(ngModel)]="loginusername" required><i
         class="validation"><span></span><span></span></i>
     </p>
     <p>
@@ -10,11 +10,11 @@
       <i class="validation"><span></span><span></span></i>
     </p>
     <p>
-      <input type="submit" id="login" value="einloggen" (click)="login()" [routerLink]="['link_menu']">
+      <input type="submit" id="login" value="einloggen" (click)="login()" [routerLink]="['/link_menu']">
     </p>
   </form>
   <div id="create-account-wrap">
-    <p>Noch kein Mitglied? <a [routerLink]="['../link_register']">Erstelle einen neuen Account</a>
+    <p>Noch kein Mitglied? <a [routerLink]="['/link_register']">Erstelle einen neuen Account</a>
     <p>
   </div>
 </div>
