@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         err => console.log(err),
         () => {
           console.log('loading done.'+this.user);
-          if(this.loginemail === this.user.email){ 
+          if(this.loginemail === this.user.email && this.loginusername === this.user.name){ 
             localStorage.setItem('user', this.user.email);
             localStorage.setItem('login_token', 'true');
             this.vfservice.userLogined = true;

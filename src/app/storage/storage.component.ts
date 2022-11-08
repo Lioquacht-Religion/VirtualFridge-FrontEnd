@@ -16,36 +16,37 @@ export class StorageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getStorageFromDB();
+  }
+
+  storagename = '';
+
+  getStorageFromDB(){
     this.vfservice.getStorageData(this.curUserID).subscribe(
       data => { this.storages = data },
       err => console.log(err),
       () => console.log('loading done.'+this.storages)
   );
-
   }
 
-  storagename = '';
-
   storeDataOnDB(): void {
-    //alert('Text changed to' + this.taskname + this.taskdescription + this.taskpriority);
     let storageToCreate = {
       name: this.storagename,
       ownerID: this.curUserID,
-      Owner: this.vfservice.getLogedCurUser() /*{
-        name: "Seb anderung",
-        email: "seband@mail.com",
-        password: "wordpass"
-      }*/
+      Owner: this.vfservice.getLogedCurUser()
     };
-    //alert(this.vfservice.getLogedCurUser().id+":"+this.curUserID);
-    this.vfservice.addStorageData(storageToCreate);
-    //window.location.reload()
-    this.ngOnInit();
+    this.vfservice.addStorageData(storageToCreate).subscribe(data => {
+      console.log(data); },
+      () => {this.getStorageFromDB();}
+      );
     }
+  
 
     deleteDataOnDB(UserID: number, StorID: number): void {
-      this.vfservice.deleteStorage(UserID, StorID);
-      this.ngOnInit();
+      this.vfservice.deleteStorage(UserID, StorID).subscribe(
+        data => {console.log(data);},
+        () => {this.getStorageFromDB();}
+        );
       }
 
 }

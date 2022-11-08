@@ -17,28 +17,36 @@ export class RecipeComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.vfservice.getRecipeData(this.curUserID).subscribe(
-      data => { this.recipes = data },
-      err => console.log(err),
-      () => console.log('loading done.'+this.recipes)
-  );
-
+    this.getDataFromDB();
   }
 
   recipename = "";
   recipedescr = "";
+
+  getDataFromDB(){
+  this.vfservice.getRecipeData(this.curUserID).subscribe(
+    data => { this.recipes = data },
+    err => console.log(err),
+    () => console.log('loading done.'+this.recipes)
+);
+  }
 
   storeDataOnDB(): void {
     let recipeToCreate = {
       name: this.recipename,
       description: this.recipedescr
     };
-    this.vfservice.addRecipeData(recipeToCreate, this.curUserID);
-    this.ngOnInit();
+    this.vfservice.addRecipeData(recipeToCreate, this.curUserID).subscribe(data => {
+      console.log(data);},
+      () => {this.getDataFromDB();}
+      );
     }
 
     deleteDataOnDB(UserID: number, RecID: number): void {
-      this.vfservice.deleteRecipe(UserID, RecID);
+      this.vfservice.deleteRecipe(UserID, RecID).subscribe(data => {
+        console.log(data);},
+        () => {this.getDataFromDB();}
+        );
       }
 
 

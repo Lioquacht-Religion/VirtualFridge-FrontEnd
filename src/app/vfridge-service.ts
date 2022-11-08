@@ -70,9 +70,7 @@ export class VFridgeService {
     addStorageData(postStorage: Object) {
         let endPoint = 
         "https://virtual-fridge.herokuapp.com/api/v1.0/storage";
-        this.http.post(endPoint, postStorage).subscribe(data => {
-          console.log(data);
-        });
+        return this.http.post(endPoint, postStorage);
       }
 
       async addGroceryData(postGrocery: Object, storageID: number): Promise<void> {
@@ -86,9 +84,7 @@ export class VFridgeService {
       addRecipeData(postRecipe: Object, userID: number) {
         let endPoint = 
         "https://virtual-fridge.herokuapp.com/api/v1.0/recipe?OwnerID=" + userID;
-        this.http.post(endPoint, postRecipe).subscribe(data => {
-          console.log(data);
-        });
+        return this.http.post(endPoint, postRecipe);
       }
 
       putRecipeData(putRecipe: Object) {
@@ -102,9 +98,7 @@ export class VFridgeService {
       addIngredientData(postIngredient: Object, ingredientID: number) {
         let endPoint = 
         "https://virtual-fridge.herokuapp.com/api/v1.0/recipe/ingredient?RecipeID=" + ingredientID;
-        this.http.post(endPoint, postIngredient).subscribe(data => {
-          console.log(data);
-        });
+        return this.http.post(endPoint, postIngredient);
       }
 
       addRegisterData(postTask: Object) {
@@ -122,9 +116,7 @@ export class VFridgeService {
         "https://virtual-fridge.herokuapp.com/api/v1.0/storage" +
         "?userID=" + userID + 
         "&storageID=" + storageID;
-        this.http.delete(endPoint).subscribe(data => {
-          console.log(data);
-        });
+       return  this.http.delete(endPoint);
       }
 
       deleteGrocery(storageID: number, groceryID: number) {
@@ -132,9 +124,7 @@ export class VFridgeService {
         "https://virtual-fridge.herokuapp.com/api/v1.0/grocery" +
         "?storageID=" + storageID + 
         "&groceryID=" + groceryID;
-        this.http.delete(endPoint).subscribe(data => {
-          console.log(data);
-        });
+        return this.http.delete(endPoint);
       }
 
       deleteRecipe(userID: number, recipeID: number) {
@@ -142,18 +132,14 @@ export class VFridgeService {
         "https://virtual-fridge.herokuapp.com/api/v1.0/recipe" +
         "?userID=" + userID + 
         "&recipeID=" + recipeID;
-        this.http.delete(endPoint).subscribe(data => {
-          console.log(data);
-        });
+        return this.http.delete(endPoint);
       }
       deleteIngredient(recipeID: number, ingredientID: number) {
         let endPoint = 
         "https://virtual-fridge.herokuapp.com/api/v1.0/ingredient" +
         "?recipeID=" + recipeID + 
         "&ingredientID=" + ingredientID;
-        this.http.delete(endPoint).subscribe(data => {
-          console.log(data);
-        });
+        return this.http.delete(endPoint);
       }
       getRecSugData(l_userID: number, l_storageID: number) {
         return this.http.get('https://virtual-fridge.herokuapp.com/api/v1.0/storage/recipe/suggestion?userID='+ 

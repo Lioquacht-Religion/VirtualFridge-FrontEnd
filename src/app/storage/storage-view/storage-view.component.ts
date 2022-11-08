@@ -51,8 +51,11 @@ export class StorageViewComponent implements OnInit {
     }
 
     deleteDataOnDB(storageID: number, groceryID: number): void {
-      this.vfservice.deleteGrocery(storageID, groceryID);
-      this.getDataFromDB();
+      this.vfservice.deleteGrocery(storageID, groceryID).subscribe(
+        data => {console.log(data);},
+        () => {this.getDataFromDB();}
+        );
+      
       }
 
 }

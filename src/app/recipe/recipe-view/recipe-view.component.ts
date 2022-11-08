@@ -21,11 +21,7 @@ export class RecipeViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.vfservice.getIngredientData(this.curRecipeID).subscribe(
-      data => { this.ingredients = data },
-      err => console.log(err),
-      () => console.log('loading done.:'+this.curRecipeID+this.ingredients)   
-  );
+    this.getDataFromDB();
 
   this.vfservice.getSingleRecipeData(this.curRecipeID).subscribe(
     data => { this.recipe = data; this.recipedescr = this.recipe.description},
@@ -33,6 +29,14 @@ export class RecipeViewComponent implements OnInit {
     () => console.log('loading done.:'+this.curRecipeID+this.recipe)
   );
 
+  }
+
+  getDataFromDB(){
+    this.vfservice.getIngredientData(this.curRecipeID).subscribe(
+      data => { this.ingredients = data },
+      err => console.log(err),
+      () => console.log('loading done.:'+this.curRecipeID+this.ingredients)   
+  );
   }
 
   ingredientname = '';
@@ -45,12 +49,17 @@ export class RecipeViewComponent implements OnInit {
         amount: this.ingredientamount,
         unit: this.ingredientunit
     };
-    this.vfservice.addIngredientData(IngredientToCreate, this.curRecipeID);
+    this.vfservice.addIngredientData(IngredientToCreate, this.curRecipeID).subscribe(data => {
+      console.log(data);},
+      () => {this.getDataFromDB();}
+      );
     }
 
     deleteDataOnDB(recipeID: number, ingredientID: number): void {
-      this.vfservice.deleteIngredient(recipeID, ingredientID);
-      this.ngOnInit();
+      this.vfservice.deleteIngredient(recipeID, ingredientID).subscribe(data => {
+        console.log(data);},
+        () => {this.getDataFromDB();}
+        );
       }
 
     changeDataOnDB(): void {
