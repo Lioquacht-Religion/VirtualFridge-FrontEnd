@@ -11,13 +11,23 @@ form#acc_edit-container{
    text-align: center;
 }
 
-textarea{
-    
-    margin: 10px;
+input{
+    margin: 15px;
+    border-radius: 10px;
+    text-align: center;
+
 }
 button {
     cursor: pointer;
     text-align: center;
     color: green;
+    border-radius: 10px;
+    width: 200px;
+    padding: 10px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    resize: vertical;
     border-radius: 10px;
 }
