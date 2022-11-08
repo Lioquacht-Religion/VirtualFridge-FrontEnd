@@ -11,13 +11,21 @@ import { VFridgeService } from '../../vfridge-service';
 export class StorageViewComponent implements OnInit {
   public curStorageID : number = 0;
   public groceries : any;
+  public storageName : any;
 
   constructor(private route: ActivatedRoute, private vfservice: VFridgeService) { 
     this.route.params.subscribe(params => this.curStorageID = params['storageID']);
+    this.route.params.subscribe(params => this.storageName = params['storageName']);
   }
 
   ngOnInit(): void {
     this.getDataFromDB();
+    
+    // this.vfservice.getStorageData().subscribe(
+    //   data => { this.storage = data },
+    //   err => console.log(err),
+    //   () => console.log('loading done.:'+this.curStorageID+this.storage)
+    // );
   }
 
   getDataFromDB(){

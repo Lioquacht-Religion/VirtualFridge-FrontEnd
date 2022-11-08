@@ -18,8 +18,8 @@ const routes: Routes = [
   { path: 'link_menu', component: MenuComponent },
   { path: 'link_storage/:userID', component: StorageComponent },
   { path: 'link_recipe/:userID', component: RecipeComponent },
-  { path: 'link_storageview/:storageID', component: StorageViewComponent },
-  { path: 'link_recipeview/:recipeID', component: RecipeViewComponent },
+  { path: 'link_storageview/:storageID/:storageName', component: StorageViewComponent },
+  { path: 'link_recipeview/:recipeID/:recipeName', component: RecipeViewComponent },
   {path: 'link_recipesuggestion/:storageID' , component: RecipeSuggestionComponent },
   {path: 'link_acc-edit' , component : AccEditComponent}
 ];

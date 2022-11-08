@@ -12,12 +12,12 @@ export class RecipeViewComponent implements OnInit {
   public recipe : any;
   public ingredients : any;
   public curRecipeID : number = 0;
-
+  public recipeName : any;
   public recipedescr: String = "";
 
   constructor(private route: ActivatedRoute, private vfservice: VFridgeService, ) {
     this.route.params.subscribe(params => this.curRecipeID = params['recipeID']);
-
+    this.route.params.subscribe(params => this.recipeName = params['recipeName']);
   }
 
   ngOnInit(): void {
