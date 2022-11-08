@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
     var name = this.registerusername;
     var email = this.registeremail;
     if (name == "" || name == null || email == "" || email == null) {
-      alert("Field must be filled out");
+      alert("Das Feld muss ausgefüllt sein!");
       
     }
     else{

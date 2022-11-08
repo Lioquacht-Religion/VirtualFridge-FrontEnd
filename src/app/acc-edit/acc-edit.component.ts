@@ -15,6 +15,8 @@ export class AccEditComponent implements OnInit {
   }
 
   updateDataOnDB(){
+    confirm("Benutzername wurde geändert!");
+    
     let UserToUpdate = {
       name: this.userupdname,
       email: this.vfservice.user.email,
@@ -23,6 +25,7 @@ export class AccEditComponent implements OnInit {
   };
     this.vfservice.putUserData(UserToUpdate).subscribe(data => {
       console.log(data);
+      
     },
     err => console.log(err),
     () => {    
@@ -32,7 +35,9 @@ export class AccEditComponent implements OnInit {
       () => {
         console.log('loading done.');
     }
+    
   );
+  
 }
     
     );
