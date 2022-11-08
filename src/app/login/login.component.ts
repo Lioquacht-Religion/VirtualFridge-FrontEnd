@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
             this.vfservice.userLogined = false;
             localStorage.setItem('user', '');
             localStorage.setItem('login_token', 'false');
+            alert("Login Daten sind nicht korrekt");
           }
       }
     );
