@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VFridgeService } from '../vfridge-service';
+import { VFridgeService } from '../../vfridge-service';
 
 @Component({
   selector: 'an-register',
@@ -24,13 +24,22 @@ export class RegisterComponent implements OnInit {
 
   storeDataOnDB(): void {
     //alert('Text changed to' + this.taskname + this.taskdescription + this.taskpriority);
-    let dataToRegister = {
+    var name = this.registerusername;
+    var email = this.registeremail;
+    if (name == "" || name == null || email == "" || email == null) {
+      alert("Field must be filled out");
+      
+    }
+    else{
+      let dataToRegister = {
       name: this.registerusername,
       email: this.registeremail,
       password: "wordpass"
       
     };
     this.vfservice.addRegisterData(dataToRegister);
+    }
+
     }
 
     deleteDataOnDB(UserID: number, StorID: number): void {

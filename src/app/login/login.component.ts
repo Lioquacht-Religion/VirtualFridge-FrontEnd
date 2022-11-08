@@ -15,11 +15,17 @@ export class LoginComponent implements OnInit {
   }
 
   loginemail = '';
+  loginusername = '';
 
 
   login(): void {
-    
-
+    var name = this.loginusername;
+    var email = this.loginemail;
+    if (name == "" || name == null || email == "" || email == null) {
+      alert("Field must be filled out");
+      
+    }
+    else{
       this.vfservice.getUserData(this.loginemail).subscribe(
         data => { this.user = data; 
           this.vfservice.user = data; 
@@ -40,6 +46,9 @@ export class LoginComponent implements OnInit {
           }
       }
     );
+    }
+
+      
   }
 
   
