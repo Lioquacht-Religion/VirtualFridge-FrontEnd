@@ -10,7 +10,7 @@ const httpOptions = {
 @Injectable()
 export class VFridgeService {
   public user : any;
-  public userLogined: boolean = true;
+  public userLogined: boolean = false;
     constructor(private http:HttpClient) {
       this.userLogined = ('true' === localStorage.getItem('login_token'));
       var uemail: any = localStorage.getItem("user");
