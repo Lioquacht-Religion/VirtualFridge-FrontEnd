@@ -35,6 +35,22 @@ export class VFridgeService {
       return this.http.get('https://virtual-fridge.herokuapp.com/api/v1.0/user/email?email=' + l_email);
   }
 
+  putUserData(putUser: object){
+    let endPoint = 
+    "https://virtual-fridge.herokuapp.com/api/v1.0/user";
+    return this.http.put(endPoint, putUser);
+
+  }
+
+  deleteUserData() {
+    let endPoint = 
+    "https://virtual-fridge.herokuapp.com/api/v1.0/user?userID=" 
+    + this.user.id + "&email=" + this.user.email + "&password=" + this.user.password;
+    this.http.delete(endPoint).subscribe(data => {
+      console.log(data);
+    });
+  }
+
     getGroceryData(l_storageID: number) {
       return this.http.get('https://virtual-fridge.herokuapp.com/api/v1.0/storage/grocery/byID/all?storageID='+l_storageID);
     }

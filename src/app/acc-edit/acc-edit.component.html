@@ -1,8 +1,13 @@
 <form id="acc_edit-container">
-    <p>Aktueller Benutzername: </p>
+    <p>Aktueller Benutzername: {{vfservice.user.name}}</p>
     <br/>
-    <p>Neuer Benutzername:</p>
-    <input type="text">
+
+    <p>Neuer Benutzername: </p>
+    <textarea name="newusername" [(ngModel)] = "userupdname"></textarea>
+
     <br/>
-    <button>Benutzername aktualisieren</button>
+    <button (click)="updateDataOnDB()">Benutzername aktualisieren</button>
+    <br/>
+    <br/>
+    <button (click)="deleteDataOnDB()" id="delete-button">Benutzer löschen</button>
 </form>
