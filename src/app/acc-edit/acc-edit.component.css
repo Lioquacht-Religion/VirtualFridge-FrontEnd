@@ -12,12 +12,25 @@ form#acc_edit-container{
 }
 
 textarea{
-    
-    margin: 10px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    text-align: center;
+
 }
 button {
     cursor: pointer;
     text-align: center;
     color: green;
     border-radius: 10px;
+    width: 200px;
+    padding: 10px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    resize: vertical;
+    border-radius: 10px;
+}
+#delete-button{
+    color: red;
 }
