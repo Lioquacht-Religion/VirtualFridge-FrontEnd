@@ -30,16 +30,17 @@ export class StorageComponent implements OnInit {
     //alert('Text changed to' + this.taskname + this.taskdescription + this.taskpriority);
     let storageToCreate = {
       name: this.storagename,
-      ownerid: this.curUserID,
+      ownerID: this.curUserID,
       Owner: this.vfservice.getLogedCurUser() /*{
         name: "Seb anderung",
         email: "seband@mail.com",
         password: "wordpass"
       }*/
     };
+    alert(this.vfservice.getLogedCurUser().id+":"+this.curUserID);
     this.vfservice.addStorageData(storageToCreate);
     //window.location.reload()
-    this.ngOnInit();
+    //this.ngOnInit();
     }
 
     deleteDataOnDB(UserID: number, StorID: number): void {
