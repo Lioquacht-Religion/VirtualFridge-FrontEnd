@@ -42,12 +42,6 @@ export class RegisterComponent implements OnInit {
 
     }
 
-    deleteDataOnDB(UserID: number, StorID: number): void {
-      //alert('Text changed to' + this.taskname + this.taskdescription + this.taskpriority);
-
-      this.vfservice.deleteStorage(UserID, StorID);
-      }
-
       login(): void {
         localStorage.setItem('login_token', 'true');
     
