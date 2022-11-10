@@ -2,7 +2,7 @@
     <h2>Registrierung</h2>
     <form id="login-form">
       <p>
-        <input type="benutzername" id="benutzername" name="neeuerBenutzername" placeholder="Ihr zukünftiger Benutzername" [(ngModel)]="registerusername"
+        <input type="benutzername" id="benutzername" name="neuerBenutzername" placeholder="Neuer Benutzername" [(ngModel)]="registerusername"
           required pattern="\S(.*\S)?"><i class="validation"><span></span><span></span></i>
       </p>
       <p>
@@ -10,7 +10,7 @@
           class="validation"><span></span><span></span></i>
       </p>
       <p>
-        <input type="submit" id="login" value="registrieren" href="main.html" (click)="storeDataOnDB()" [routerLink]="['link_menu']" required>
+        <input type="submit" id="register" value="registrieren" href="main.html" (click)="storeDataOnDB()" [routerLink]="['link_menu']" required>
       </p>
     </form>
   </div>
