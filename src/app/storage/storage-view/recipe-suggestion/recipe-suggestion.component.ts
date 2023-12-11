@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { VFridgeService } from 'src/app/vfridge-service';
+//import { VFridgeService } from 'src/app/vfridge-service';
+import { VFridgeService } from '../../../vfridge-service';
 
 @Component({
   selector: 'an-recipe-suggestion',
@@ -10,7 +11,7 @@ import { VFridgeService } from 'src/app/vfridge-service';
 export class RecipeSuggestionComponent implements OnInit {
   public curStorageID : any;
   public recsugs : any;
-  constructor(private route: ActivatedRoute, private vfservice: VFridgeService) { 
+  constructor(private route: ActivatedRoute, private vfservice: VFridgeService) {
     this.route.params.subscribe(params => this.curStorageID = params['storageID']);
   }
   ngOnInit(): void {
