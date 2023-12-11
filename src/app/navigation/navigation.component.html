@@ -4,11 +4,16 @@
             <a [routerLink]="['link_menu']"> Menü</a>
         </li>
         <li>
+            <a [routerLink]="['link_food-warning']">Warnungen</a>
+        </li>
+        <li>
             <a [routerLink]="['link_storage', getUserID()]">Lager</a>
         </li>
         <li>
             <a [routerLink]="['link_recipe', getUserID()]">Rezept</a>
         </li>
+
+
         <li id="abmeldenButton">
             <a  [routerLink]="['link_login']" (click)="logOff()">Abmelden</a>
         </li>

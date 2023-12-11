@@ -19,6 +19,7 @@ import { StorageViewComponent } from './storage/storage-view/storage-view.compon
 import { RecipeViewComponent } from './recipe/recipe-view/recipe-view.component';
 import { RecipeSuggestionComponent } from './storage/storage-view/recipe-suggestion/recipe-suggestion.component';
 import { AccEditComponent } from './acc-edit/acc-edit.component';
+import { FoodWarningComponent } from './food-warning/food-warning.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { AccEditComponent } from './acc-edit/acc-edit.component';
     StorageViewComponent,
     RecipeViewComponent,
     RecipeSuggestionComponent,
-    AccEditComponent
+    AccEditComponent,
+    FoodWarningComponent
   ],
   imports: [
     BrowserModule,
