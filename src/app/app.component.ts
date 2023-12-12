@@ -9,7 +9,9 @@ import { VFridgeService } from './vfridge-service';
 export class AppComponent {
   title = 'virtualFridge';
 
-  constructor(public vfservice: VFridgeService) { }
+  constructor(public vfservice: VFridgeService) { 
+    vfservice.getFoodWarningData().subscribe(data=>{console.warn(data)});
+  }
 
 
   

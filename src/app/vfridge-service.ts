@@ -23,6 +23,18 @@ export class VFridgeService {
 
       } );
     }
+    getAuthorization(){
+ const httpOptions = {
+  headers: new HttpHeaders({
+    Authorization : 'baystmuv-vi-1.0 os=ios, key=9d9e8972-ff15-4943-8fea-117b5a973c61',
+  }),
+ };
+ return httpOptions;
+ }
+    getFoodWarningData(){
+      let external_api = "https://megov.bayern.de/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged";
+      return this.http.get(external_api, this.getAuthorization());
+    }
 
     getLogedCurUser(){
       return this.user;
