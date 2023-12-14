@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest} from '@angular/common/http';
 
 const httpOptions = {
     headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept' : 'application/json',
+        'Authorization' : 'baystmuv-vi-1.0 os=ios, key=9d9e8972-ff15-4943-8fea-117b5a973c61'
     })
 }
 
@@ -31,9 +33,25 @@ export class VFridgeService {
  };
  return httpOptions;
  }
+ 
     getFoodWarningData(){
       let external_api = "https://megov.bayern.de/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged";
-      return this.http.get(external_api, this.getAuthorization());
+      var abv = new XMLHttpRequest();
+      abv.open('getS', 'https://megov.bayern.de/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged');
+      abv.setRequestHeader('Access-Control-Allow-Origin', '*');
+      abv.setRequestHeader('Authorization', 'baystmuv-vi-1.0 os=ios, key=9d9e8972-ff15-4943-8fea-117b5a973c61');
+      abv.setRequestHeader('Accept', 'application/json');
+      abv.setRequestHeader('Content-Type', 'application/json');
+      /*return this.http.post(external_api, '', {
+        headers : new HttpHeaders({
+        'Access-Control-Allow-Origin' : 'http://localhost:4200',
+        'Content-Type': 'application/json',
+        'Accept' : 'application/json',
+        'Authorization' : 'baystmuv-vi-1.0 os=ios, key=9d9e8972-ff15-4943-8fea-117b5a973c61'
+        
+        }),
+      });*/
+      return abv;
     }
 
     getLogedCurUser(){
