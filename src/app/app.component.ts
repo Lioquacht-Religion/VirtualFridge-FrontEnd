@@ -10,7 +10,8 @@ export class AppComponent {
   title = 'virtualFridge';
 
   constructor(public vfservice: VFridgeService) { 
-    vfservice.getFoodWarningData().subscribe(data=>{console.warn(data)});
+    //vfservice.getFoodWarningData().subscribe(data=>{console.warn(data)});
+    
   }
 
 
