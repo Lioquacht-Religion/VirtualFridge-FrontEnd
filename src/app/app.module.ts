@@ -17,7 +17,8 @@ import { FormsModule } from '@angular/forms';
 import { VFridgeService } from './vfridge-service';
 import { StorageViewComponent } from './storage/storage-view/storage-view.component';
 import { RecipeViewComponent } from './recipe/recipe-view/recipe-view.component';
-import { RecipeSuggestionComponent } from './storage/storage-view/recipe-suggestion/recipe-suggestion.component';
+import { RecipeSuggestionComponent } from
+'./storage/storage-view/recipe-suggestion/recipe-suggestion.component';
 import { AccEditComponent } from './acc-edit/acc-edit.component';
 import { FoodWarningComponent } from './food-warning/food-warning.component';
 
