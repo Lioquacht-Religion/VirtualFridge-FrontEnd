@@ -40,7 +40,7 @@ export class VFridgeService {
     getFoodWarningData(){
       let external_api = "https://megov.bayern.de/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged";
       var abv = new XMLHttpRequest();
-      abv.open('getS', 'https://megov.bayern.de/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged');
+      abv.open('POST', 'https://megov.bayern.de/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged');
       abv.setRequestHeader('Access-Control-Allow-Origin', '*');
       abv.setRequestHeader('Authorization', 'baystmuv-vi-1.0 os=ios, key=9d9e8972-ff15-4943-8fea-117b5a973c61');
       abv.setRequestHeader('Accept', 'application/json');
@@ -54,7 +54,40 @@ export class VFridgeService {
 
         }),
       });*/
-      return abv;
+
+/*      fetch(url, {
+     method: "POST",
+   headers: {
+    "Content-type": "application/json; charset=UTF-8",
+    "Authorization": "baystmuv-vi-1.0 os=ios, key=9d9e8972-ff15-4943-8fea-117b5a973c61",
+    "Accept": "application/json"
+
+  }
+   })
+  .then(response => response.json())
+    .then(json => {
+        console.log(json);
+    });*/
+    let body = {
+  "food": {
+    "rows": 500,
+    "sort": "publishedDate desc, title asc",
+    "start": 11,
+    "fq": [
+      "publishedDate > 1630067654000"
+    ]
+  },
+  "products": {
+    "rows": 500,
+    "sort": "publishedDate desc, title asc",
+    "start": 11,
+    "fq": [
+      "publishedDate > 1630067654000"
+    ]
+  }
+};
+    return this.http.post(external_api, body, this.getAuthorization());
+      //return abv;
     }
 
     getLogedCurUser(){
