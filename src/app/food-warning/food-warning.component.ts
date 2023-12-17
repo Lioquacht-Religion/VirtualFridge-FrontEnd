@@ -40,7 +40,9 @@ export class FoodWarningComponent implements OnInit {
     }
 
     getFoodWarningData(){
-      let external_api = "/brd_api/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged";
+      //let external_api = "/brd_api/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged";
+
+      let external_api = "https://megov.bayern.de/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged";
    /*   var abv = new XMLHttpRequest();
       abv.open('POST', 'https://megov.bayern.de/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged');
       abv.setRequestHeader('Access-Control-Allow-Origin', '*');
