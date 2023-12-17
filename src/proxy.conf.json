@@ -1,0 +1,11 @@
+{
+  "/brd_api/*": {
+    "target": "https://megov.bayern.de/",
+    "secure": false,
+    "pathRewrite": {
+      "^/brd_api": ""
+    },
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

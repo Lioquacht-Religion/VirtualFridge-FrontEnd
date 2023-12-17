@@ -31,16 +31,16 @@ export class FoodWarningComponent implements OnInit {
   headers: new HttpHeaders({
     'Authorization' : 'baystmuv-vi-1.0 os=ios, key=9d9e8972-ff15-4943-8fea-117b5a973c61',
     'Content-Type' : 'application/json',
-    'Accept' : 'application/json',
-    'Access-Control-Allow-Origin' : '*',
-    'Access-Control-Allow-Methods' : 'GET, POST'
+    'Accept' : 'application/json'
+    //'Access-Control-Allow-Origin' : '*',
+    //'Access-Control-Allow-Methods' : 'GET, POST'
   }),
  };
  return httpOptions;
     }
 
     getFoodWarningData(){
-      let external_api = "https://megov.bayern.de/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged";
+      let external_api = "/brd_api/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged";
    /*   var abv = new XMLHttpRequest();
       abv.open('POST', 'https://megov.bayern.de/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged');
       abv.setRequestHeader('Access-Control-Allow-Origin', '*');
