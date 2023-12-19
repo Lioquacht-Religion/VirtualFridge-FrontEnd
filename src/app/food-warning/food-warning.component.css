@@ -2,7 +2,6 @@
     margin-top: 50px;
     color: black;
     text-align: center;
-    font-size:large;
 }
 .warnung {
     margin-top: 50px;
@@ -13,7 +12,7 @@
     border-style: solid;
     border-width: 1px;
     margin: 20px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     background-color: beige;
     
 }
