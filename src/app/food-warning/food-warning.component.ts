@@ -28,7 +28,7 @@ export class FoodWarningComponent implements OnInit {
   }
   warning: Warning= {
     date: new Date('December 17, 1995 03:24:00'),
-    productName: 'testname', 
+    productName: 'testname',
     reason: 'testreason',
     producer: 'producername',
     laender: ['Bayern', 'Hessen']
@@ -37,7 +37,7 @@ export class FoodWarningComponent implements OnInit {
 
   warning2: Warning= {
     date: new Date('December 17, 1995 03:24:00'),
-    productName: 'testname', 
+    productName: 'testname',
     reason: 'testreason',
     producer: 'producername',
     laender: ['Bayern', 'Hessen', 'NRW']
@@ -65,7 +65,7 @@ export class FoodWarningComponent implements OnInit {
       //let external_api = "http://megov.bayern.de/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged";
     let body = {
   "food": {
-    "rows": 500,
+    "rows": 10,
     "sort": "publishedDate desc, title asc",
     "start": 11,
     "fq": [
@@ -73,7 +73,7 @@ export class FoodWarningComponent implements OnInit {
     ]
   },
   "products": {
-    "rows": 500,
+    "rows": 10,
     "sort": "publishedDate desc, title asc",
     "start": 11,
     "fq": [
