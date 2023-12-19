@@ -14,17 +14,27 @@ export class FoodWarningComponent implements OnInit {
   foodWarnings : any;
 
   constructor(private http:HttpClient, public vfservice : VFridgeService) {
-      this.getFoodWarningData().subscribe(
+     /* this.getFoodWarningData().subscribe(
       data => {this.foodWarnings = data;
         console.log(data);
+        this.parseFoodWarnings(data);
       },
         err => console.log(err),
         () => console.log('loading done.')
-    );
+    ); */
 
   }
 
   ngOnInit(): void {
+    this.getFoodWarningData().subscribe(
+      data => {
+        console.log(data);
+        this.parseFoodWarnings(data);
+        console.log(this.warninglist);
+      },
+        err => console.log(err),
+        () => console.log('loading done.')
+    );
   }
   warning: Warning= {
     date: new Date('December 17, 1995 03:24:00'),
@@ -85,5 +95,21 @@ export class FoodWarningComponent implements OnInit {
       //return abv;
     }
 
+    parseFoodWarnings(data : any){
+      
+      let response = data.response.docs;
+      for(let i = 0; i < response.length; i ++) {
+        let l_warning : Warning = {
+          date: new Date(response[i].publishedDate),
+          productName: response[i].title, 
+          reason: response[i].warning,
+          producer: response[i].product.manufacturer,
+          laender: response[i].affectedStates
+        }
+        this.warninglist.push(l_warning)
+        console.log('abcdef');
+      }
+      
+    }
 
 }
