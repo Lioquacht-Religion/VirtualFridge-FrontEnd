@@ -1,6 +1,36 @@
+
 .warnungenBereich {
     border-style: solid;
     border-width: 1px;
     margin: 20px;
     margin-bottom: 100px;
 }
+
+.class {
+    color: red;
+    text-align: center;
+    font-size:large;
+}
+
+
+.warnung {
+    margin-top: 50px;
+}
+
+.warnungsbereich {
+
+    border-style: solid;
+    border-width: 1px;
+    margin: 20px;
+    margin-bottom: 100px;
+    background-color: beige;
+    
+}
+
+.inhaltWarnung {
+    text-align: justify;
+    margin: 20px;
+    font-size:large;
+    
+}
+

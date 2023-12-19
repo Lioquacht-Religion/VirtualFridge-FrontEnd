@@ -2,3 +2,30 @@
 <div class="warnungenBereich">
     <p class="text1"> Hier kommen die Warnungen rein </p>
 </div>
+
+<p class="class">Aktuelle Lebensmittelwarnungen</p>
+
+
+<ul *ngFor="let warning of warninglist">
+
+    <h1 class="warnung"> </h1>
+<div class="warnungsbereich">
+    <p class="inhaltWarnung"> 
+        <li>
+            <p>Datum: {{warning.date}}</p>
+            <p>Produktname: {{warning.productName}}</p>
+            <p>Grund: {{warning.reason}}</p>
+            <p>Hersteller: {{warning.producer}}</p>
+            <p>Betroffene Länder:</p>
+            <ul *ngFor="let land of warning.laender">
+                <li>
+                        {{land}}
+                </li>
+            </ul>
+            
+        </li>
+
+    </p>
+</div>
+ 
+</ul>

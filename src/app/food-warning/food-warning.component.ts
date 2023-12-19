@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+
 import { VFridgeService } from '../vfridge-service';
+import { Warning} from '../warning';
 
 @Component({
   selector: 'an-food-warning',
@@ -24,6 +26,24 @@ export class FoodWarningComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  warning: Warning= {
+    date: new Date('December 17, 1995 03:24:00'),
+    productName: 'testname', 
+    reason: 'testreason',
+    producer: 'producername',
+    laender: ['Bayern', 'Hessen']
+
+  }
+
+  warning2: Warning= {
+    date: new Date('December 17, 1995 03:24:00'),
+    productName: 'testname', 
+    reason: 'testreason',
+    producer: 'producername',
+    laender: ['Bayern', 'Hessen', 'NRW']
+  }
+
+ warninglist: Warning[]= [this.warning, this.warning2];
 
 
     getAuthorization(){
