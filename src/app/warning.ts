@@ -4,5 +4,6 @@ export interface Warning {
     laender: string[];
     reason: string;
     producer: string;
+    image : string[];
 
 }
