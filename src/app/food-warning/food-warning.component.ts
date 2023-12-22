@@ -36,24 +36,8 @@ export class FoodWarningComponent implements OnInit {
         () => console.log('loading done.')
     );
   }
-  warning: Warning= {
-    date: new Date('December 17, 1995 03:24:00'),
-    productName: 'testname',
-    reason: 'testreason',
-    producer: 'producername',
-    laender: ['Bayern', 'Hessen']
 
-  }
-
-  warning2: Warning= {
-    date: new Date('December 17, 1995 03:24:00'),
-    productName: 'testname',
-    reason: 'testreason',
-    producer: 'producername',
-    laender: ['Bayern', 'Hessen', 'NRW']
-  }
-
- warninglist: Warning[]= [this.warning, this.warning2];
+ warninglist: Warning[]= [];
 
 
     getAuthorization(){
@@ -96,20 +80,21 @@ export class FoodWarningComponent implements OnInit {
     }
 
     parseFoodWarnings(data : any){
-      
+
       let response = data.response.docs;
       for(let i = 0; i < response.length; i ++) {
         let l_warning : Warning = {
           date: new Date(response[i].publishedDate),
-          productName: response[i].title, 
+          productName: response[i].title,
           reason: response[i].warning,
           producer: response[i].product.manufacturer,
-          laender: response[i].affectedStates
+          laender: response[i].affectedStates,
+          image: response[i].product.imageUrls[0]
         }
         this.warninglist.push(l_warning)
         console.log('abcdef');
       }
-      
+
     }
 
 }
