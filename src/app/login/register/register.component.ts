@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VFridgeService } from '../../vfridge-service';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'an-register',
@@ -21,6 +22,20 @@ export class RegisterComponent implements OnInit {
 
   registerusername = '';
   registeremail = '';
+  encryptSecretKey = 'dffsdfs@fdsf'
+
+  encryptData(data : any){
+    return CryptoJS.AES.encrypt(JSON.stringify(data), this.encryptSecretKey).toString();
+
+  }
+
+  decryptData(data : any){
+    const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
+    if (bytes.toString()) {
+      return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+    }
+    return data;
+  }
 
   storeDataOnDB(): void {
     //alert('Text changed to' + this.taskname + this.taskdescription + this.taskpriority);
@@ -32,10 +47,9 @@ export class RegisterComponent implements OnInit {
     }
     else{
       let dataToRegister = {
-      name: this.registerusername,
-      email: this.registeremail,
+      name: this.encryptData(this.registerusername),
+      email: this.encryptData(this.registeremail),
       password: "wordpass"
-      
     };
     this.vfservice.addRegisterData(dataToRegister);
     }
