@@ -26,5 +26,8 @@
 
 #warning_image{
     /* @Tina und Klara --> hier bild anpassen (größe, position usw.)*/
+
+    height: 200px;
+    width: 200px;
 }
 
