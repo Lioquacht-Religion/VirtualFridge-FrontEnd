@@ -3,9 +3,9 @@ import { HttpClient, HttpHeaders, HttpRequest} from '@angular/common/http';
 
 const httpOptions = {
     headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Accept' : 'application/json',
-        'Authorization' : 'baystmuv-vi-1.0 os=ios, key=9d9e8972-ff15-4943-8fea-117b5a973c61'
+        'Content-Type': 'application/json'
+        //'Accept' : 'application/json',
+        //'Authorization' : 'baystmuv-vi-1.0 os=ios, key=9d9e8972-ff15-4943-8fea-117b5a973c61'
     })
 }
 

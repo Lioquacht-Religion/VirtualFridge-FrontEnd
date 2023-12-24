@@ -28,23 +28,23 @@ export class RegisterComponent implements OnInit {
     var email = this.registeremail;
     if (name == "" || name == null || email == "" || email == null) {
       alert("Das Feld muss ausgefüllt sein!");
-      
+
     }
     else{
       let dataToRegister = {
-      name: this.registerusername,
-      email: this.registeremail,
-      password: "wordpass"
-      
+      "name": this.registerusername,
+      "email": this.registeremail,
+      "password": "wordpass"
+
     };
-    this.vfservice.addRegisterData(dataToRegister);
+    this.vfservice.addRegisterData(JSON.stringify(dataToRegister));
     }
 
     }
 
       login(): void {
         localStorage.setItem('login_token', 'true');
-    
+
           this.vfservice.getUserData(this.registeremail).subscribe(
             data => { this.user = data; this.vfservice.user = data; },
             err => console.log(err),
@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
               this.vfservice.userLogined = true;
             }
             else{this.vfservice.userLogined = false;}
-            
+
           }
         );
 
