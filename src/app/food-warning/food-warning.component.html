@@ -11,16 +11,17 @@
             <p>Produktname: {{warning.productName}}</p>
             <p>Grund: {{warning.reason}}</p>
             <p>Hersteller: {{warning.producer}}</p>
+            
             <p>Betroffene Länder:</p>
             <ul *ngFor="let land of warning.laender">
                 <li>
                         {{land}}
                 </li>
             </ul>
-            
             <img id = "warning_image" src= {{warning.image}}> 
+           
         </li>
-
+        
 
     </p>
 </div>
