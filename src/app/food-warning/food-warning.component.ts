@@ -59,7 +59,7 @@ export class FoodWarningComponent implements OnInit {
       //let external_api = "http://megov.bayern.de/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged";
     let body = {
   "food": {
-    "rows": 10,
+    "rows": 500,
     "sort": "publishedDate desc, title asc",
     "start": 11,
     "fq": [
@@ -84,7 +84,6 @@ export class FoodWarningComponent implements OnInit {
           image: response[i].product.imageUrls[0]
         }
         this.warninglist.push(l_warning)
-        console.log('abcdef');
       }
 
     }
