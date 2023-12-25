@@ -13,7 +13,12 @@
     border-width: 1px;
     margin: 20px;
     margin-bottom: 10px;
-    
+    position: relative;
+}
+
+#warnungsbereich_text {
+    width: 70%;
+
 }
 
 .inhaltWarnung {
@@ -27,7 +32,9 @@
     /* @Tina und Klara --> hier bild anpassen (größe, position usw.)*/
 
     height: 300px;
-    width: 300px;
-    margin-left: 550px;
+    width: 300px; 
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
 }
 

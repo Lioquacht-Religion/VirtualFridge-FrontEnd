@@ -5,6 +5,11 @@
 
     <h1 class="warnung"> </h1>
 <div class="warnungsbereich">
+    
+    <img id = "warning_image" src= {{warning.image}}> 
+
+    <div id="warnungsbereich_text">
+
     <p class="inhaltWarnung"> 
         <li>
             <p>Datum: {{warning.date}}</p>
@@ -22,17 +27,20 @@
                             </li>
                         </ul>
                     </td>
-
-                    <td>
-                        <img id = "warning_image" src= {{warning.image}}> 
-                    </td>
+                        
+                    
                 </tr>
             </table>
+            
             
         </li>
 
 
     </p>
+
+
+   </div>                     
+
 </div>
  
 </ul>
