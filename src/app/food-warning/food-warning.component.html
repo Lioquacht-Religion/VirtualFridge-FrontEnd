@@ -1,4 +1,4 @@
-<h1 class="überschrift1">Aktuelle Lebensmittelwarnungen</h1>
+<h1 class="überschrift1">Aktuelle Proudktwarnungen</h1>
 
 
 <ul *ngFor="let warning of warninglist">
@@ -11,17 +11,26 @@
             <p>Produktname: {{warning.productName}}</p>
             <p>Grund: {{warning.reason}}</p>
             <p>Hersteller: {{warning.producer}}</p>
+
+            <table>
+                <tr>
+                    <td>
+                        <p>Betroffene Länder:</p>
+                        <ul *ngFor="let land of warning.laender">
+                            <li>
+                                    {{land}}
+                            </li>
+                        </ul>
+                    </td>
+
+                    <td>
+                        <img id = "warning_image" src= {{warning.image}}> 
+                    </td>
+                </tr>
+            </table>
             
-            <p>Betroffene Länder:</p>
-            <ul *ngFor="let land of warning.laender">
-                <li>
-                        {{land}}
-                </li>
-            </ul>
-            <img id = "warning_image" src= {{warning.image}}> 
-           
         </li>
-        
+
 
     </p>
 </div>
