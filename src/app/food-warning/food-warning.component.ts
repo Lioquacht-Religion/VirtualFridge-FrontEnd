@@ -65,14 +65,6 @@ export class FoodWarningComponent implements OnInit {
     "fq": [
       "publishedDate > 1630067654000"
     ]
-  },
-  "products": {
-    "rows": 10,
-    "sort": "publishedDate desc, title asc",
-    "start": 11,
-    "fq": [
-      "publishedDate > 1630067654000"
-    ]
   }
 };
     return this.http.post(external_api, body, this.getAuthorization());
