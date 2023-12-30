@@ -100,7 +100,7 @@ input[type="submit"]:hover {
   h2{
     font-size: 25px;
   }
-  input#login, input#email, input#benutzername{
+  input#login, input#email, input#benutzername, input#passwort{
     margin-top: 10px;
     font-size: 15px;
     width: 100%;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VFridgeService } from '../../vfridge-service';
+import { VFridgeService } from '../vfridge-service';
 import * as CryptoJS from 'crypto-js';
 
 @Component({
