@@ -16,11 +16,13 @@ export class LoginComponent implements OnInit {
 
   loginemail = '';
   loginusername = '';
+  loginpassword = '';
 
 
   login(): void {
     var name = this.loginusername;
     var email = this.loginemail;
+    var password = this.loginpassword;
     if (name == "" || name == null || email == "" || email == null) {
       alert("Das Feld muss ausgefüllt sein!");
       

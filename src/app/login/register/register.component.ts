@@ -19,7 +19,8 @@ export class RegisterComponent implements OnInit {
       () => console.log('loading done.'+this.register_email)
   );*/
   }
-
+  firstname = '';
+  lastname = '';
   registerusername = '';
   registeremail = '';
   encryptSecretKey = 'dffsdfs@fdsf'
