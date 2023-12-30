@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,7 +12,7 @@ import { MenuComponent } from './menu/menu.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { StorageComponent } from './storage/storage.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { VFridgeService } from './vfridge-service';
 import { StorageViewComponent } from './storage/storage-view/storage-view.component';
@@ -50,3 +50,14 @@ import { FoodWarningComponent } from './food-warning/food-warning.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+@Injectable()
+export class XhrInterceptor implements HttpInterceptor {
+
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    const xhr = req.clone({
+      headers: req.headers.set('X-Requested-With', 'XMLHttpRequest')
+    });
+    return next.handle(xhr);
+  }
+}

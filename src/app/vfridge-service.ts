@@ -1,29 +1,75 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest} from '@angular/common/http';
+import { Observable, Observer } from 'rxjs';
+import * as CryptoJS from 'crypto-js';
 
 const httpOptions = {
     headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
         //'Accept' : 'application/json',
-        //'Authorization' : 'baystmuv-vi-1.0 os=ios, key=9d9e8972-ff15-4943-8fea-117b5a973c61'
+        //'Authorization' : 'Basic'
     })
+}
+
+export interface User {
+  name : string;
+  email : string;
+  password : string;
+  id : number;
 }
 
 @Injectable()
 export class VFridgeService {
-  base_api : string  = "http://45.129.46.25:8080/api/v1.0";
-  public user : any;
+
+  base_api : string  = "https://45.129.46.25:8080/api/v1.0";
+  public user : User = {
+    name : "",
+    email : "",
+    password : "",
+    id : 0
+  };
   public userLogined: boolean = false;
+
     constructor(private http:HttpClient) {
       this.userLogined = true; //('true' === localStorage.getItem('login_token'));
-      var uemail: any = localStorage.getItem("user");
+      //var uemail: any = localStorage.getItem("user");
 
-      this.getUserData(uemail).subscribe(
-        data => { this.user = data; },
+      /*this.getUserAuthenticated().subscribe(
+        data => {
+          if(data == true){
+            this.userLogined = true;
+            localStorage.setItem('login_token', 'true');
+          }
+        },
         err => console.log(err),
-        () => {console.log('loading done.'+this.user);
+        () => {console.log('loading done.'+this.user.email);
 
-      } );
+      } );*/
+    }
+
+
+  encryptSecretKey = 'dffsdfs@fdsf';
+  encryptData(data : any){
+    return CryptoJS.AES.encrypt(JSON.stringify(data), this.encryptSecretKey).toString();
+  }
+
+
+    getAuthenticationHeaders() : HttpHeaders{
+      /*const token : string = btoa(
+        this.encryptData(this.user.email) + ':' + this.encryptData(this.user.password)
+      );*/
+      const token = btoa(this.user.email + ':' + this.user.password);
+      console.log(token);
+
+        //Buffer.from(this.user.email + ':' + this.user.password, 'utf8')
+      //.toString('base64');
+
+      const headers = new HttpHeaders({
+            authorization : 'Basic ' + btoa(this.user.email + ':' + this.user.password)
+      });
+
+
+      return headers;
     }
 
     getLogedCurUser(){
@@ -34,8 +80,17 @@ export class VFridgeService {
         return this.http.get(this.base_api + '/user/storage/all?OwnerID=' + l_userID);
     }
 
+    //TODO: replace with user authentication method of som kind
     getUserData(l_email: String) {
       return this.http.get(this.base_api + '/user/email?email=' + l_email);
+  }
+
+  getUserAuthenticated() : Observable<boolean> {
+    console.log(this.user);
+    console.log(this.getAuthenticationHeaders());
+    let req = this.http.get<boolean>(this.base_api + '/user/authenticated', {headers : this.getAuthenticationHeaders()});
+    console.log(req);
+    return req;
   }
 
   putUserData(putUser: object){
@@ -104,12 +159,10 @@ export class VFridgeService {
         return this.http.post(endPoint, postIngredient);
       }
 
-      addRegisterData(postTask: Object) {
+      addRegisterData(userdata: User) {
         let endPoint =
-        this.base_api+"/user";// +
-        //"?storName=" + storname +
-        //"&" + uemail;
-        this.http.post(endPoint, postTask).subscribe(data => {
+        this.base_api+"/user/register";
+        this.http.post(endPoint, userdata).subscribe(data => {
           console.log(data);
         });
       }

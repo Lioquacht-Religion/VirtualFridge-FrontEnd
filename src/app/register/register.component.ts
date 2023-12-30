@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VFridgeService } from '../vfridge-service';
+import { User, VFridgeService } from '../vfridge-service';
 import * as CryptoJS from 'crypto-js';
 
 @Component({
@@ -23,11 +23,12 @@ export class RegisterComponent implements OnInit {
   lastname = '';
   registerusername = '';
   registeremail = '';
+  registerpassword = '';
   encryptSecretKey = 'dffsdfs@fdsf'
 
   encryptData(data : any){
-    return CryptoJS.AES.encrypt(JSON.stringify(data), this.encryptSecretKey).toString();
-
+    //return CryptoJS.AES.encrypt(JSON.stringify(data), this.encryptSecretKey).toString();
+    return data;
   }
 
   decryptData(data : any){
@@ -42,26 +43,51 @@ export class RegisterComponent implements OnInit {
     //alert('Text changed to' + this.taskname + this.taskdescription + this.taskpriority);
     var name = this.registerusername;
     var email = this.registeremail;
-    if (name == "" || name == null || email == "" || email == null) {
+    var pw = this.registerpassword;
+    if (name == "" || name == null || email == "" || email == null || pw == '' || pw == null) {
       alert("Das Feld muss ausgefüllt sein!");
-
     }
     else{
-      let dataToRegister = {
+      let dataToRegister : User = {
       name: this.encryptData(this.registerusername),
       email: this.encryptData(this.registeremail),
-      password: "wordpass"
+      password: this.encryptData(this.registerpassword),
+      id : -1
     };
-    this.vfservice.addRegisterData(JSON.stringify(dataToRegister));
+    this.vfservice.user = dataToRegister;
+    this.vfservice.addRegisterData(dataToRegister);
     }
 
     }
 
       login(): void {
-        localStorage.setItem('login_token', 'true');
 
-          this.vfservice.getUserData(this.registeremail).subscribe(
-            data => { this.user = data; this.vfservice.user = data; },
+        this.vfservice.getUserAuthenticated().subscribe(
+          data => {
+            if(data == true) {
+              localStorage.setItem('login_token', 'true');
+              this.vfservice.userLogined = true;
+              let dataToRegister : User = {
+                 name: this.encryptData(this.registerusername),
+                 email: this.encryptData(this.registeremail),
+                 password: this.encryptData(this.registerpassword),
+                 id: -1
+              };
+              this.vfservice.user = dataToRegister;
+            }
+            else{
+              localStorage.setItem('login_token', 'false');
+              this.vfservice.userLogined = false;
+            }
+
+          },
+          err => console.log(err),
+          () => {}
+        );
+
+//old function code
+/*          this.vfservice.getUserData(this.registeremail).subscribe(
+            data => { this.user = data; this.vfservice.user.email = data; },
             err => console.log(err),
             () => {console.log('loading done.'+this.user);
             if(this.user.email === this.registeremail){
@@ -70,7 +96,7 @@ export class RegisterComponent implements OnInit {
             else{this.vfservice.userLogined = false;}
 
           }
-        );
+        );*/
 
-}
+      }
 }

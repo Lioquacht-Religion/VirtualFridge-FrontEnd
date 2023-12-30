@@ -14,7 +14,7 @@ export class NavigationComponent implements OnInit {
   }
 
   getUserID(){
-    return this.vfservice.user.id;
+    return 0; //this.vfservice.user.id;
   }
 
   logOff(){
