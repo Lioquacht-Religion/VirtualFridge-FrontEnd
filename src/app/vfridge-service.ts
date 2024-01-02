@@ -21,7 +21,9 @@ export interface User {
 @Injectable()
 export class VFridgeService {
 
-  base_api : string  = "https://45.129.46.25:8080/api/v1.0";
+  base_api : string  =
+    //"https://localhost:8080/api/v1.0";
+    "https://45.129.46.25:8080/api/v1.0";
   public user : User = {
     name : "",
     email : "",
@@ -58,14 +60,14 @@ export class VFridgeService {
       /*const token : string = btoa(
         this.encryptData(this.user.email) + ':' + this.encryptData(this.user.password)
       );*/
-      const token = btoa(this.user.email + ':' + this.user.password);
+      const token = window.btoa(this.user.email + ':' + this.user.password);
       console.log(token);
 
         //Buffer.from(this.user.email + ':' + this.user.password, 'utf8')
-      //.toString('base64');
 
-      const headers = new HttpHeaders({
-            authorization : 'Basic ' + btoa(this.user.email + ':' + this.user.password)
+      const headers = new HttpHeaders( {
+            'Authorization': 'Basic ' + window.btoa(this.user.email + ':' + this.user.password),
+            'Content-Type' : 'application/json'
       });
 
 
@@ -85,13 +87,47 @@ export class VFridgeService {
       return this.http.get(this.base_api + '/user/email?email=' + l_email);
   }
 
-  getUserAuthenticated() : Observable<boolean> {
+  getUserAuthenticated() //: Observable<boolean>
+  {
     console.log(this.user);
+    let email = this.user.email;
+    let password = this.user.password;
     console.log(this.getAuthenticationHeaders());
-    let req = this.http.get<boolean>(this.base_api + '/user/authenticated', {headers : this.getAuthenticationHeaders()});
+
+    let req = this.http.get(this.base_api + '/user/authenticated',
+                                     //{email, password},
+    {headers : this.getAuthenticationHeaders()});
     console.log(req);
+
     return req;
   }
+
+  getUserFetch(){
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", this.base_api + '/user/authenticated', true);
+    xhr.withCredentials = true;
+    xhr.setRequestHeader("Authorization",
+                         'Basic ' + window.btoa(this.user.email + ':' + this.user.password));
+    xhr.send();
+
+    console.log(xhr.response);
+
+
+    let resp;
+    fetch(this.base_api + '/user/authenticated',
+          {
+     method: "GET",
+     headers: {
+         'Authorization' : 'Basic ' + window.btoa(this.user.email + ':' + this.user.password)
+     }
+    })
+  .then(response => resp = response);
+  console.log(resp);
+  return resp;
+
+  }
+
 
   putUserData(putUser: object){
     let endPoint =

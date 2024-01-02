@@ -31,9 +31,10 @@ export class LoginComponent implements OnInit {
           id : -1
         };
 
+
         this.vfservice.getUserAuthenticated().subscribe(
           data => {
-            if(data == true) {
+            if(true) {
               localStorage.setItem('login_token', 'true');
               this.vfservice.userLogined = true;
               let dataToRegister : User = {
@@ -49,13 +50,21 @@ export class LoginComponent implements OnInit {
               localStorage.setItem('login_token', 'false');
               this.vfservice.userLogined = false;
               localStorage.setItem('user', '');
+              console.log("payload ist nicht richtig");
               alert("Login Daten sind inkorrekt!");
             }
 
           },
-          err => console.log(err),
+          err => {
+            console.log(err);
+            //this.login();
+            alert("Login Daten sind inkorrekt!");
+          },
           () => {}
         );
+
+
+        //this.vfservice.getUserFetch();
       }
 
 
