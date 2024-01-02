@@ -16,7 +16,16 @@ export class LoginComponent implements OnInit {
 
   loginemail = '';
   loginusername = '';
+  encryptSecretKey = 'dffsdfs@fdsf';
 
+  decryptData(data : any){
+    const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
+    if (bytes.toString()) {
+      return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+    }
+    return data;
+    
+  }
 
   login(): void {
     var name = this.loginusername;
@@ -26,7 +35,8 @@ export class LoginComponent implements OnInit {
       
     }
     else{
-      this.vfservice.getUserData(this.loginemail).subscribe(
+      var encryptedEmail = this.decryptData(this.loginemail);
+      this.vfservice.getUserData(encryptedEmail).subscribe(
         data => { this.user = data; 
           this.vfservice.user = data; 
           //localStorage.setItem('user', this.user.email);

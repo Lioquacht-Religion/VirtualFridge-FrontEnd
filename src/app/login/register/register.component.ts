@@ -22,20 +22,22 @@ export class RegisterComponent implements OnInit {
 
   registerusername = '';
   registeremail = '';
-  encryptSecretKey = 'dffsdfs@fdsf'
+  encryptSecretKey = 'dffsdfs@fdsf';
 
-  encryptData(data : any){
-    return CryptoJS.AES.encrypt(JSON.stringify(data), this.encryptSecretKey).toString();
-
-  }
-
-  decryptData(data : any){
-    const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
-    if (bytes.toString()) {
-      return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-    }
-    return data;
-  }
+    encryptData(data : any){
+    console.log(CryptoJS.SHA256('test'));
+    console.log(CryptoJS.AES.encrypt(JSON.stringify(data), this.encryptSecretKey).toString());
+ 
+   }   
+   
+    decryptData(data : any){
+     const bytes = CryptoJS.AES.decrypt(data, this.encryptSecretKey);
+     if (bytes.toString()) {
+       return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+     }
+     return data;
+     
+   }
 
   storeDataOnDB(): void {
     //alert('Text changed to' + this.taskname + this.taskdescription + this.taskpriority);
@@ -51,6 +53,7 @@ export class RegisterComponent implements OnInit {
       email: this.encryptData(this.registeremail),
       password: "wordpass"
     };
+    
     this.vfservice.addRegisterData(JSON.stringify(dataToRegister));
     }
 
