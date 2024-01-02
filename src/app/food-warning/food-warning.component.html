@@ -1,16 +1,15 @@
 <h1 class="überschrift1">Aktuelle Produktwarnungen</h1>
 
-
 <ul *ngFor="let warning of warninglist">
 
     <h1 class="warnung"> </h1>
 <div class="warnungsbereich">
-    
-    <img id = "warning_image" src= {{warning.image}}> 
+
+    <img id = "warning_image" src= {{warning.image}}>
 
     <div id="warnungsbereich_text">
 
-    <p class="inhaltWarnung"> 
+    <p class="inhaltWarnung">
         <li>
             <p>Datum: {{warning.date}}</p>
             <p>Produktname: {{warning.productName}}</p>
@@ -27,20 +26,20 @@
                             </li>
                         </ul>
                     </td>
-                        
-                    
+
+
                 </tr>
             </table>
-            
-            
+
+
         </li>
 
 
     </p>
 
 
-   </div>                     
+   </div>
 
 </div>
- 
+
 </ul>

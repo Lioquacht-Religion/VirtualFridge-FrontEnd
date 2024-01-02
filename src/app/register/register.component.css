@@ -43,8 +43,12 @@ input {
   margin-bottom: 20px;
 }
 
+input[type="vorname"],
+input[type="nachname"],
 input[type="benutzername"],
-input[type="email"] {
+input[type="email"],
+input[type="passwort"]
+{
   width: 100%;
   padding: 0 0 0 10px;
   margin: 0;
@@ -57,8 +61,12 @@ input[type="email"] {
   align-items: center;
 }
 
+input[type="vorname"]:focus:invalid,
+input[type="nachname"]:focus:invalid,
 input[type="benutzername"]:focus:invalid,
-input[type="email"]:focus:invalid {
+input[type="email"]:focus:invalid,
+input[type="passwort"]
+{
   color: red;
   border-color: red;
 }

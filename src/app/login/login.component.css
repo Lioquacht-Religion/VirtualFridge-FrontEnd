@@ -43,7 +43,8 @@ input {
 }
 
 input[type="benutzername"],
-input[type="email"] {
+input[type="email"],
+input[type="passwort"] {
   width: 100%;
   padding: 0 0 0 10px;
   margin: 0;
@@ -57,7 +58,8 @@ input[type="email"] {
 }
 
 input[type="benutzername"]:focus:invalid,
-input[type="email"]:focus:invalid {
+input[type="email"]:focus:invalid,
+input[type="passwort"]:focus:invalid {
   color: red;
   border-color: red;
 }
@@ -98,7 +100,7 @@ input[type="submit"]:hover {
   h2{
     font-size: 25px;
   }
-  input#login, input#email, input#benutzername{
+  input#login, input#email, input#benutzername, input#passwort{
     margin-top: 10px;
     font-size: 15px;
     width: 100%;

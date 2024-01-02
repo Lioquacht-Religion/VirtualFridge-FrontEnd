@@ -1,0 +1,21 @@
+<div id="login-container">
+    <h2>Registrierung</h2>
+    <form id="login-form">
+     <p>
+        <input type="benutzername" id="benutzername" name="Benutzername" placeholder="Benutzername" [(ngModel)]="registerusername"
+          required pattern="\S(.*\S)?"><i class="validation"><span></span><span></span></i>
+      </p>
+      <p>
+        <input type="email" id="email" name="neue_email" placeholder="Email-Adresse" [(ngModel)]="registeremail" required><i
+          class="validation"><span></span><span></span></i>
+      </p>
+      <p>
+        <input type="passwort" id="passwort" name="passwort" placeholder="Passwort" [(ngModel)]="registerpassword" required>
+        <i class="validation"><span></span><span></span></i>
+      </p>
+
+      <p>
+        <input type="submit" id="register" value="registrieren" href="main.html" (click)="storeDataOnDB()" [routerLink]="['link_menu']" required>
+      </p>
+    </form>
+  </div>
