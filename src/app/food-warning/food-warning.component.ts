@@ -12,6 +12,8 @@ import { Warning} from '../warning';
 export class FoodWarningComponent implements OnInit {
 
   foodWarnings : any;
+  lowerCount : any = 0;
+  upperCount : any = 30;
 
   constructor(private http:HttpClient, public vfservice : VFridgeService) {
      /* this.getFoodWarningData().subscribe(
@@ -61,7 +63,7 @@ export class FoodWarningComponent implements OnInit {
   "food": {
     "rows": 500,
     "sort": "publishedDate desc, title asc",
-    "start": 11,
+    "start": 0,
     "fq": [
       "publishedDate > 1630067654000"
     ]
@@ -72,9 +74,10 @@ export class FoodWarningComponent implements OnInit {
     }
 
     parseFoodWarnings(data : any){
-
+      
       let response = data.response.docs;
-      for(let i = 0; i < response.length; i ++) {
+      
+      for(let i = this.lowerCount; i < this.upperCount ; i ++) {
         let l_warning : Warning = {
           date: new Date(response[i].publishedDate),
           productName: response[i].title,
@@ -83,9 +86,24 @@ export class FoodWarningComponent implements OnInit {
           laender: response[i].affectedStates,
           image: response[i].product.imageUrls[0]
         }
+        console.log(i);
         this.warninglist.push(l_warning)
       }
 
+    }
+
+    
+
+    addCounter(){
+      this.lowerCount = this.lowerCount + 30;
+      this.upperCount = this.upperCount + 30;
+      console.log(this.lowerCount, this.upperCount);
+    }
+
+    subCounter(counterInput : any){
+      let counter = 0;
+      counter = counterInput - 30
+      return counter;
     }
 
 }
