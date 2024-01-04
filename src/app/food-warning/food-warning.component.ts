@@ -14,6 +14,7 @@ export class FoodWarningComponent implements OnInit {
   foodWarnings : any;
   lowerCount : any = 0;
   upperCount : any = 30;
+  pageswitch : any = false;
 
   constructor(private http:HttpClient, public vfservice : VFridgeService) {
      /* this.getFoodWarningData().subscribe(
@@ -28,7 +29,25 @@ export class FoodWarningComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getFoodWarningData().subscribe(
+    if(this.pageswitch == true){
+      this.warninglist = [];
+      console.log('fehler');
+      this.getFoodWarningData().subscribe(
+        data => {
+          console.log(data);
+          this.parseFoodWarnings(data);
+          console.log(this.warninglist);
+        },
+          err => console.log(err),
+          () => console.log('loading done.')
+      );
+      window.scrollTo({
+        top: 500
+      });
+        this.pageswitch = false;
+    }
+    else{
+      this.getFoodWarningData().subscribe(
       data => {
         console.log(data);
         this.parseFoodWarnings(data);
@@ -37,6 +56,8 @@ export class FoodWarningComponent implements OnInit {
         err => console.log(err),
         () => console.log('loading done.')
     );
+    }
+    
   }
 
  warninglist: Warning[]= [];
@@ -93,11 +114,19 @@ export class FoodWarningComponent implements OnInit {
     }
 
     
+    listenerForwardBtn(){
+      this.pageswitch = true;
+      this.addCounter();
+      this.ngOnInit();
+    }
+
 
     addCounter(){
       this.lowerCount = this.lowerCount + 30;
       this.upperCount = this.upperCount + 30;
       console.log(this.lowerCount, this.upperCount);
+      this.pageswitch = true;
+      this.ngOnInit();
     }
 
     subCounter(counterInput : any){
