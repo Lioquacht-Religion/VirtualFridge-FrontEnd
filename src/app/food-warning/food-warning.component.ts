@@ -15,6 +15,7 @@ export class FoodWarningComponent implements OnInit {
   lowerCount : any = 0;
   upperCount : any = 30;
   pageswitch : any = false;
+  showForwardButton : Boolean = false;
 
   constructor(private http:HttpClient, public vfservice : VFridgeService) {
      /* this.getFoodWarningData().subscribe(
@@ -31,12 +32,12 @@ export class FoodWarningComponent implements OnInit {
   ngOnInit(): void {
     if(this.pageswitch == true){
       this.warninglist = [];
-      console.log('fehler');
       this.getFoodWarningData().subscribe(
         data => {
           console.log(data);
           this.parseFoodWarnings(data);
           console.log(this.warninglist);
+
         },
           err => console.log(err),
           () => console.log('loading done.')
@@ -98,7 +99,9 @@ export class FoodWarningComponent implements OnInit {
       
       let response = data.response.docs;
       
-      for(let i = this.lowerCount; i < this.upperCount ; i ++) {
+      
+      
+      for(let i = this.lowerCount; i < this.upperCount; i ++) {
         let l_warning : Warning = {
           date: new Date(response[i].publishedDate),
           productName: response[i].title,
@@ -106,33 +109,35 @@ export class FoodWarningComponent implements OnInit {
           producer: response[i].product.manufacturer,
           laender: response[i].affectedStates,
           image: response[i].product.imageUrls[0]
+          
         }
-        console.log(i);
+        console.log(i);        
         this.warninglist.push(l_warning)
-      }
-
-    }
-
-    
-    listenerForwardBtn(){
-      this.pageswitch = true;
-      this.addCounter();
-      this.ngOnInit();
+      }     
     }
 
 
     addCounter(){
+      if(this.warninglist.length == 30){
       this.lowerCount = this.lowerCount + 30;
       this.upperCount = this.upperCount + 30;
       console.log(this.lowerCount, this.upperCount);
       this.pageswitch = true;
       this.ngOnInit();
+      }
+      else{
+        alert('Derzeit gibt es keine weiteren Einträge')
+      }
     }
 
-    subCounter(counterInput : any){
-      let counter = 0;
-      counter = counterInput - 30
-      return counter;
+    subCounter(){
+      if(this.lowerCount >= 30 && this.upperCount >= 60){
+      this.lowerCount = this.lowerCount - 30;
+      this.upperCount = this.upperCount - 30;
+      console.log(this.lowerCount, this.upperCount);
+      this.pageswitch = true;
+      this.ngOnInit();
+      }
     }
 
 }
