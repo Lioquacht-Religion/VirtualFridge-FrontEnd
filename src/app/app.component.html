@@ -11,6 +11,10 @@
 </div>
 
 <ng-template #elseBlock>
+  <div *ngIf="vfservice.showLogin === true; else registerblock">
     <an-login></an-login>
+  </div>
+  <ng-template #registerblock>
     <an-register></an-register>
+  </ng-template>
 </ng-template>

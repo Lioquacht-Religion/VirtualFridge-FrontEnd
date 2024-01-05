@@ -10,7 +10,7 @@ import * as CryptoJS from 'crypto-js';
 export class RegisterComponent implements OnInit {
   public user : any;
 
-  constructor(private vfservice: VFridgeService) { }
+  constructor(public vfservice: VFridgeService) { }
 
   ngOnInit(): void {
     /*this.vfservice.getRegisterData().subscribe(

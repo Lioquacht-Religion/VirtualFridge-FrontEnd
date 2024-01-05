@@ -14,8 +14,8 @@
       <i class="validation"><span></span><span></span></i>
     </p>
     <p>
-      <input type="submit" id="login" value="einloggen" (click)="login()" [routerLink]="['/link_menu']">
+      <input type="submit" id="login" value="einloggen" (click)="login()" [routerLink]="['link_menu']">
     </p>
-    <p>noch nicht angemeldet?  <a href="register/register.component.html">Registrieren</a></p> 
+    <p>noch nicht angemeldet?  <a  [routerLink]="['link_register']" (click)="vfservice.showLogin=false" >Registrieren</a></p>
   </form>
 </div>
