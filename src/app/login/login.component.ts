@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   public user : any;
   encryptSecretKey = 'dffsdfs@fdsf'
 
-  constructor(private vfservice: VFridgeService) { }
+  constructor(public vfservice: VFridgeService) { }
 
   ngOnInit(): void {
   }
@@ -86,8 +86,8 @@ export class LoginComponent implements OnInit {
     }
     else{
       this.vfservice.getUserData(this.loginemail).subscribe(
-        data => { this.user = data; 
-          this.vfservice.user = data; 
+        data => { this.user = data;
+          this.vfservice.user = data;
           //localStorage.setItem('user', this.user.email);
         },
         err => console.log(err),

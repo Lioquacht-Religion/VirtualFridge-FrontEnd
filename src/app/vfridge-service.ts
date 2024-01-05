@@ -32,6 +32,8 @@ export class VFridgeService {
   };
   public userLogined: boolean = false;
 
+  public showLogin : boolean = true;
+
     constructor(private http:HttpClient) {
       this.userLogined = true; //('true' === localStorage.getItem('login_token'));
       //var uemail: any = localStorage.getItem("user");
