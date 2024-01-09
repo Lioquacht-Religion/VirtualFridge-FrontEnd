@@ -15,10 +15,10 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [
 
-  { path: 'link_register', component: RegisterComponent, outlet: 'login' },
-  { path: 'link_login', component: LoginComponent, outlet: 'login'},
-  { path: 'link_menu', component: MenuComponent, outlet: 'app' },
-  { path: 'link_storage/:userID', component: StorageComponent, outlet: 'app' },
+  { path: 'link_register', component: RegisterComponent},
+  { path: 'link_login', component: LoginComponent},
+  { path: 'link_menu', component: MenuComponent},
+  { path: 'link_storage/:userID', component: StorageComponent},
   { path: 'link_recipe/:userID', component: RecipeComponent },
   { path: 'link_storageview/:storageID/:storageName', component: StorageViewComponent },
   { path: 'link_recipeview/:recipeID/:recipeName', component: RecipeViewComponent },
@@ -80,7 +80,7 @@ const routes2: Routes =[
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes2)
+    RouterModule.forRoot(routes)
     //RouterModule.forChild(routes2)
   ],
   exports: [RouterModule]

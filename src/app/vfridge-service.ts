@@ -22,8 +22,8 @@ export interface User {
 export class VFridgeService {
 
   base_api : string  =
-    //"https://localhost:8080/api/v1.0";
-    "https://45.129.46.25:8080/api/v1.0";
+    "https://localhost:8080/api/v1.0";
+    //"https://45.129.46.25:8080/api/v1.0";
   public user : User = {
     name : "",
     email : "",
@@ -152,7 +152,7 @@ export class VFridgeService {
     }
 
     getRecipeData(l_userID: number) {
-      return this.http.get(this.base_api + '/recipe/all?userID='+l_userID);
+      return this.http.get(this.base_api + '/recipe/all');
     }
 
     getSingleRecipeData(l_recipeID: number) {

@@ -21,17 +21,9 @@ import { RecipeSuggestionComponent } from
 './storage/storage-view/recipe-suggestion/recipe-suggestion.component';
 import { AccEditComponent } from './acc-edit/acc-edit.component';
 import { FoodWarningComponent } from './food-warning/food-warning.component';
+import { BasicAuthInterceptor, ErrorInterceptor, XhrInterceptor } from './auth-interceptor';
+import { ShoppinglistComponent } from './shoppinglist/shoppinglist.component';
 
-@Injectable()
-export class XhrInterceptor implements HttpInterceptor {
-
-  intercept(req: HttpRequest<any>, next: HttpHandler) {
-    const xhr = req.clone({
-      headers: req.headers.set('X-Requested-With', 'XMLHttpRequest')
-    });
-    return next.handle(xhr);
-  }
-}
 
 @NgModule({
   declarations: [
@@ -48,7 +40,8 @@ export class XhrInterceptor implements HttpInterceptor {
     RecipeViewComponent,
     RecipeSuggestionComponent,
     AccEditComponent,
-    FoodWarningComponent
+    FoodWarningComponent,
+    ShoppinglistComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +52,10 @@ export class XhrInterceptor implements HttpInterceptor {
   providers: [
     VFridgeService,
     RecipeComponent,
-    {provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true }],
+    {provide: HTTP_INTERCEPTORS, useClass: XhrInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
