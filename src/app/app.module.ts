@@ -22,7 +22,7 @@ import { RecipeSuggestionComponent } from
 import { AccEditComponent } from './acc-edit/acc-edit.component';
 import { FoodWarningComponent } from './food-warning/food-warning.component';
 import { BasicAuthInterceptor, ErrorInterceptor, XhrInterceptor } from './auth-interceptor';
-import { ShoppinglistComponent } from './shoppinglist/shopping-list.component';
+import { ShoppinglistComponent } from './shopping-list/shopping-list.component';
 
 
 @NgModule({

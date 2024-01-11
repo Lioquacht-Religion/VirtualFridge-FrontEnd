@@ -10,7 +10,7 @@ import { StorageViewComponent } from './storage/storage-view/storage-view.compon
 import { RecipeSuggestionComponent } from './storage/storage-view/recipe-suggestion/recipe-suggestion.component';
 import { AccEditComponent } from './acc-edit/acc-edit.component';
 import { FoodWarningComponent } from './food-warning/food-warning.component';
-import { ShoppinglistComponent } from './shoppinglist/shoppinglist.component';
+import { ShoppinglistComponent } from './shopping-list/shopping-list.component';
 
 
 const routes: Routes = [
@@ -25,7 +25,7 @@ const routes: Routes = [
   {path: 'link_recipesuggestion/:storageID' , component: RecipeSuggestionComponent },
   {path: 'link_food-warning' , component: FoodWarningComponent },
   {path: 'link_acc-edit' , component : AccEditComponent},
-  {path: 'link_shoppinglist/:userID' , component : ShoppinglistComponent}
+  {path: 'link_shopping-list/:userID' , component : ShoppinglistComponent}
 ];
 
 
