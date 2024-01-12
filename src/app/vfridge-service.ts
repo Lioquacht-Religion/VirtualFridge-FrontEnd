@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest} from '@angular/common/http';
 import { Observable, Observer } from 'rxjs';
 import * as CryptoJS from 'crypto-js';
+import { Shoppinglist } from './shoppinglist';
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -239,4 +240,17 @@ export class VFridgeService {
         return this.http.get(this.base_api+'/storage/recipe/suggestion?userID='+
         l_userID +'&storageID='+l_storageID);
       }
+
+      createShoppinglist(l_userID: number, l_shoppinglistname: string) {
+        return this.http.post(this.base_api + '/shoppinglist?userID=' + l_userID, l_shoppinglistname);
+    }
+      updateShoppinglist(l_userID: number, l_shoppinglistID: number, l_listupdate: Shoppinglist) {
+      return this.http.put(this.base_api + '/shoppinglist?userID=' + l_userID+ '&listID=' +  l_shoppinglistID, l_listupdate);
+   }
+      deleteShoppinglist(l_userID: number, l_shoppinglistID: number) {
+        return this.http.delete(this.base_api + '/shoppinglist?userID=' + l_userID + '&listID=' +  l_shoppinglistID);
+    }
+      getShoppinglist(l_userID: number) {
+        return this.http.get(this.base_api + '/shoppinglist/all?userID=' + l_userID);
+    }
 }
