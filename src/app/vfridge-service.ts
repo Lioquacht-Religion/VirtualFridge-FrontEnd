@@ -23,8 +23,8 @@ export interface User {
 export class VFridgeService {
 
   base_api : string  =
-    "https://localhost:8080/api/v1.0";
-    //"https://45.129.46.25:8080/api/v1.0";
+    //"https://localhost:8080/api/v1.0";
+    "https://45.129.46.25:8080/api/v1.0";
   public user : User = {
     name : "",
     email : "",
@@ -173,9 +173,10 @@ export class VFridgeService {
     addGroceryData(postGrocery: Object, storageID: number){
           let endPoint =
           this.base_api+"/grocery/byID?storageID=" + storageID;
-          this.http.post(endPoint, postGrocery).subscribe(data => {
+          return this.http.post(endPoint, postGrocery);
+          /*.subscribe(data => {
             console.log(data);
-          });
+          });*/
       }
 
       addRecipeData(postRecipe: Object, userID: number) {
