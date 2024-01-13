@@ -1,1 +1,30 @@
 <p>shoppinglist works!</p>
+
+<form id="createShoppinglist">
+
+    <label for="storageID">Lagername </label>
+    <input type="text" name="shoppingListID" id="shoppingListID" [(ngModel)]="shoppingListName" required>
+
+    <div id="btn">
+        <input type="button" id="btn" value="Liste erstellen" (click)="createShoppinglist(shoppingListName)" >
+    </div>
+
+    
+</form>
+
+
+<ul *ngFor="let shoppinglist of shoppinglists">
+    <p>{{shoppinglist.listID}}</p>
+    <p>{{shoppinglist.name}}</p>
+    <ul *ngFor="let item of shoppinglist.list">
+                            <li>
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> {{item}} </label><br>
+                            </li>
+    </ul>
+    <div id="btn">
+    <input type="button" id="btn" value="Liste löschen" (click)="deleteShoppinglist(shoppinglist.listID)" >
+    </div>
+
+</ul>
+
