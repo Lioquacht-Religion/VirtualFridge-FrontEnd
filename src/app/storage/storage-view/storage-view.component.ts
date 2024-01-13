@@ -13,14 +13,14 @@ export class StorageViewComponent implements OnInit {
   public groceries : any;
   public storageName : any;
 
-  constructor(private route: ActivatedRoute, private vfservice: VFridgeService) { 
+  constructor(private route: ActivatedRoute, private vfservice: VFridgeService) {
     this.route.params.subscribe(params => this.curStorageID = params['storageID']);
     this.route.params.subscribe(params => this.storageName = params['storageName']);
   }
 
   ngOnInit(): void {
     this.getDataFromDB();
-    
+
     // this.vfservice.getStorageData().subscribe(
     //   data => { this.storage = data },
     //   err => console.log(err),
@@ -40,14 +40,20 @@ export class StorageViewComponent implements OnInit {
   groceryamount = '';
   groceryunit = '';
 
-  async storeDataOnDB(): Promise<void> {
+  storeDataOnDB(){
     let GroceryToCreate = {
         name: this.groceryname,
         amount: this.groceryamount,
         unit: this.groceryunit
     };
-    await this.vfservice.addGroceryData(GroceryToCreate, this.curStorageID);
-    this.getDataFromDB();
+    this.vfservice.addGroceryData(GroceryToCreate, this.curStorageID).subscribe(
+      data => {
+        console.log(data);
+        this.getDataFromDB();
+      },
+       // err => { console.log(err); },
+        () => this.getDataFromDB()
+    );
     }
 
     deleteDataOnDB(storageID: number, groceryID: number): void {
@@ -55,7 +61,7 @@ export class StorageViewComponent implements OnInit {
         data => {console.log(data);},
         () => {this.getDataFromDB();}
         );
-      
+
       }
 
 }
