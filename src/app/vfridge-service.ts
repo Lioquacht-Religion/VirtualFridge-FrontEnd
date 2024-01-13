@@ -170,7 +170,7 @@ export class VFridgeService {
         return this.http.post(endPoint, postStorage);
       }
 
-      async addGroceryData(postGrocery: Object, storageID: number): Promise<void> {
+    addGroceryData(postGrocery: Object, storageID: number){
           let endPoint =
           this.base_api+"/grocery/byID?storageID=" + storageID;
           this.http.post(endPoint, postGrocery).subscribe(data => {
