@@ -242,8 +242,8 @@ export class VFridgeService {
         l_userID +'&storageID='+l_storageID);
       }
 
-      createShoppinglist(l_userID: number, l_shoppinglistname: string) {
-        return this.http.post(this.base_api + '/shoppinglist?userID=' + l_userID, l_shoppinglistname);
+      createShoppinglist(l_shoppinglistname: string) {
+        return this.http.post(this.base_api + '/shoppinglist/add', l_shoppinglistname);
     }
       updateShoppinglist(l_userID: number, l_shoppinglistID: number, l_listupdate: Shoppinglist) {
       return this.http.put(this.base_api + '/shoppinglist?userID=' + l_userID+ '&listID=' +  l_shoppinglistID, l_listupdate);
@@ -254,4 +254,13 @@ export class VFridgeService {
       getShoppinglist(l_userID: number) {
         return this.http.get(this.base_api + '/shoppinglist/all?userID=' + l_userID);
     }
+
+      getShoppinglistItems() {
+      return this.http.get(this.base_api + '/shoppinglist/item/all');
+    }
+    
+    addShoppinglistItem(postShoppinglistItem: Object) {
+      return this.http.post(this.base_api + '/shoppinglist/item/add', postShoppinglistItem);
+    }
+
 }
