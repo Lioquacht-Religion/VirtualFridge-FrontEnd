@@ -1,4 +1,15 @@
-<p>shoppinglist works!</p>
+<table class="table">
+    <tr id="head">
+        <th>Einkaufslisten</th>
+    </tr>
+
+    <tr *ngFor="let shoppinglist of shoppinglists">
+        <td id="storage_name">{{shoppinglist.name}}</td>
+        <td> <button><a [routerLink]="['/link_shopping-list-view']">Lager einsehen</a></button></td>
+        <!-- <td> <button id="delete-button" (click)="deleteShoppinglist(curUserID, storage.storageID)">Löschen</button></td> -->
+    </tr>
+
+</table>
 
 <form id="createShoppinglist">
 
@@ -12,8 +23,7 @@
     
 </form>
 
-
-<ul *ngFor="let shoppinglist of shoppinglists">
+<!--<ul *ngFor="let shoppinglist of shoppinglists">
     <p>{{shoppinglist.listID}}</p>
     <p>{{shoppinglist.name}}</p>
     <ul *ngFor="let item of shoppinglist.list">
@@ -26,5 +36,5 @@
     <input type="button" id="btn" value="Liste löschen" (click)="deleteShoppinglist(shoppinglist.listID)" >
     </div>
 
-</ul>
+</ul> -->
 

@@ -36,7 +36,7 @@ export class ShoppinglistComponent implements OnInit {
   }
 
   createShoppinglist( name: string){
-    this.vfservice.createShoppinglist(this.userID, name).subscribe({
+    this.vfservice.createShoppinglist(name).subscribe({
       error: (e) => console.error(e),    
       complete: () => console.info('complete') 
     })
