@@ -32,11 +32,15 @@ export class ShoppingListViewComponent implements OnInit {
   }
 
   storeDataOnDB(){
-    let itemToCreate = {
-        name: this.itemname,
-        amount: this.itemamount,
-        unit: this.itemunit
+      let itemToCreate = {
+        ticked: 'false',
+        item: {
+          name: this.itemname,
+          amount: this.itemamount,
+          unit: this.itemunit
+        },
     };
+    
     this.vfservice.addShoppinglistItem(itemToCreate).subscribe(
       data => {
         console.log(data);
