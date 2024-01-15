@@ -6,7 +6,7 @@
 
     </tr>
 
-    <tr *ngFor="let shoppinglist of shoppinglists; index as i">
+    <tr *ngFor="let shoppinglist of shoppingLists">
         <td id="shoppingListName">{{shoppinglist.name}}</td>
         <td id="listID">{{shoppinglist.listID}}</td>
         
@@ -23,7 +23,7 @@
     <input type="text" name="shoppingListID" id="shoppingListID" [(ngModel)]="shoppingListName" required>
 
     <div id="btn">
-        <input type="button" id="btn" value="Liste erstellen" (click)="createShoppinglist(shoppingListName)" >
+        <input type="button" id="btn" value="Liste erstellen" (click)="createShoppinglist()" >
     </div>
     
 </form>
