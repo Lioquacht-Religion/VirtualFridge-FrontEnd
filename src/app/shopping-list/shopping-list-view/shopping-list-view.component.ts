@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { VFridgeService } from 'app/vfridge-service';
 
 @Component({
@@ -10,20 +11,25 @@ export class ShoppingListViewComponent implements OnInit {
 
 
   public items : any;
+  public shoppingListName : any;
+  public shoppingListID : any;
 
   itemname = '';
   itemamount = '';
   itemunit = '';
 
 
-  constructor(private vfservice : VFridgeService) { }
+  constructor(private route : ActivatedRoute, private vfservice : VFridgeService) {
+    this.route.params.subscribe(params => this.shoppingListName = params['shoppingListID']);
+    this.route.params.subscribe(params => this.shoppingListName = params['shoppingListName']);
+   }
 
   ngOnInit(): void {
-    this.getDataFromDB();
+    this.getShoppingListItemFromDB();
   }
 
 
-  getDataFromDB(){
+  getShoppingListItemFromDB(){
     this.vfservice.getShoppinglistItems().subscribe(
       data => { this.items = data },
       err => console.log(err),
@@ -31,24 +37,30 @@ export class ShoppingListViewComponent implements OnInit {
   );
   }
 
-  storeDataOnDB(){
+  createShoppingListItem(){
       let itemToCreate = {
         ticked: 'false',
         item: {
           name: this.itemname,
           amount: this.itemamount,
           unit: this.itemunit
-        },
+        }
     };
-    
-    this.vfservice.addShoppinglistItem(itemToCreate).subscribe(
+    console.log(itemToCreate);
+    this.vfservice.addShoppinglistItem(this.shoppingListID, itemToCreate).subscribe(
       data => {
         console.log(data);
-        this.getDataFromDB();
       },
-        () => this.getDataFromDB()
+        () => this.getShoppingListItemFromDB()
     );
     }
+
+    deleteDataOnDB(UserID: number, StorID: number): void {
+      this.vfservice.deleteStorage(UserID, StorID).subscribe(
+        data => {console.log(data);},
+        () => {this.getShoppingListItemFromDB();}
+        );
+      }
 
   
 

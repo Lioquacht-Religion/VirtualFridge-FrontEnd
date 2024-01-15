@@ -1,25 +1,30 @@
 <table class="table">
     <tr id="head">
-        <th>Einkaufslisten</th>
+        <th>Name der Einkaufsliste</th>
+        <th>listID</th>
+    
+
     </tr>
 
-    <tr *ngFor="let shoppinglist of shoppinglists">
-        <td id="storage_name">{{shoppinglist.name}}</td>
-        <td> <button><a [routerLink]="['/link_shopping-list-view']">Lager einsehen</a></button></td>
-        <!-- <td> <button id="delete-button" (click)="deleteShoppinglist(curUserID, storage.storageID)">Löschen</button></td> -->
+    <tr *ngFor="let shoppinglist of shoppingLists">
+        <td id="shoppingListName">{{shoppinglist.name}}</td>
+        <td id="listID">{{shoppinglist.shoppingListId}}</td>
+        
+        <td> <button><a [routerLink]="['/link_shopping-list-view', shoppinglist.shoppingListId, shoppinglist.name]">Einkaufsliste einsehen</a></button></td>
+        <td> <button id="delete-button" (click)="deleteShoppinglist(shoppinglist.shoppingListId)">Einkaufsliste löschen</button></td>
     </tr>
 
 </table>
 
+
 <form id="createShoppinglist">
 
-    <label for="storageID">Lagername </label>
+    <label for="shoppinglistID">Name der Einkaufsliste </label>
     <input type="text" name="shoppingListID" id="shoppingListID" [(ngModel)]="shoppingListName" required>
 
     <div id="btn">
-        <input type="button" id="btn" value="Liste erstellen" (click)="createShoppinglist(shoppingListName)" >
+        <input type="button" id="btn" value="Liste erstellen" (click)="createShoppinglist()" >
     </div>
-
     
 </form>
 

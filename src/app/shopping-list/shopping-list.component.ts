@@ -11,20 +11,8 @@ import { VFridgeService } from '../vfridge-service';
 export class ShoppinglistComponent implements OnInit {
 
   public userID: number=1;
-
+  public shoppingLists: any;
   shoppingListName = '';
-
-  public shoppinglists: Shoppinglist[]=[
-    {
-      listID: 1,
-      name: 'liste numero uno',
-      list: ['einkauf1', 'einkauf2']
-  }, {
-      listID: 2,
-      name: 'liste numero dos',
-      list: ['einkauf2.1', 'einkauf2.2']
-  }
-  ];
 
     constructor(private route: ActivatedRoute, private vfservice: VFridgeService) { 
       this.route.params.subscribe(params => this.userID = params['userID']);
@@ -35,11 +23,15 @@ export class ShoppinglistComponent implements OnInit {
     this.getShoppinglists();
   }
 
-  createShoppinglist( name: string){
-    this.vfservice.createShoppinglist(name).subscribe({
-      error: (e) => console.error(e),    
-      complete: () => console.info('complete') 
-    })
+  createShoppinglist(){
+    let nameOfList = {
+      name: this.shoppingListName
+    };
+    this.vfservice.createShoppinglist(nameOfList).subscribe(data =>{
+      console.log(data); },
+      () => {this.getShoppinglists();}
+    );
+    console.log(this.getShoppinglists());
   }
 
   updateShoppinglist(shoppinglistID: number, list: Shoppinglist){
@@ -51,19 +43,19 @@ export class ShoppinglistComponent implements OnInit {
   }
 
   getShoppinglists(){
-    this.vfservice.getShoppinglist(this.userID).subscribe({
-      error: (e) => console.error(e),    
-      complete: () => console.info('complete') 
-    })
+    this.vfservice.getShoppinglist().subscribe( 
+      data => { this.shoppingLists = data},
+      error => console.error(error),    
+      () => console.info('loading done.' + this.shoppingLists) 
+    );
   }
 
-  deleteShoppinglist(shoppinglistID: number) {
+  deleteShoppinglist(shoppinglistID: number): void {
     console.log(shoppinglistID)
-    // this.vfservice.deleteShoppinglist(this.userID, shoppinglistID).subscribe({
-    //   error: (e) => console.error(e),    
-    //   complete: () => console.info('complete') 
-    // })
-
+    this.vfservice.deleteShoppinglist(shoppinglistID).subscribe(
+      data => { console.log(data);},
+      () => {this.getShoppinglists();}
+    );
   }
 
 }
