@@ -61,7 +61,6 @@ export class StorageViewComponent implements OnInit {
         data => {console.log(data);},
         () => {this.getDataFromDB();}
         );
-
       }
 
 }
