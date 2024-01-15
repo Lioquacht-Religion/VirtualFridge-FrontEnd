@@ -23,6 +23,7 @@ import { AccEditComponent } from './acc-edit/acc-edit.component';
 import { FoodWarningComponent } from './food-warning/food-warning.component';
 import { BasicAuthInterceptor, ErrorInterceptor, XhrInterceptor } from './auth-interceptor';
 import { ShoppinglistComponent } from './shopping-list/shopping-list.component';
+import { ShoppingListViewComponent } from './shopping-list/shopping-list-view/shopping-list-view.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { ShoppinglistComponent } from './shopping-list/shopping-list.component';
     RecipeSuggestionComponent,
     AccEditComponent,
     FoodWarningComponent,
-    ShoppinglistComponent
+    ShoppinglistComponent,
+    ShoppingListViewComponent
   ],
   imports: [
     BrowserModule,

@@ -44,7 +44,7 @@ input {
 
 input[type="benutzername"],
 input[type="email"],
-input[type="passwort"] {
+input[type="password"] {
   width: 100%;
   padding: 0 0 0 10px;
   margin: 0;
@@ -59,7 +59,7 @@ input[type="passwort"] {
 
 input[type="benutzername"]:focus:invalid,
 input[type="email"]:focus:invalid,
-input[type="passwort"]:focus:invalid {
+input[type="password"]:focus:invalid {
   color: red;
   border-color: red;
 }

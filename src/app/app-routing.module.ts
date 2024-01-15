@@ -11,6 +11,7 @@ import { RecipeSuggestionComponent } from './storage/storage-view/recipe-suggest
 import { AccEditComponent } from './acc-edit/acc-edit.component';
 import { FoodWarningComponent } from './food-warning/food-warning.component';
 import { ShoppinglistComponent } from './shopping-list/shopping-list.component';
+import { ShoppingListViewComponent } from './shopping-list/shopping-list-view/shopping-list-view.component';
 
 
 const routes: Routes = [
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path: 'link_recipesuggestion/:storageID' , component: RecipeSuggestionComponent },
   {path: 'link_food-warning' , component: FoodWarningComponent },
   {path: 'link_acc-edit' , component : AccEditComponent},
-  {path: 'link_shopping-list/:userID' , component : ShoppinglistComponent}
+  {path: 'link_shopping-list/:userID' , component : ShoppinglistComponent},
+  {path: 'link_shopping-list-view' , component : ShoppingListViewComponent}
 ];
 
 

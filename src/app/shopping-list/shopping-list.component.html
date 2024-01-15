@@ -1,10 +1,29 @@
-<p>shoppinglist works!</p>
+<table class="table">
+    <tr id="head">
+        <th>Einkaufslisten</th>
+    </tr>
 
-<div id="btn">
-    <input type="button" id="btn" value="Liste erstellen" (click)="createShoppinglist( 'test' )" >
-</div>
+    <tr *ngFor="let shoppinglist of shoppinglists">
+        <td id="storage_name">{{shoppinglist.name}}</td>
+        <td> <button><a [routerLink]="['/link_shopping-list-view']">Lager einsehen</a></button></td>
+        <!-- <td> <button id="delete-button" (click)="deleteShoppinglist(curUserID, storage.storageID)">Löschen</button></td> -->
+    </tr>
 
-<ul *ngFor="let shoppinglist of shoppinglists">
+</table>
+
+<form id="createShoppinglist">
+
+    <label for="storageID">Lagername </label>
+    <input type="text" name="shoppingListID" id="shoppingListID" [(ngModel)]="shoppingListName" required>
+
+    <div id="btn">
+        <input type="button" id="btn" value="Liste erstellen" (click)="createShoppinglist(shoppingListName)" >
+    </div>
+
+    
+</form>
+
+<!--<ul *ngFor="let shoppinglist of shoppinglists">
     <p>{{shoppinglist.listID}}</p>
     <p>{{shoppinglist.name}}</p>
     <ul *ngFor="let item of shoppinglist.list">
@@ -17,5 +36,5 @@
     <input type="button" id="btn" value="Liste löschen" (click)="deleteShoppinglist(shoppinglist.listID)" >
     </div>
 
-</ul>
+</ul> -->
 

@@ -11,6 +11,9 @@ import { VFridgeService } from '../vfridge-service';
 export class ShoppinglistComponent implements OnInit {
 
   public userID: number=1;
+
+  shoppingListName = '';
+
   public shoppinglists: Shoppinglist[]=[
     {
       listID: 1,
@@ -33,7 +36,7 @@ export class ShoppinglistComponent implements OnInit {
   }
 
   createShoppinglist( name: string){
-    this.vfservice.createShoppinglist(this.userID, name).subscribe({
+    this.vfservice.createShoppinglist(name).subscribe({
       error: (e) => console.error(e),    
       complete: () => console.info('complete') 
     })
