@@ -69,9 +69,10 @@ export class ShoppingListViewComponent implements OnInit {
 
 
 
-    deleteShoppingListItem(shoppingListID: number, shoppingListItemID: number): void {
+    deleteShoppingListItem(shoppingListID: number, shoppingListItemID: number, item : any): void {
+      console.log(item);
       console.log(shoppingListID, shoppingListItemID);
-      this.vfservice.deleteStorage(shoppingListID, shoppingListItemID).subscribe(
+      this.vfservice.deleteShoppinglistItem(shoppingListID, shoppingListItemID).subscribe(
         data => {console.log(data);},
         () => {this.getShoppingListItemFromDB();}
         );

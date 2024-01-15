@@ -261,4 +261,10 @@ export class VFridgeService {
       return this.http.post(this.base_api + '/shoppinglist/item/add?shoppingListId=' + l_shoppingListID, postShoppinglistItem);
     }
 
+    deleteShoppinglistItem(l_shoppinglistID: number, l_shoppinglistItemID: number) {
+        return this.http.delete(this.base_api + '/shoppinglist/item?shoppingListId=' + l_shoppinglistID
+                               + '&itemId=' + l_shoppinglistItemID);
+    }
+
+
 }

@@ -20,7 +20,7 @@ Liste numero uno
       <td>{{item.unit}}</td>
       <br><br>
       <input type="checkbox" id="shoppingListCheck" (change)="shoppingListChecking()">
-      <td><button id="delete-button" (click)="deleteShoppingListItem(shoppingListID, item.itemId)">Produkt löschen</button></td>
+      <td><button id="delete-button" (click)="deleteShoppingListItem(shoppingListID, item.grocery.id, item)">Produkt löschen</button></td>
     </tr>
 
 </table>
@@ -49,13 +49,13 @@ Liste numero uno
         <span>&nbsp;Stück</span>
       </label>
     </div>
-  
+
     <div class="amount-container">
       <label for="Anzahl" id="amount">Menge</label>
       <br />
       <input type="number" id="amount" name="amount" min="1" max="1000" [(ngModel)]="itemamount">
     </div>
-  
+
     <div id="btn">
       <button id="item-hinzufügen" (click)="createShoppingListItem()">Lebensmittel hinzufügen</button>
     </div>
