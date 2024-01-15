@@ -13,7 +13,7 @@ export class ShoppinglistComponent implements OnInit {
   public userID: number=1;
   public shoppingLists: any;
   shoppingListName = '';
-  
+
     constructor(private route: ActivatedRoute, private vfservice: VFridgeService) { 
       this.route.params.subscribe(params => this.userID = params['userID']);
 
@@ -50,13 +50,12 @@ export class ShoppinglistComponent implements OnInit {
     );
   }
 
-  deleteShoppinglist(shoppinglistID: number) {
+  deleteShoppinglist(shoppinglistID: number): void {
     console.log(shoppinglistID)
-    this.vfservice.deleteShoppinglist(this.userID, shoppinglistID).subscribe({
-      error: (e) => console.error(e),    
-      complete: () => console.info('complete') 
-    })
-
+    this.vfservice.deleteShoppinglist(shoppinglistID).subscribe(
+      data => { console.log(data);},
+      () => {this.getShoppinglists();}
+    );
   }
 
 }

@@ -248,8 +248,8 @@ export class VFridgeService {
       updateShoppinglist(l_userID: number, l_shoppinglistID: number, l_listupdate: Shoppinglist) {
       return this.http.put(this.base_api + '/shoppinglist?userID=' + l_userID+ '&listID=' +  l_shoppinglistID, l_listupdate);
    }
-      deleteShoppinglist(l_userID: number, l_shoppinglistID: number) {
-        return this.http.delete(this.base_api + '/shoppinglist?userID=' + l_userID + '&listID=' +  l_shoppinglistID);
+      deleteShoppinglist(l_shoppinglistID: number) {
+        return this.http.delete(this.base_api + '/shoppinglist?shoppingListId=' + l_shoppinglistID);
     }
       getShoppinglist() {
         return this.http.get(this.base_api + '/shoppinglist/all');

@@ -11,7 +11,7 @@
         <td id="listID">{{shoppinglist.listID}}</td>
         
         <td> <button><a [routerLink]="['/link_shopping-list-view']">Einkaufsliste einsehen</a></button></td>
-        <td> <button id="delete-button" (click)="deleteShoppinglist(userID)">Einkaufsliste löschen</button></td>
+        <td> <button id="delete-button" (click)="deleteShoppinglist(shoppinglist.shoppingListId)">Einkaufsliste löschen</button></td>
     </tr>
 
 </table>
