@@ -20,7 +20,7 @@ export class ShoppingListViewComponent implements OnInit {
 
 
   constructor(private route : ActivatedRoute, private vfservice : VFridgeService) {
-    this.route.params.subscribe(params => this.shoppingListName = params['shoppingListID']);
+    this.route.params.subscribe(params => this.shoppingListID = params['shoppingListID']);
     this.route.params.subscribe(params => this.shoppingListName = params['shoppingListName']);
    }
 
@@ -30,7 +30,7 @@ export class ShoppingListViewComponent implements OnInit {
 
 
   getShoppingListItemFromDB(){
-    this.vfservice.getShoppinglistItems().subscribe(
+    this.vfservice.getShoppinglistItems(this.shoppingListID).subscribe(
       data => { this.items = data },
       err => console.log(err),
       () => console.log('loading done.:' + this.items)
@@ -40,7 +40,7 @@ export class ShoppingListViewComponent implements OnInit {
   createShoppingListItem(){
       let itemToCreate = {
         ticked: 'false',
-        item: {
+        grocery: {
           name: this.itemname,
           amount: this.itemamount,
           unit: this.itemunit
@@ -62,6 +62,6 @@ export class ShoppingListViewComponent implements OnInit {
         );
       }
 
-  
+
 
 }

@@ -23,8 +23,8 @@ export interface User {
 export class VFridgeService {
 
   base_api : string  =
-    //"https://localhost:8080/api/v1.0";
-    "https://45.129.46.25:8080/api/v1.0";
+    "https://localhost:8080/api/v1.0";
+    //"https://45.129.46.25:8080/api/v1.0";
   public user : User = {
     name : "",
     email : "",
@@ -253,10 +253,12 @@ export class VFridgeService {
         return this.http.get(this.base_api + '/shoppinglist/all');
     }
 
-    getShoppinglistItems() {
-      return this.http.get(this.base_api + '/shoppinglist/item/all');
+    getShoppinglistItems(shoppinglistId : number) {
+      return this.http.get(
+        this.base_api + '/shoppinglist/item/all?shoppingListId=' + shoppinglistId
+      );
     }
-    
+
     addShoppinglistItem(l_shoppingListID : number, postShoppinglistItem: Object) {
       return this.http.post(this.base_api + '/shoppinglist/item/add?shoppingListId=' + l_shoppingListID, postShoppinglistItem);
     }
