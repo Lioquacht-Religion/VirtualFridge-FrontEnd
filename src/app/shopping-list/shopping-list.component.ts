@@ -59,10 +59,10 @@ export class ShoppinglistComponent implements OnInit {
 
   deleteShoppinglist(shoppinglistID: number) {
     console.log(shoppinglistID)
-    // this.vfservice.deleteShoppinglist(this.userID, shoppinglistID).subscribe({
-    //   error: (e) => console.error(e),    
-    //   complete: () => console.info('complete') 
-    // })
+    this.vfservice.deleteShoppinglist(this.userID, shoppinglistID).subscribe({
+      error: (e) => console.error(e),    
+      complete: () => console.info('complete') 
+    })
 
   }
 
