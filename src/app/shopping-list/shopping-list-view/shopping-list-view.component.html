@@ -1,6 +1,6 @@
 <p>Hier ist die ausgewählte Einkaufsliste zu sehen:</p>
 
-
+<p>{{shoppingListName}}</p>
 <h1>Name der Einkaufsliste</h1>
 <br>
 
@@ -8,26 +8,8 @@
 Liste numero uno
 <br>
 
-<!--<form id="createGroceries">
 
-  <label for="groceries">Neues Lebensmittel hinzufügen </label>
-  <input type="text" name="shoppingListID" id="shoppingListID" [(ngModel)]="shoppingListName" required>
-
-  <div id="btn">
-      <input type="button" id="btn" value="Lebensmittel hinzufügen" (click)="createGroceries(shoppingListName)" >
-  </div>
-  
-</form>
-
-
-<input type="radio" name="Lebensmittel" value="Lebenmittel1" checked>Apfel
-
-Zeile 14,17 anpassen 
--->
-
-
-
-<!--<table class="table3">
+<table class="table3">
     <tr id="head">
       <th>Lebensmittel</th>
       <th>Menge</th>
@@ -37,5 +19,46 @@ Zeile 14,17 anpassen
       <td>{{item.name}}</td>
       <td>{{item.amount}}</td>
       <td>{{item.unit}}</td>
-      <td><button id="delete-button" (click)="deleteDataOnDB(curStorageID, grocery.id)">Zutat löschen</button></td>
-    </tr>-->
+      <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+      <!--<td><button id="delete-button" (click)="deleteDataOnDB(curStorageID, grocery.id)">Zutat löschen</button></td>-->
+    </tr>
+
+</table>
+
+<!--Zeile 14,17 anpassen -->
+
+
+<form id="createshoppingListItem">
+    <label for="groceries">Neues Lebensmittel hinzufügen</label>
+    <textarea type="text" name="groceries" id="groceries" [(ngModel)]="itemname" required></textarea>
+    <br />
+    <br />
+    <label for="Einheit">Einheit</label>
+    <br />
+    <div>
+      <label for="f-option" class="l-radio">
+        <input type="radio" id="f-option" name="selector" tabindex="1" value="gramm" [(ngModel)]="itemunit">
+        <span>&nbsp;Gramm</span>
+      </label>
+      <label for="s-option" class="l-radio">
+        <input type="radio" id="s-option" name="selector" tabindex="2" value="ml" [(ngModel)]="itemunit">
+        <span>&nbsp;Milliliter</span>
+      </label>
+      <label for="t-option" class="l-radio">
+        <input type="radio" id="t-option" name="selector" tabindex="3" value="st." [(ngModel)]="itemunit">
+        <span>&nbsp;Stück</span>
+      </label>
+    </div>
+  
+    <div class="amount-container">
+      <label for="Anzahl" id="amount">Menge</label>
+      <br />
+      <input type="number" id="amount" name="amount" min="1" max="1000" [(ngModel)]="itemamount">
+    </div>
+  
+    <div id="btn">
+      <button id="item-hinzufügen" (click)="createShoppingListItem()">Lebensmittel hinzufügen</button>
+    </div>
+    <br />
+    <br />
+  </form>

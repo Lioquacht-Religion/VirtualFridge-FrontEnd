@@ -255,12 +255,12 @@ export class VFridgeService {
         return this.http.get(this.base_api + '/shoppinglist/all');
     }
 
-      getShoppinglistItems() {
+    getShoppinglistItems() {
       return this.http.get(this.base_api + '/shoppinglist/item/all');
     }
     
-    addShoppinglistItem(postShoppinglistItem: Object) {
-      return this.http.post(this.base_api + '/shoppinglist/item/add', postShoppinglistItem);
+    addShoppinglistItem(l_shoppingListID : number, postShoppinglistItem: Object) {
+      return this.http.post(this.base_api + '/shoppinglist/item/add?shoppingListId=' + l_shoppingListID, postShoppinglistItem);
     }
 
 }

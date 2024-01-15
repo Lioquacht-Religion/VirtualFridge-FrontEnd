@@ -8,9 +8,9 @@
 
     <tr *ngFor="let shoppinglist of shoppingLists">
         <td id="shoppingListName">{{shoppinglist.name}}</td>
-        <td id="listID">{{shoppinglist.listID}}</td>
+        <td id="listID">{{shoppinglist.shoppingListId}}</td>
         
-        <td> <button><a [routerLink]="['/link_shopping-list-view']">Einkaufsliste einsehen</a></button></td>
+        <td> <button><a [routerLink]="['/link_shopping-list-view', shoppinglist.shoppingListId, shoppinglist.name]">Einkaufsliste einsehen</a></button></td>
         <td> <button id="delete-button" (click)="deleteShoppinglist(shoppinglist.shoppingListId)">Einkaufsliste löschen</button></td>
     </tr>
 

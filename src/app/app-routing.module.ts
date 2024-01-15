@@ -27,7 +27,7 @@ const routes: Routes = [
   {path: 'link_food-warning' , component: FoodWarningComponent },
   {path: 'link_acc-edit' , component : AccEditComponent},
   {path: 'link_shopping-list/:userID' , component : ShoppinglistComponent},
-  {path: 'link_shopping-list-view' , component : ShoppingListViewComponent}
+  {path: 'link_shopping-list-view/:shoppingListID/:shoppingListName' , component : ShoppingListViewComponent}
 ];
 
 
