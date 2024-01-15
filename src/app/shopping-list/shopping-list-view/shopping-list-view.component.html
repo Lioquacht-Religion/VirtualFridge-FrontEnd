@@ -8,7 +8,6 @@
 Liste numero uno
 <br>
 
-
 <table class="table3">
     <tr id="head">
       <th>Lebensmittel</th>
@@ -19,8 +18,9 @@ Liste numero uno
       <td>{{item.name}}</td>
       <td>{{item.amount}}</td>
       <td>{{item.unit}}</td>
-      <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-      <!--<td><button id="delete-button" (click)="deleteDataOnDB(curStorageID, grocery.id)">Zutat löschen</button></td>-->
+      <br><br>
+      <input type="checkbox" id="shoppingListCheck" (change)="shoppingListChecking()">
+      <td><button id="delete-button" (click)="deleteShoppingListItem(shoppingListID, item.itemId)">Produkt löschen</button></td>
     </tr>
 
 </table>

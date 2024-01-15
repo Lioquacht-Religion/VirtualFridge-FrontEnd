@@ -16,7 +16,6 @@ export class ShoppinglistComponent implements OnInit {
 
     constructor(private route: ActivatedRoute, private vfservice: VFridgeService) { 
       this.route.params.subscribe(params => this.userID = params['userID']);
-
   }
 
   ngOnInit(): void {

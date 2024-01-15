@@ -13,6 +13,7 @@ export class ShoppingListViewComponent implements OnInit {
   public items : any;
   public shoppingListName : any;
   public shoppingListID : any;
+  public checkBox = false;
 
   itemname = '';
   itemamount = '';
@@ -20,7 +21,7 @@ export class ShoppingListViewComponent implements OnInit {
 
 
   constructor(private route : ActivatedRoute, private vfservice : VFridgeService) {
-    this.route.params.subscribe(params => this.shoppingListName = params['shoppingListID']);
+    this.route.params.subscribe(params => this.shoppingListID = params['shoppingListID']);
     this.route.params.subscribe(params => this.shoppingListName = params['shoppingListName']);
    }
 
@@ -30,16 +31,27 @@ export class ShoppingListViewComponent implements OnInit {
 
 
   getShoppingListItemFromDB(){
-    this.vfservice.getShoppinglistItems().subscribe(
+    this.vfservice.getShoppinglistItems(this.shoppingListID).subscribe(
       data => { this.items = data },
       err => console.log(err),
       () => console.log('loading done.:' + this.items)
   );
   }
 
+  shoppingListChecking(){
+    if(this.checkBox == false){
+      this.checkBox = true;
+      console.log(this.checkBox);
+    }
+    else{
+      this.checkBox = false;
+      console.log(this.checkBox);
+    }
+  }
+
   createShoppingListItem(){
       let itemToCreate = {
-        ticked: 'false',
+        ticked: this.checkBox,
         item: {
           name: this.itemname,
           amount: this.itemamount,
@@ -55,13 +67,12 @@ export class ShoppingListViewComponent implements OnInit {
     );
     }
 
-    deleteDataOnDB(UserID: number, StorID: number): void {
-      this.vfservice.deleteStorage(UserID, StorID).subscribe(
+    deleteShoppingListItem(shoppingListID: number, shoppingListItemID: number): void {
+      console.log(shoppingListID, shoppingListItemID);
+      this.vfservice.deleteStorage(shoppingListID, shoppingListItemID).subscribe(
         data => {console.log(data);},
         () => {this.getShoppingListItemFromDB();}
         );
-      }
-
-  
+      } 
 
 }
