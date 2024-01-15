@@ -23,7 +23,9 @@ export class BasicAuthInterceptor implements HttpInterceptor{
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const isApiUrl : boolean = req.url.startsWith(this.vfservice.base_api);
-      if(this.vfservice.userLogined && isApiUrl) {
+    const notApiUrl : boolean = !req.url.startsWith(this.vfservice.base_api+"/user/register");
+
+      if(this.vfservice.userLogined && isApiUrl && notApiUrl) {
         req = req.clone({
           setHeaders: {
             Authorization:

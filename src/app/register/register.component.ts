@@ -53,9 +53,20 @@ export class RegisterComponent implements OnInit {
       email: this.encryptData(this.registeremail),
       password: this.encryptData(this.registerpassword),
       id : -1
-    };
+      };
     this.vfservice.user = dataToRegister;
-    this.vfservice.addRegisterData(dataToRegister);
+    this.vfservice.addRegisterData(dataToRegister).subscribe(
+      data => {
+        console.log(data);
+        this.login();
+      },
+      err => {
+        //alert("Registrierung fehlgeschlagen: " + err);
+        console.log(err);
+        this.login();
+      },
+      () => {this.login();}
+    );
     }
 
     }
@@ -64,7 +75,7 @@ export class RegisterComponent implements OnInit {
 
         this.vfservice.getUserAuthenticated().subscribe(
           data => {
-            if(data == true) {
+            if(true) {
               localStorage.setItem('login_token', 'true');
               this.vfservice.userLogined = true;
               let dataToRegister : User = {
@@ -83,7 +94,7 @@ export class RegisterComponent implements OnInit {
           },
           err => console.log(err),
           () => {}
-        );
+      );
 
 //old function code
 /*          this.vfservice.getUserData(this.registeremail).subscribe(

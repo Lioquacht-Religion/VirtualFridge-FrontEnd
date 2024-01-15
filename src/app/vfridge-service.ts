@@ -6,7 +6,7 @@ import { Shoppinglist } from './shoppinglist';
 
 const httpOptions = {
     headers: new HttpHeaders({
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
         //'Accept' : 'application/json',
         //'Authorization' : 'Basic'
     })
@@ -202,9 +202,7 @@ export class VFridgeService {
       addRegisterData(userdata: User) {
         let endPoint =
         this.base_api+"/user/register";
-        this.http.post(endPoint, userdata).subscribe(data => {
-          console.log(data);
-        });
+        return this.http.post(endPoint, userdata, httpOptions );
       }
 
     deleteStorage(userID: number, storageID: number) {
