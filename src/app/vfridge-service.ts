@@ -261,9 +261,12 @@ export class VFridgeService {
       return this.http.post(this.base_api + '/shoppinglist/item/add?shoppingListId=' + l_shoppingListID, postShoppinglistItem);
     }
 
+    updateShoppinglistItem(l_shoppinglistID: number, l_shoppinglistItemID: number, l_shoppinglistTicked: boolean) {
+      return this.http.put(this.base_api + '/shoppinglist/item/ticked?shoppingListId=' + l_shoppinglistID + '&itemId=' +  l_shoppinglistItemID + '&ticked=' + l_shoppinglistTicked, l_shoppinglistTicked);
+   }
+
     deleteShoppinglistItem(l_shoppinglistID: number, l_shoppinglistItemID: number) {
-        return this.http.delete(this.base_api + '/shoppinglist/item?shoppingListId=' + l_shoppinglistID
-                               + '&itemId=' + l_shoppinglistItemID);
+        return this.http.delete(this.base_api + '/shoppinglist/item?shoppingListId=' + l_shoppinglistID + '&itemId=' + l_shoppinglistItemID);
     }
 
 

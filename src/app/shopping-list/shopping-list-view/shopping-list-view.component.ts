@@ -47,6 +47,7 @@ export class ShoppingListViewComponent implements OnInit {
       this.checkBox = false;
       console.log(this.checkBox);
     }
+    
   }
 
   createShoppingListItem(){
@@ -67,7 +68,18 @@ export class ShoppingListViewComponent implements OnInit {
     );
     }
 
-
+    updateShoppingListItem(shoppingListID: number, shoppingListItemID: number){
+      if(this.checkBox == false){
+        this.checkBox = true;
+        console.log(this.checkBox);
+      }
+      else{
+        this.checkBox = false;
+        console.log(this.checkBox);
+      }
+      console.log(shoppingListID, shoppingListItemID);
+      this.vfservice.updateShoppinglistItem(shoppingListID, shoppingListItemID, this.checkBox);
+    }
 
     deleteShoppingListItem(shoppingListID: number, shoppingListItemID: number, item : any): void {
       console.log(item);
@@ -77,8 +89,6 @@ export class ShoppingListViewComponent implements OnInit {
         () => {this.getShoppingListItemFromDB();}
         );
       }
-
-
 
 
 }
