@@ -34,7 +34,10 @@ export class ShoppingListViewComponent implements OnInit {
     this.vfservice.getShoppinglistItems(this.shoppingListID).subscribe(
       data => { this.items = data },
       err => console.log(err),
-      () => console.log('loading done.:' + this.items)
+      () => {
+        console.log('loading done.:');
+        console.log(this.items);
+      }
   );
   }
 
@@ -47,7 +50,7 @@ export class ShoppingListViewComponent implements OnInit {
       this.checkBox = false;
       console.log(this.checkBox);
     }
-    
+
   }
 
   createShoppingListItem(){
@@ -68,7 +71,7 @@ export class ShoppingListViewComponent implements OnInit {
     );
     }
 
-    updateShoppingListItem(shoppingListID: number, shoppingListItemID: number){
+    updateShoppingListItem(event : any, shoppingListID: number, shoppingListItemID: number){
       if(this.checkBox == false){
         this.checkBox = true;
         console.log(this.checkBox);
@@ -78,7 +81,12 @@ export class ShoppingListViewComponent implements OnInit {
         console.log(this.checkBox);
       }
       console.log(shoppingListID, shoppingListItemID);
-      this.vfservice.updateShoppinglistItem(shoppingListID, shoppingListItemID, this.checkBox);
+      console.log("checkboxchecked: "+event);
+      this.vfservice.updateShoppinglistItem(shoppingListID, shoppingListItemID, event.target.checked).subscribe(
+        data => {console.log(data)},
+          err => {console.log(err)},
+          () => {console.log("loading done")}
+      );
     }
 
     deleteShoppingListItem(shoppingListID: number, shoppingListItemID: number, item : any): void {

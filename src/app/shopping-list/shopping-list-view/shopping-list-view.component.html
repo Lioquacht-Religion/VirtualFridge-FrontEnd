@@ -20,7 +20,7 @@ Liste numero uno
       <td>{{item.grocery.unit}}</td>
       <td>{{item.ticked}}</td>
       <br><br>
-      <td><input type="checkbox" id="shoppingListCheck" (change)="updateShoppingListItem(shoppingListID, item.grocery.id)" value="item.ticked"></td>
+      <td><input type="checkbox" id="shoppingListCheck" [checked]="item.ticked" (change)="updateShoppingListItem($event, shoppingListID, item.grocery.id)"></td>
       <td><button id="delete-button" (click)="deleteShoppingListItem(shoppingListID, item.grocery.id, item)">Produkt löschen</button></td>
     </tr>
 
