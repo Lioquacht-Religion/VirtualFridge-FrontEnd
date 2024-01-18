@@ -36,7 +36,7 @@ p {
     margin-bottom: 30px;
 }
 
-#createGroceries {
+#createshoppingListItem {
     display: block;
     padding: 20px;
     margin: 0 auto;
@@ -45,7 +45,7 @@ p {
     color: black;
 }
 
-#createGroceries textarea {
+#createshoppingListItem textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid black;
@@ -77,6 +77,10 @@ label {
 
 button#delete-button {
     color: red;
+}
+button#delete-buttonAll {
+    margin-right: 5%;
+    color: blue;
 }
 
 button#zutat-hinzufügen,
@@ -124,7 +128,7 @@ p {
     margin-top: 50px;
 }
 
-#storage_name{
+#shoppinglist_name{
     margin-top: 1.5%;
 
 }
