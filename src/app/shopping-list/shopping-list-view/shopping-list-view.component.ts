@@ -71,23 +71,29 @@ export class ShoppingListViewComponent implements OnInit {
     );
   }
 
-  updateShoppingListItem(event: any, shoppingListID: number, shoppingListItemID: number) {
-    if (this.checkBox == false) {
-      this.checkBox = true;
-      console.log(this.checkBox);
-    }
-    else {
-      this.checkBox = false;
-      console.log(this.checkBox);
-    }
-    console.log(shoppingListID, shoppingListItemID);
-    console.log("checkboxchecked: " + event);
-    this.vfservice.updateShoppinglistItem(shoppingListID, shoppingListItemID, event.target.checked).subscribe(
-      data => { console.log(data) },
-      err => { console.log(err) },
-      () => { console.log("loading done") }
+  updateShoppingListItem(item: any, event: any, shoppingListID: number, shoppingListItemID: number) {
+   this.vfservice.updateShoppinglistItem(shoppingListID, shoppingListItemID, event.target.checked).subscribe(
+      data => {
+        console.log(data);
+        //this.getShoppingListItemFromDB();
+      },
+      err => {
+        console.log(err) ;
+        this.getShoppingListItemFromDB();
+        for(var i = 0; i < this.items.length; i++){
+          if( this.items[i].id === shoppingListItemID){
+            this.items[i].ticked = event.target.checked;
+            console.log("equals");
+            break;
+          }
+        }
+      },
+      () => {
+        /*this.getShoppingListItemFromDB();
+       */
+      }
     );
-    this.getShoppingListItemFromDB();
+    //this.getShoppingListItemFromDB();
   }
 
   deleteShoppingListItem(shoppingListID: number, shoppingListItemID: number, item: any): void {
@@ -111,10 +117,13 @@ export class ShoppingListViewComponent implements OnInit {
     filteredlist.forEach((element: any) => {
       this.vfservice.deleteShoppinglistItem(this.shoppingListID, element.grocery.id).subscribe(
         data => { console.log(data); },
-        () => { this.getShoppingListItemFromDB(); }
+        () => {
+          this.getShoppingListItemFromDB();
+        }
       );
 
     });
+    this.getShoppingListItemFromDB();
 
   }
 
