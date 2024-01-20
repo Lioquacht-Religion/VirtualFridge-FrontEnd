@@ -13,9 +13,9 @@ const httpOptions = {
 }
 
 export interface User {
-  name : string;
-  email : string;
-  password : string;
+  name : string | null;
+  email : string | null;
+  password : string | null;
   id : number;
 }
 
@@ -35,21 +35,28 @@ export class VFridgeService {
 
   public showLogin : boolean = true;
 
-    constructor(private http:HttpClient) {
-      this.userLogined = true; //('true' === localStorage.getItem('login_token'));
-      //var uemail: any = localStorage.getItem("user");
+  constructor(private http:HttpClient) {}
 
-      /*this.getUserAuthenticated().subscribe(
+ initFromUserCookies(){
+   this.userLogined = ('true' === localStorage.getItem('login_token'));
+    if(this.userLogined){
+      this.user.name = localStorage.getItem('user_name');
+      this.user.email = localStorage.getItem('user_email');
+      this.user.password = localStorage.getItem('user_password');
+    }
+
+      this.getUserAuthenticated().subscribe(
         data => {
-          if(data == true){
             this.userLogined = true;
             localStorage.setItem('login_token', 'true');
-          }
         },
-        err => console.log(err),
-        () => {console.log('loading done.'+this.user.email);
-
-      } );*/
+        err =>{
+          alert("user credentials invalide");
+          this.userLogined = false;
+          console.log(err);
+        },
+        () => {console.log('loading done.'+this.user.email);}
+      );
     }
 
 
@@ -93,42 +100,12 @@ export class VFridgeService {
   getUserAuthenticated() //: Observable<boolean>
   {
     console.log(this.user);
-    let email = this.user.email;
-    let password = this.user.password;
-    console.log(this.getAuthenticationHeaders());
 
     let req = this.http.get(this.base_api + '/user/authenticated',
-                                     //{email, password},
     {headers : this.getAuthenticationHeaders()});
     console.log(req);
 
     return req;
-  }
-
-  getUserFetch(){
-
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", this.base_api + '/user/authenticated', true);
-    xhr.withCredentials = true;
-    xhr.setRequestHeader("Authorization",
-                         'Basic ' + window.btoa(this.user.email + ':' + this.user.password));
-    xhr.send();
-
-    console.log(xhr.response);
-
-
-    let resp;
-    fetch(this.base_api + '/user/authenticated',
-          {
-     method: "GET",
-     headers: {
-         'Authorization' : 'Basic ' + window.btoa(this.user.email + ':' + this.user.password)
-     }
-    })
-  .then(response => resp = response);
-  console.log(resp);
-  return resp;
-
   }
 
 

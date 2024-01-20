@@ -133,6 +133,7 @@ p {
 
 }
 
+/*
 .layoutwrapper{
     grid-template-rows : auto;
     grid-template-columns : 20% 80%;
@@ -153,4 +154,4 @@ p {
     grid-row : 1;
     grid-column : 1;
 
-}
+}*/

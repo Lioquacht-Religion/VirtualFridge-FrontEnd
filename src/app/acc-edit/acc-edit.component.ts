@@ -29,14 +29,13 @@ export class AccEditComponent implements OnInit {
     },
     err => console.log(err),
     () => {
-      this.vfservice.getUserData(this.vfservice.user.email).subscribe(
+      /*this.vfservice.getUserData(this.vfservice.user.email).subscribe(
       data => { this.vfservice.user.email = data.toString(); },
       err => console.log(err),
       () => {
         console.log('loading done.');
     }
-
-  );
+  );*/
 
 }
 

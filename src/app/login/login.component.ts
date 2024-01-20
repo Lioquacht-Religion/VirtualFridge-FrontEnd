@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(public vfservice: VFridgeService) { }
 
   ngOnInit(): void {
-  }
+ }
 
   loginemail = '';
   loginusername = '';
@@ -34,30 +34,23 @@ export class LoginComponent implements OnInit {
 
         this.vfservice.getUserAuthenticated().subscribe(
           data => {
-            if(true) {
               localStorage.setItem('login_token', 'true');
+              localStorage.setItem('user_name', this.loginusername);
+              localStorage.setItem('user_email', this.loginemail);
+              localStorage.setItem('user_password', this.loginpassword);
+
               this.vfservice.userLogined = true;
-              let dataToRegister : User = {
+              let dataToLogin : User = {
                  name: this.encryptData(this.loginusername),
                  email: this.encryptData(this.loginemail),
                  password: this.encryptData(this.loginpassword),
                  id : -1,
               };
-              this.vfservice.user = dataToRegister;
+              this.vfservice.user = dataToLogin;
               console.log(this.vfservice.user);
-            }
-            else{
-              localStorage.setItem('login_token', 'false');
-              this.vfservice.userLogined = false;
-              localStorage.setItem('user', '');
-              console.log("payload ist nicht richtig");
-              alert("Login Daten sind inkorrekt!");
-            }
-
           },
           err => {
             console.log(err);
-            //this.login();
             alert("Login Daten sind inkorrekt!");
           },
           () => {}
