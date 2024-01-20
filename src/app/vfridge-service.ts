@@ -257,7 +257,7 @@ export class VFridgeService {
       return this.http.get(this.base_api + '/shoppinglist/item/all?shoppingListId=' + l_shoppinglistID);
     }
 
-    addShoppinglistItem(l_shoppingListID : number, postShoppinglistItem: Object) {
+    createShoppinglistItem(l_shoppingListID : number, postShoppinglistItem: Object) {
       return this.http.post(this.base_api + '/shoppinglist/item/add?shoppingListId=' + l_shoppingListID, postShoppinglistItem);
     }
 

@@ -58,7 +58,6 @@ export class FoodWarningComponent implements OnInit {
         () => console.log('loading done.')
     );
     }
-    
   }
 
  warninglist: Warning[]= [];
@@ -70,8 +69,6 @@ export class FoodWarningComponent implements OnInit {
     'Authorization' : 'baystmuv-vi-1.0 os=ios, key=9d9e8972-ff15-4943-8fea-117b5a973c61',
     'Content-Type' : 'application/json',
     'Accept' : 'application/json'
-    //'Access-Control-Allow-Origin' : '*',
-    //'Access-Control-Allow-Methods' : 'GET, POST'
   }),
  };
  return httpOptions;
@@ -80,7 +77,6 @@ export class FoodWarningComponent implements OnInit {
     getFoodWarningData(){
       let external_api = "/brd_api/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged";
 
-      //let external_api = "http://megov.bayern.de/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged";
     let body = {
   "food": {
     "rows": 500,
@@ -92,14 +88,10 @@ export class FoodWarningComponent implements OnInit {
   }
 };
     return this.http.post(external_api, body, this.getAuthorization());
-      //return abv;
     }
 
     parseFoodWarnings(data : any){
-      
       let response = data.response.docs;
-      
-      
       
       for(let i = this.lowerCount; i < this.upperCount; i ++) {
         let l_warning : Warning = {
@@ -109,7 +101,6 @@ export class FoodWarningComponent implements OnInit {
           producer: response[i].product.manufacturer,
           laender: response[i].affectedStates,
           image: response[i].product.imageUrls[0]
-          
         }
         console.log(i);        
         this.warninglist.push(l_warning)

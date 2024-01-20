@@ -63,7 +63,7 @@ export class ShoppingListViewComponent implements OnInit {
       }
     };
     console.log(itemToCreate);
-    this.vfservice.addShoppinglistItem(this.shoppingListID, itemToCreate).subscribe(
+    this.vfservice.createShoppinglistItem(this.shoppingListID, itemToCreate).subscribe(
       data => {
         console.log(data);
       },
@@ -71,11 +71,10 @@ export class ShoppingListViewComponent implements OnInit {
     );
   }
 
-  updateShoppingListItem(item: any, event: any, shoppingListID: number, shoppingListItemID: number) {
+  updateShoppingListItem(event: any, shoppingListID: number, shoppingListItemID: number) {
    this.vfservice.updateShoppinglistItem(shoppingListID, shoppingListItemID, event.target.checked).subscribe(
       data => {
         console.log(data);
-        //this.getShoppingListItemFromDB();
       },
       err => {
         console.log(err) ;
@@ -89,11 +88,8 @@ export class ShoppingListViewComponent implements OnInit {
         }
       },
       () => {
-        /*this.getShoppingListItemFromDB();
-       */
       }
     );
-    //this.getShoppingListItemFromDB();
   }
 
   deleteShoppingListItem(shoppingListID: number, shoppingListItemID: number, item: any): void {
@@ -121,11 +117,8 @@ export class ShoppingListViewComponent implements OnInit {
           this.getShoppingListItemFromDB();
         }
       );
-
     });
     this.getShoppingListItemFromDB();
-
   }
-
 }
 
