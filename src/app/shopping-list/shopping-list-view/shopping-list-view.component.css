@@ -132,3 +132,25 @@ p {
     margin-top: 1.5%;
 
 }
+
+.layoutwrapper{
+    grid-template-rows : auto;
+    grid-template-columns : 20% 80%;
+    display: grid;
+    justify-items: start;
+    align-items: start;
+}
+
+.layoutlist{
+    grid-row : 1;
+    grid-column : 2;
+    overflow-y: scroll;
+    height: 70vh;
+    max-height: 1000px;
+}
+
+.layoutinput{
+    grid-row : 1;
+    grid-column : 1;
+}
+

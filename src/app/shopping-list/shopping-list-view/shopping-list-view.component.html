@@ -4,8 +4,8 @@
 
 
 <button id="delete-buttonAll" (click)="deleteShoppingAllTicked()">Alle markierten Positionen löschen</button>
-
-<table class="table3">
+<div class="layoutwrapper">
+<div class="layoutlist"><table class="table3">
     <tr id="head">
       <th>Lebensmittel</th>
       <th>Menge</th>
@@ -20,10 +20,10 @@
       <td><button id="delete-button" (click)="deleteShoppingListItem(shoppingListID, item.grocery.id, item)">Produkt löschen</button></td>
     </tr>
 
-</table>
+</table></div>
 
 
-<form id="createshoppingListItem">
+<div class=layoutinput><form id="createshoppingListItem">
     <label for="groceries">Neues Lebensmittel hinzufügen</label>
     <br>
     <textarea type="text" name="groceries" id="groceries" [(ngModel)]="itemname" required></textarea>
@@ -57,4 +57,5 @@
     </div>
     <br />
     <br />
-  </form>
+  </form></div>
+</div>
