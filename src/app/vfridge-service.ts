@@ -51,13 +51,27 @@ export class VFridgeService {
             localStorage.setItem('login_token', 'true');
         },
         err =>{
-          alert("user credentials invalide");
+          localStorage.setItem('login_token', 'false');
           this.userLogined = false;
           console.log(err);
+          //alert("user credentials invalide");
         },
         () => {console.log('loading done.'+this.user.email);}
       );
     }
+
+ deleteUserCookies(){
+   this.userLogined = false;
+   localStorage.removeItem('login_token');
+      this.user.name = "";
+        localStorage.removeItem('user_name');
+      this.user.email = "";
+        localStorage.removeItem('user_email');
+      this.user.password = "";
+      localStorage.removeItem('user_password');
+      localStorage.clear();
+  }
+
 
 
   encryptSecretKey = 'dffsdfs@fdsf';
@@ -92,9 +106,8 @@ export class VFridgeService {
         return this.http.get(this.base_api + '/user/storage/all?OwnerID=' + l_userID);
     }
 
-    //TODO: replace with user authentication method of som kind
-    getUserData(l_email: String) {
-      return this.http.get(this.base_api + '/user/email?email=' + l_email);
+  getUserData() {
+      return this.http.get(this.base_api + '/user/email');
   }
 
   getUserAuthenticated() //: Observable<boolean>
@@ -111,18 +124,21 @@ export class VFridgeService {
 
   putUserData(putUser: object){
     let endPoint =
-    this.base_api + "/user";
+    this.base_api + "/user/update";
     return this.http.put(endPoint, putUser);
 
   }
 
   deleteUserData() {
     let endPoint =
-    this.base_api + "/user?userID="
-    + this.user.id + "&email=" + this.user.email + "&password=" + this.user.password;
-    this.http.delete(endPoint).subscribe(data => {
-      console.log(data);
-    });
+    this.base_api + "/user/delete?userID="
+    + this.user.id + "&email=" + this.user.email + "&password=" + "bla";
+    this.http.delete(endPoint).subscribe(
+      data => {
+         console.log(data);
+      },
+      err => console.log(err),
+    );
   }
 
     getGroceryData(l_storageID: number) {

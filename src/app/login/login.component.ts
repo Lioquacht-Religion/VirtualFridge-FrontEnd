@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(public vfservice: VFridgeService) { }
 
   ngOnInit(): void {
+    this.vfservice.initFromUserCookies();
  }
 
   loginemail = '';

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VFridgeService } from '../vfridge-service';
+import { User, VFridgeService } from '../vfridge-service';
 
 @Component({
   selector: 'an-acc-edit',
@@ -7,7 +7,7 @@ import { VFridgeService } from '../vfridge-service';
   styleUrls: ['./acc-edit.component.css']
 })
 export class AccEditComponent implements OnInit {
-  public userupdname : String = "";
+  public userupdname : string = "";
 
   constructor(public vfservice: VFridgeService) { }
 
@@ -29,13 +29,22 @@ export class AccEditComponent implements OnInit {
     },
     err => console.log(err),
     () => {
-      /*this.vfservice.getUserData(this.vfservice.user.email).subscribe(
-      data => { this.vfservice.user.email = data.toString(); },
-      err => console.log(err),
+      this.vfservice.getUserData().subscribe(
+      data => {
+        var l_user : any = data;
+        this.vfservice.user.email = l_user.name;
+        localStorage.setItem("user_name", l_user.name);
+      },
+      err => {
+        this.vfservice.user.email = this.userupdname;
+        localStorage.setItem("user_name", this.userupdname);
+
+        console.log(err);
+      },
       () => {
         console.log('loading done.');
     }
-  );*/
+  );
 
 }
 
@@ -48,6 +57,7 @@ export class AccEditComponent implements OnInit {
   this.vfservice.userLogined = false;
   localStorage.setItem('user', '');
   localStorage.setItem('login_token', 'false');
+  this.vfservice.deleteUserCookies();
   }
 
 }
