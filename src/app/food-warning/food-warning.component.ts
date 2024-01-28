@@ -75,7 +75,11 @@ export class FoodWarningComponent implements OnInit {
     }
 
     getFoodWarningData(){
-      let external_api = "/brd_api/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged";
+
+      let external_api = this.vfservice.base_api + "/foodwarning";
+
+      //proxy address for local development with third-party api
+      //let external_api = "/brd_api/verbraucherschutz/baystmuv-verbraucherinfo/rest/api/warnings/merged";
 
     let body = {
   "food": {
@@ -92,19 +96,19 @@ export class FoodWarningComponent implements OnInit {
 
     parseFoodWarnings(data : any){
       let response = data.response.docs;
-      
+
       for(let i = this.lowerCount; i < this.upperCount; i ++) {
         let l_warning : Warning = {
-          date: new Date(response[i].publishedDate),
+          date: new Date(parseInt(response[i].publishedDate)),
           productName: response[i].title,
           reason: response[i].warning,
           producer: response[i].product.manufacturer,
           laender: response[i].affectedStates,
           image: response[i].product.imageUrls[0]
         }
-        console.log(i);        
+        console.log(i);
         this.warninglist.push(l_warning)
-      }     
+      }
     }
 
 
