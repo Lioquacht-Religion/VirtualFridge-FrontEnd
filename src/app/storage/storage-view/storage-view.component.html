@@ -1,4 +1,6 @@
 <p>Hier ist das Lager zu sehen, welches ausgewählt wurde:</p>
+<div class="layoutwrapper">
+  <div class="layoutlist">
 <p id="storage_name">{{storageName}}</p>
 <table class="table3">
   <tr id="head">
@@ -12,9 +14,10 @@
     <td>{{grocery.unit}}</td>
     <td><button id="delete-button" (click)="deleteDataOnDB(curStorageID, grocery.id)">Zutat löschen</button></td>
   </tr>
-
-
 </table>
+</div>
+
+<div class="layoutinput">
 <form id="createGroceries">
   <label for="groceries">Lebensmittel</label>
   <textarea type="text" name="groceries" id="groceries" [(ngModel)]="groceryname" required></textarea>
@@ -53,4 +56,5 @@
 
 <div id="recipetip">
   <input type="button" id="btn_recipetip" value="Rezeptvorschlag" [routerLink]="['/link_recipesuggestion', curStorageID]">
+</div>
 </div>

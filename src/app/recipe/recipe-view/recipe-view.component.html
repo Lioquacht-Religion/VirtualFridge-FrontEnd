@@ -1,4 +1,7 @@
+
 <p>Hier sind die Zutaten des ausgewählten Rezepts zu sehen:</p>
+<div class="layoutwrapper">
+<div class="layoutlist">
 <p id = "recipe_name">{{recipeName}}</p>
 <table class="table2">
   <tr id="head2">
@@ -13,11 +16,11 @@
     <th><button id="delete-button" (click)="deleteDataOnDB(curRecipeID, ingredient.id)">Zutat löschen</button></th>
   </tr>
 </table>
+</div>
 
 
 
-
-
+<div class="layoutinput">
 <form id="createGroceries">
   <label for="groceries">Zutat</label>
   <textarea type="text" name="groceries" id="groceries" [(ngModel)]="ingredientname" required></textarea>
@@ -58,3 +61,5 @@
     <button id="rezept-zubereiten" (click)="changeDataOnDB()">Rezeptzubereitung</button>
   </div>
 </form>
+</div>
+</div>
