@@ -99,6 +99,8 @@ export class FoodWarningComponent implements OnInit {
 
       for(let i = this.lowerCount; i < this.upperCount; i ++) {
         let l_warning : Warning = {
+          //parse of date to js int,
+          //api send date as int that is out of java int range
           date: new Date(parseInt(response[i].publishedDate)),
           productName: response[i].title,
           reason: response[i].warning,

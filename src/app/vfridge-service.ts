@@ -23,9 +23,10 @@ export interface User {
 export class VFridgeService {
 
   base_api : string  =
-    //"https://localhost:8080/api/v1.0";
+    //"http://localhost:8080/api/v1.0";
     //"https://45.129.46.25:8080/api/v1.0";
     "https://virtual-fridge-backend.de:8080/api/v1.0";
+    //"https://dane-adequate-especially.ngrok-free.app/api/v1.0";
   public user : User = {
     name : "",
     email : "",

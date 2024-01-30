@@ -23,7 +23,8 @@ export class BasicAuthInterceptor implements HttpInterceptor{
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const isApiUrl : boolean = req.url.startsWith(this.vfservice.base_api);
-    const notApiUrl : boolean = !req.url.startsWith(this.vfservice.base_api+"/user/register");
+    const notApiUrl : boolean = !req.url.startsWith(this.vfservice.base_api+"/user/register")
+    && !req.url.startsWith(this.vfservice.base_api+"/foodwarning");
 
       if(this.vfservice.userLogined && isApiUrl && notApiUrl) {
         req = req.clone({
@@ -32,6 +33,13 @@ export class BasicAuthInterceptor implements HttpInterceptor{
               'Basic ' + window.btoa(this.vfservice.user.email + ':' + this.vfservice.user.password)
           }
         });
+
+        /*req = req.clone(
+                      {headers:
+                        req.headers.append(
+                          'ngrok-skip-browser-warning', 'true'
+                      )});
+                      */
       }
 
       return next.handle(req);
