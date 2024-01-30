@@ -2,8 +2,6 @@
 
 <p id="shoppinglist_name">{{shoppingListName}}</p>
 
-
-<button id="delete-buttonAll" (click)="deleteShoppingAllTicked()">Alle markierten Positionen löschen</button>
 <div class="layoutwrapper">
 <div class="layoutlist">
   <table class="table3">
@@ -20,8 +18,8 @@
       <td><input type="checkbox" id="shoppingListCheck" [checked]="item.ticked" (change)="updateShoppingListItem($event, shoppingListID, item.grocery.id)"></td>
       <td><button id="delete-button" (click)="deleteShoppingListItem(shoppingListID, item.grocery.id, item)">Produkt löschen</button></td>
     </tr>
-
 </table>
+<button id="delete-buttonAll" (click)="deleteShoppingAllTicked()">Alle markierten Positionen löschen</button>
 </div>
 
 

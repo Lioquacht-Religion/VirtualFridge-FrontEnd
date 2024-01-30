@@ -133,6 +133,18 @@ p {
 
 }
 
+button#delete-buttonAll{
+    width: 80%;
+    display: block;
+    padding: 20px;
+    color: black;
+    background-color: rgb(228, 228, 228);
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 10px;
+}
+
 /*
 .layoutwrapper{
     grid-template-rows : auto;
