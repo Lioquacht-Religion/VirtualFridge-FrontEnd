@@ -34,13 +34,17 @@ export class BasicAuthInterceptor implements HttpInterceptor{
           }
         });
 
-        /*req = req.clone(
+      }
+
+      //always add ngrok-skip-browser-warning header,
+      //otherwise ngrok will send as response to request
+      req = req.clone(
                       {headers:
                         req.headers.append(
                           'ngrok-skip-browser-warning', 'true'
                       )});
-                      */
-      }
+
+
 
       return next.handle(req);
   }

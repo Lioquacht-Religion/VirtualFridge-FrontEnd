@@ -25,8 +25,8 @@ export class VFridgeService {
   base_api : string  =
     //"http://localhost:8080/api/v1.0";
     //"https://45.129.46.25:8080/api/v1.0";
-    "https://virtual-fridge-backend.de:8080/api/v1.0";
-    //"https://dane-adequate-especially.ngrok-free.app/api/v1.0";
+    //"https://virtual-fridge-backend.de:8080/api/v1.0";
+    "https://dane-adequate-especially.ngrok-free.app/api/v1.0";
   public user : User = {
     name : "",
     email : "",
@@ -93,7 +93,8 @@ export class VFridgeService {
 
       const headers = new HttpHeaders( {
             'Authorization': 'Basic ' + window.btoa(this.user.email + ':' + this.user.password),
-            'Content-Type' : 'application/json'
+            'Content-Type' : 'application/json',
+            'ngrok-skip-browser-warning': 'true'
       });
 
 
@@ -116,8 +117,9 @@ export class VFridgeService {
   {
     console.log(this.user);
 
-    let req = this.http.get(this.base_api + '/user/authenticated',
-    {headers : this.getAuthenticationHeaders()});
+    let req = this.http.get(this.base_api + '/user/authenticated'
+    ,{headers : this.getAuthenticationHeaders()}
+                           );
     console.log(req);
 
     return req;
