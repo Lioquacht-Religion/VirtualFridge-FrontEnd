@@ -1,29 +1,39 @@
+<div class="grey">
 <p>Hier ist die ausgewählte Einkaufsliste zu sehen:</p>
-
-<p id="shoppinglist_name">{{shoppingListName}}</p>
+<p id="shoppinglist_name" class="greyer round-corners">{{shoppingListName}}</p>
+</div>
 
 <div class="layoutwrapper">
-<div class="layoutlist">
+<div class="layoutlist grey round-corners">
+
+  <div class="tableFixHead">
   <table class="table3">
+    <thead>
     <tr id="head">
       <th>Lebensmittel</th>
       <th>Menge</th>
       <th>Einheit</th>
+      <th></th>
+      <th></th>
     </tr>
+    </thead>
+    <tbody>
     <tr *ngFor="let item of items; index as i">
       <td>{{item.grocery.name}}</td>
       <td>{{item.grocery.amount}}</td>
       <td>{{item.grocery.unit}}</td>
-      <br><br>
       <td><input type="checkbox" id="shoppingListCheck" [checked]="item.ticked" (change)="updateShoppingListItem($event, shoppingListID, item.grocery.id)"></td>
       <td><button id="delete-button" (click)="deleteShoppingListItem(shoppingListID, item.grocery.id, item)">Produkt löschen</button></td>
     </tr>
-</table>
+    </tbody>
+  </table>
+  </div>
+
 <button id="delete-buttonAll" (click)="deleteShoppingAllTicked()">Alle markierten Positionen löschen</button>
 </div>
 
 
-<div class=layoutinput>
+<div class="layoutinput greyer round-corners">
   <form id="createshoppingListItem">
     <label for="groceries">Neues Lebensmittel hinzufügen</label>
     <br>
@@ -54,7 +64,7 @@
     </div>
 
     <div id="btn">
-      <button id="item-hinzufügen" (click)="createShoppingListItem()">Lebensmittel hinzufügen</button>
+      <button id="item-hinzufuegen" (click)="createShoppingListItem()">Lebensmittel hinzufügen</button>
     </div>
     <br />
     <br />

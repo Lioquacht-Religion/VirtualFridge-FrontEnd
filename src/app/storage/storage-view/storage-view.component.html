@@ -1,23 +1,34 @@
+
+<div class="grey">
 <p>Hier ist das Lager zu sehen, welches ausgewählt wurde:</p>
-<p id="storage_name">{{storageName}}</p>
+<p id="storage_name" class="greyer round-corners">{{storageName}}</p>
+</div>
 <div class="layoutwrapper">
-  <div class="layoutlist">
+  <div class="layoutlist grey round-corners">
+
+    <div class="tableFixHead">
 <table class="table3">
+  <thead>
   <tr id="head">
     <th>Lebensmittel</th>
     <th>Menge</th>
     <th>Einheit</th>
+    <th></th>
   </tr>
+  </thead>
+  <tbody>
   <tr *ngFor="let grocery of groceries; index as i">
     <td>{{grocery.name}}</td>
     <td>{{grocery.amount}}</td>
     <td>{{grocery.unit}}</td>
     <td><button id="delete-button" (click)="deleteDataOnDB(curStorageID, grocery.id)">Zutat löschen</button></td>
   </tr>
+  </tbody>
 </table>
 </div>
+</div>
 
-<div class="layoutinput">
+<div class="layoutinput greyer round-corners">
 <form id="createGroceries">
   <label for="groceries">Lebensmittel</label>
   <textarea type="text" name="groceries" id="groceries" [(ngModel)]="groceryname" required></textarea>

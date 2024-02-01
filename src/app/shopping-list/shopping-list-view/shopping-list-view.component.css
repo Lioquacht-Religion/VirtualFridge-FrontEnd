@@ -41,7 +41,6 @@ p {
     padding: 20px;
     margin: 0 auto;
     border-radius: 5px;
-    background-color: lightgray;
     color: black;
 }
 
@@ -52,7 +51,7 @@ p {
     box-sizing: border-box;
     margin-bottom: 15px;
     margin-top: 5px;
-    resize: vertical;
+    resize: verical;
     border-radius: 10px;
 }
 
@@ -83,7 +82,7 @@ button#delete-buttonAll {
     color: blue;
 }
 
-button#zutat-hinzufügen,
+button#zutat-hinzufuegen,
 #rezept-zubereiten {
     width: 100%;
     padding: 10px;
@@ -139,6 +138,18 @@ button#delete-buttonAll{
     padding: 20px;
     color: black;
     background-color: rgb(228, 228, 228);
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+button#delete-buttonAll:hover{
+    width: 80%;
+    display: block;
+    padding: 20px;
+    color: black;
+    background-color: rgb(256, 140, 168);
     border: 1px solid black;
     border-radius: 10px;
     margin: auto;

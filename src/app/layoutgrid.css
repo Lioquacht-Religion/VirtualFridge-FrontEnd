@@ -1,6 +1,6 @@
 .layoutwrapper{
     grid-template-rows : auto;
-    grid-template-columns : 20% 80%;
+    grid-template-columns : 40% 60%;
     display: grid;
     justify-items: start;
     align-items: start;
@@ -9,13 +9,23 @@
 .layoutlist{
     grid-row : 1;
     grid-column : 2;
-    overflow-y: scroll;
-    height: 70vh;
-    max-height: 1000px;
+    padding: 5px;
 }
 
 .layoutinput{
     grid-row : 1;
     grid-column : 1;
-
+    padding: 5px;
 }
+
+.sroll-y{overflow-y: scroll;}
+
+.tableFixHead { overflow: auto; height: 70vh; max-height: 1000px; }
+.tableFixHead thead th { position: sticky; top: 0; z-index: 1; }
+
+.grey{background: #999999;}
+
+.greyer{background: #777777;}
+.round-corners{ border-radius : 25px; }
+
+

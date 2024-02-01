@@ -1,26 +1,36 @@
-
+<div class="grey">
 <p>Hier sind die Zutaten des ausgewählten Rezepts zu sehen:</p>
-<p id = "recipe_name">{{recipeName}}</p>
+<p id = "recipe_name" class="greyer round-corners">{{recipeName}}</p>
+</div>
+
 <div class="layoutwrapper">
-<div class="layoutlist">
+<div class="layoutlist grey round-corners">
+
+  <div class="tableFixHead">
 <table class="table2">
+  <thead>
   <tr id="head2">
     <th>Zutatname</th>
     <th>Menge</th>
     <th>Einheit</th>
+    <th></th>
   </tr>
+  </thead>
+  <tbody>
   <tr *ngFor="let ingredient of ingredients; index as i">
     <th>{{ingredient.name}}</th>
     <th>{{ingredient.amount}}</th>
     <th>{{ingredient.unit}}</th>
     <th><button id="delete-button" (click)="deleteDataOnDB(curRecipeID, ingredient.id)">Zutat löschen</button></th>
   </tr>
+  </tbody>
 </table>
+  </div>
 </div>
 
 
 
-<div class="layoutinput">
+<div class="layoutinput greyer round-corners">
 <form id="createGroceries">
   <label for="groceries">Zutat</label>
   <textarea type="text" name="groceries" id="groceries" [(ngModel)]="ingredientname" required></textarea>
