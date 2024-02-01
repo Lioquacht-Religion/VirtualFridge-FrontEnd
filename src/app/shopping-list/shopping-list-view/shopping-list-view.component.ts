@@ -32,7 +32,21 @@ export class ShoppingListViewComponent implements OnInit {
 
   getShoppingListItemFromDB() {
     this.vfservice.getShoppinglistItems(this.shoppingListID).subscribe(
-      data => { this.items = data },
+      data => {
+        let temp : any = data;
+        var l_itemArray: {
+          grocery: {id: number; name: any; amount: any; unit: any;};
+          ticked: boolean;}[] = temp;
+        this.items = l_itemArray.sort((n1,n2) => {
+          if (n1.grocery.id > n2.grocery.id) {
+            return 1;
+          }
+          if (n1.grocery.id < n2.grocery.id) {
+            return -1;
+          }
+          return 0;
+        });
+      },
       err => console.log(err),
       () => {
         console.log('loading done.:');
