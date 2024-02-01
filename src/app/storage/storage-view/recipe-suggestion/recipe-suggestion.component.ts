@@ -19,7 +19,7 @@ export class RecipeSuggestionComponent implements OnInit {
   }
 
   getDataFromDB(){
-    this.vfservice.getRecSugData(this.vfservice.getLogedCurUser().id,this.curStorageID).subscribe(
+    this.vfservice.getRecSugData(this.vfservice.user.id,this.curStorageID).subscribe(
       data => { this.recsugs = data },
       err => console.log(err),
       () => console.log('loading done.:'+this.curStorageID+this.recsugs)
