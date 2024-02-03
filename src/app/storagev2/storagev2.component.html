@@ -1,0 +1,26 @@
+
+<table class="table">
+    <tr id="head">
+        <th>Lagername</th>
+        <th>Lager ID</th>
+    </tr>
+
+    <tr *ngFor="let storage of storages; index as i">
+        <td id="storage_name">{{storage.name}}</td>
+        <td id="storage_id">{{storage.storageID}}</td>
+        <td> <button><a [routerLink]="['/link_storageview', storage.storageID, storage.name]">Lager einsehen</a></button></td>
+        <td> <button id="delete-button" (click)="deleteDataOnDB(curUserID, storage.storageID)">Löschen</button></td>
+    </tr>
+
+</table>
+<form id="createStorage">
+
+    <label for="storageID">Lagername </label>
+    <input type="text" name="storageID" id="storageID" [(ngModel)]="storagename" required>
+
+
+    <div id="btn">
+        <input type="button" id="btn" value="Lager erstellen" (click)="storeDataOnDB()" >
+    </div>
+
+</form>

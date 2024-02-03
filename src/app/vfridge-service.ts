@@ -21,12 +21,24 @@ export interface User {
 
 @Injectable()
 export class VFridgeService {
-
-  base_api : string  =
-    //"http://localhost:8080/api/v1.0";
+  base_domain : string =
+    "http://localhost:8080";
     //"https://45.129.46.25:8080/api/v1.0";
     //"https://virtual-fridge-backend.de:8080/api/v1.0";
-    "https://dane-adequate-especially.ngrok-free.app/api/v1.0";
+    //"https://dane-adequate-especially.ngrok-free.app/api/v1.0";
+
+
+  base_api : string  =
+    this.base_domain + "/api/v1.0";
+    //"https://45.129.46.25:8080/api/v1.0";
+    //"https://virtual-fridge-backend.de:8080/api/v1.0";
+    //"https://dane-adequate-especially.ngrok-free.app/api/v1.0";
+  base_api2 : string  =
+    this.base_domain + "/api/v1.1";
+    //"https://45.129.46.25:8080/api/v1.0";
+    //"https://virtual-fridge-backend.de:8080/api/v1.0";
+    //"https://dane-adequate-especially.ngrok-free.app/api/v1.0";
+
   public user : User = {
     name : "",
     email : "",
@@ -266,6 +278,26 @@ export class VFridgeService {
 
     deleteShoppinglistItem(l_shoppinglistID: number, l_shoppinglistItemID: number) {
         return this.http.delete(this.base_api + '/shoppinglist/item?shoppingListId=' + l_shoppinglistID + '&itemId=' + l_shoppinglistItemID);
+    }
+
+    postNewFood(food : any){
+      return this.http.post(this.base_api2 + '/storagev2/food', food);
+    }
+
+    postAttributesAndValuesOfFood(food : any){
+      return this.http.post(this.base_api2 + '/storagev2/food/attributes', food);
+    }
+
+    getFood(foodID : number){
+      return this.http.get(this.base_api2 + '/storagev2/food?foodID='+foodID);
+    }
+
+    getAllFoods(){
+      return this.http.get(this.base_api2 + '/storagev2/food/all');
+    }
+
+    getFoodWithAttributes(foodID : number){
+      return this.http.get(this.base_api2 + '/storagev2/food/attributes?foodID='+foodID);
     }
 
 

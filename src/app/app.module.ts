@@ -24,6 +24,9 @@ import { FoodWarningComponent } from './food-warning/food-warning.component';
 import { BasicAuthInterceptor, ErrorInterceptor, XhrInterceptor } from './auth-interceptor';
 import { ShoppinglistComponent } from './shopping-list/shopping-list.component';
 import { ShoppingListViewComponent } from './shopping-list/shopping-list-view/shopping-list-view.component';
+import { Storagev2Component } from './storagev2/storagev2.component';
+import { FoodCreationComponent } from './food-creation/food-creation.component';
+import { Storagev2FoodViewComponent } from './storagev2/storagev2-food-view/storagev2-food-view.component';
 
 
 @NgModule({
@@ -43,7 +46,10 @@ import { ShoppingListViewComponent } from './shopping-list/shopping-list-view/sh
     AccEditComponent,
     FoodWarningComponent,
     ShoppinglistComponent,
-    ShoppingListViewComponent
+    ShoppingListViewComponent,
+    Storagev2Component,
+    FoodCreationComponent,
+    Storagev2FoodViewComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,57 @@
+<p>food-creation works!</p>
+
+<div class="layoutwrapper">
+
+  <div class="layoutlist grey round-corners">
+    <div class="tableFixHead">
+<table class="table3">
+  <thead>
+  <tr id="head">
+    <th>Food</th>
+    <th>ID</th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let food of allFoods; index as i">
+    <td>{{food.name}}</td>
+    <td>{{food.id}}</td>
+    <td></td>
+    <td><button id="open-button" (click)="setCurFoodToThis(food.id)">Zeige Food an</button></td>
+  </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+<div class="layoutinput greyer round-corners">
+  <label for="foodname">foodname</label>
+  <textarea type="text" name="foodname" id="foodname" [(ngModel)]="foodName" required></textarea>
+  <br />
+  <br />
+
+<table class="table3">
+  <thead>
+  <tr id="head">
+    <th>Attribute</th>
+    <th>Value</th>
+    <th>ID</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let attribute of attributes; index as i">
+    <td>{{attribute.name}}</td>
+    <td>{{attribute.value}}</td>
+    <td>{{attribute.id}}</td>
+  </tr>
+  </tbody>
+</table>
+
+</div>
+
+<input type="file" accept="image/*" capture="camera" (change)="handleBarcodePicture($event)"/>
+<br>
+<input type="text" id="barcodeinput">
+<br>
+<button  (click)="setCurFoodToThis(1)">fill Food with data from api</button>

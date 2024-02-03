@@ -13,6 +13,10 @@ import { FoodWarningComponent } from './food-warning/food-warning.component';
 import { ShoppinglistComponent } from './shopping-list/shopping-list.component';
 import { ShoppingListViewComponent } from './shopping-list/shopping-list-view/shopping-list-view.component';
 
+import { FoodCreationComponent } from './food-creation/food-creation.component';
+import { Storagev2Component } from './storagev2/storagev2.component';
+import { Storagev2FoodViewComponent } from './storagev2/storagev2-food-view/storagev2-food-view.component';
+
 
 const routes: Routes = [
 
@@ -27,7 +31,10 @@ const routes: Routes = [
   {path: 'link_food-warning' , component: FoodWarningComponent },
   {path: 'link_acc-edit' , component : AccEditComponent},
   {path: 'link_shopping-list/:userID' , component : ShoppinglistComponent},
-  {path: 'link_shopping-list-view/:shoppingListID/:shoppingListName' , component : ShoppingListViewComponent}
+  {path: 'link_shopping-list-view/:shoppingListID/:shoppingListName' , component : ShoppingListViewComponent},
+
+  {path: 'link_foodcreation' , component : FoodCreationComponent},
+  {path: 'link_storagev2' , component : Storagev2Component}
 ];
 
 

@@ -22,7 +22,8 @@ export class BasicAuthInterceptor implements HttpInterceptor{
   constructor(private vfservice : VFridgeService){}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const isApiUrl : boolean = req.url.startsWith(this.vfservice.base_api);
+    const isApiUrl : boolean = req.url.startsWith(this.vfservice.base_api)
+    || req.url.startsWith(this.vfservice.base_api2);
     const notApiUrl : boolean = !req.url.startsWith(this.vfservice.base_api+"/user/register")
     && !req.url.startsWith(this.vfservice.base_api+"/foodwarning");
 
