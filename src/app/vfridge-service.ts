@@ -22,10 +22,10 @@ export interface User {
 @Injectable()
 export class VFridgeService {
   base_domain : string =
-    "http://localhost:8080";
-    //"https://45.129.46.25:8080/api/v1.0";
-    //"https://virtual-fridge-backend.de:8080/api/v1.0";
-    //"https://dane-adequate-especially.ngrok-free.app/api/v1.0";
+    //"http://localhost:8080";
+    //"https://45.129.46.25:8080";
+    //"https://virtual-fridge-backend.de:8080";
+    "https://dane-adequate-especially.ngrok-free.app";
 
 
   base_api : string  =

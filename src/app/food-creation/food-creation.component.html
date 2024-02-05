@@ -50,8 +50,23 @@
 
 </div>
 
-<input type="file" accept="image/*" capture="camera" (change)="handleBarcodePicture($event)"/>
 <br>
 <input type="text" id="barcodeinput">
 <br>
 <button  (click)="setCurFoodToThis(1)">fill Food with data from api</button>
+
+
+<button  (click)="toggleBarcodeScanner()">Barcodescanner on/off</button>
+<zxing-scanner
+    [formats]="allowedFormats"
+    [enable]="scannerEnabled"
+    (scanSuccess)="scanSuccessHandler($event)"
+    (scanFailure)="scanFailureHandler($event)"
+    (scanError)="scanErrorHandler($event)"
+    (scanComplete)="scanCompleteHandler($event)"
+                  >
+</zxing-scanner>
+
+  <p>scannerstatus: {{scannerstate}}</p>
+
+  <p>scannedcode: {{scannedCode}}</p>

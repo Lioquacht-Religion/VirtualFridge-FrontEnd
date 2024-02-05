@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { BarcodeFormat } from '@zxing/library';
+import { ZXingScannerComponent } from '@zxing/ngx-scanner';
 import { VFridgeService } from 'app/vfridge-service';
 
 @Component({
@@ -7,6 +9,15 @@ import { VFridgeService } from 'app/vfridge-service';
   styleUrls: ['./food-creation.component.css']
 })
 export class FoodCreationComponent implements OnInit {
+
+  allowedFormats = [BarcodeFormat.EAN_13, BarcodeFormat.EAN_8,
+    BarcodeFormat.CODE_128, BarcodeFormat.UPC_A, BarcodeFormat.UPC_E,
+  BarcodeFormat.UPC_EAN_EXTENSION];
+  scannerEnabled = false;
+
+  scannerstate = '';
+  scannedCode : string = '';
+
 
   allFoods : any;
 
@@ -19,6 +30,39 @@ export class FoodCreationComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllFoodsFromDB();
+  }
+
+  scanSuccessHandler(resultstring : string){
+    console.log(resultstring);
+    console.log("scanSuccess");
+    this.scannerstate = "scanSuccess";
+    this.scannedCode = resultstring;
+  }
+  scanFailureHandler(event : any){
+    console.log(event.target);
+    console.log("scanFailure");
+
+    this.scannerstate = "scanFailure";
+  }
+  scanErrorHandler(event : any){
+    console.log(event.target);
+    console.log("scanError");
+    this.scannerstate = "scanError";
+  }
+  scanCompleteHandler(event : any){
+    console.log(event.target);
+    console.log("scanComplete");
+    this.scannerstate = "scanComplete";
+  }
+
+
+
+
+
+
+
+  toggleBarcodeScanner(){
+    this.scannerEnabled = !this.scannerEnabled;
   }
 
   postFoodDataOnDB(){

@@ -27,6 +27,7 @@ import { ShoppingListViewComponent } from './shopping-list/shopping-list-view/sh
 import { Storagev2Component } from './storagev2/storagev2.component';
 import { FoodCreationComponent } from './food-creation/food-creation.component';
 import { Storagev2FoodViewComponent } from './storagev2/storagev2-food-view/storagev2-food-view.component';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { Storagev2FoodViewComponent } from './storagev2/storagev2-food-view/stor
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ZXingScannerModule
   ],
   providers: [
     VFridgeService,
