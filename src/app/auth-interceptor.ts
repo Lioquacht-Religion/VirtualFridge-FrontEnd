@@ -25,7 +25,8 @@ export class BasicAuthInterceptor implements HttpInterceptor{
     const isApiUrl : boolean = req.url.startsWith(this.vfservice.base_api)
     || req.url.startsWith(this.vfservice.base_api2);
     const notApiUrl : boolean = !req.url.startsWith(this.vfservice.base_api+"/user/register")
-    && !req.url.startsWith(this.vfservice.base_api+"/foodwarning");
+    && !req.url.startsWith(this.vfservice.base_api+"/foodwarning")
+    && !req.url.startsWith("https://world.openfoodfacts");
 
       if(this.vfservice.userLogined && isApiUrl && notApiUrl) {
         req = req.clone({
@@ -37,13 +38,18 @@ export class BasicAuthInterceptor implements HttpInterceptor{
 
       }
 
+      const notNgrokApiUrl = !req.url.startsWith("https://world.openfoodfacts");
+
       //always add ngrok-skip-browser-warning header,
-      //otherwise ngrok will send as response to request
-      req = req.clone(
+      //otherwise ngrok will send warning page as response to request
+      if(notNgrokApiUrl){
+        req = req.clone(
                       {headers:
                         req.headers.append(
                           'ngrok-skip-browser-warning', 'true'
                       )});
+      }
+
 
 
 

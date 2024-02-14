@@ -51,9 +51,9 @@
 </div>
 
 <br>
-<input type="text" id="barcodeinput">
+<input type="text" id="barcodeinput" [(ngModel)]="barCode">
 <br>
-<button  (click)="setCurFoodToThis(1)">fill Food with data from api</button>
+<button  (click)="getFoodDataFromOpenFood()">fill Food with data from api</button>
 
 
 <button  (click)="toggleBarcodeScanner()">Barcodescanner on/off</button>

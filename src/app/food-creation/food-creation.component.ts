@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { BarcodeFormat } from '@zxing/library';
 import { ZXingScannerComponent } from '@zxing/ngx-scanner';
@@ -17,6 +18,7 @@ export class FoodCreationComponent implements OnInit {
 
   scannerstate = '';
   scannedCode : string = '';
+  barCode : string = '';
 
 
   allFoods : any;
@@ -26,7 +28,7 @@ export class FoodCreationComponent implements OnInit {
 
   attributes : any;
 
-  constructor(private vfservice : VFridgeService) { }
+  constructor(private http : HttpClient, private vfservice : VFridgeService) { }
 
   ngOnInit(): void {
     this.getAllFoodsFromDB();
@@ -141,14 +143,43 @@ export class FoodCreationComponent implements OnInit {
         this.attributes = attr;
         console.log(food);
         console.log(attr);
-
-
       }
     );
   }
 
-  handleBarcodePicture(event : any){}
+  getFoodDataFromOpenFood(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'User-Agent' : 'VirtualFridge/1.0 (sebastian.berg01@outlook.com)'
+    }),
+    };
+    this.http.get("https://world.openfoodfacts.net/api/v2/search?code="+this.barCode, httpOptions).subscribe(
+      data => {
+      let foodInfo : any = data;
+      let product : any = foodInfo.products[0];
 
+      let l_attributes : Attribute[] = [];
+      let l_allFoodNutriments : string[]= Object.getOwnPropertyNames(product.nutriments);
+      for(let i = 0; i<l_allFoodNutriments.length; i++){
+        let nutrient_name : any = l_allFoodNutriments[i];
+        let l_attribute : Attribute = {
+          id : -1,
+          name : nutrient_name,
+          valueID : -1,
+          value : product.nutriments[nutrient_name],
+          unit : "",
+          foodID : -1,
+        };
+        l_attributes.push(l_attribute);
+      }
+
+      this.attributes = l_attributes;
+      this.foodName = product.product_name;
+      },
+        err => {}
+    );
+
+  }
 
 
 }
