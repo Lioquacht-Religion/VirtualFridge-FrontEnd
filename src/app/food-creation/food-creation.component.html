@@ -26,10 +26,20 @@
 </div>
 
 <div class="layoutinput greyer round-corners">
+
   <label for="foodname">foodname</label>
   <textarea type="text" name="foodname" id="foodname" [(ngModel)]="foodName" required></textarea>
+  <button  (click)="postFoodDataOnDB()">post new Food</button>
   <br />
   <br />
+
+
+  <button  (click)="postFoodAttributeDataOnDB()">post attributes of Food</button>
+  <br />
+  <label for="newAttributeName">new Attribute: </label><input type="text" [(ngModel)]="newAttributeName">
+  <label for="newAttributeValue">New Value: </label><input type="text" [(ngModel)]="newAttributeValue">
+  <button  (click)="addNewAttributeValue()">Attribute+</button>
+
 
 <table class="table3">
   <thead>
@@ -42,7 +52,9 @@
   <tbody>
   <tr *ngFor="let attribute of attributes; index as i">
     <td>{{attribute.name}}</td>
-    <td>{{attribute.value}}</td>
+    <td>
+      <input type="text" [(ngModel)]="attributes[i].value">
+    </td>
     <td>{{attribute.id}}</td>
   </tr>
   </tbody>

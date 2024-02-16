@@ -63,3 +63,27 @@
 #back_btn{
     margin-left: 20px;
 }
+
+.warnungslayoutwrapper{
+    grid-template-rows : 50% 50%;
+    grid-template-columns : 50% 50%;
+    display: grid;
+    justify-items: start;
+    align-items: start;
+}
+.warnungslayouttext{
+  grid-row : 1;
+  grid-column-start : 1;
+  grid-column-end : 2;
+}
+.warnungslayoutcountries{
+  grid-row : 2;
+  grid-column : 1;
+
+}
+.warnungslayoutpicture{
+  grid-row : 2;
+  grid-column : 2;
+}
+
+

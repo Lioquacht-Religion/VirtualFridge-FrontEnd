@@ -27,6 +27,8 @@ export class FoodCreationComponent implements OnInit {
   foodName : string = "";
 
   attributes : any;
+  newAttributeName : string = "";
+  newAttributeValue : string = "";
 
   constructor(private http : HttpClient, private vfservice : VFridgeService) { }
 
@@ -58,13 +60,21 @@ export class FoodCreationComponent implements OnInit {
   }
 
 
-
-
-
-
-
   toggleBarcodeScanner(){
     this.scannerEnabled = !this.scannerEnabled;
+  }
+
+  addNewAttributeValue(){
+    let newAttributeName : Attribute = {
+    id : -1,
+    name : this.newAttributeName,
+    valueID : -1,
+    value :this.newAttributeValue,
+    unit : "",
+    foodID : -1
+    };
+
+    this.attributes.push(newAttributeName);
   }
 
   postFoodDataOnDB(){
