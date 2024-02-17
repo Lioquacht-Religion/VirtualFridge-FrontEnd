@@ -15,42 +15,32 @@ export class AccEditComponent implements OnInit {
   }
 
   updateDataOnDB(){
-    confirm("Benutzername wurde geändert!");
-
     let UserToUpdate = {
       name: this.userupdname,
       email: this.vfservice.user.email,
       password: this.vfservice.user.password,
       id: this.vfservice.user.id
   };
-    this.vfservice.putUserData(UserToUpdate).subscribe(data => {
+    this.vfservice.putUserData(UserToUpdate).subscribe(
+    data => {
       console.log(data);
+      this.vfservice.user.name = this.userupdname;
+      localStorage.setItem("user_name", this.userupdname);
+      confirm("Benutzername wurde geändert!");
 
     },
-    err => console.log(err),
-    () => {
-      this.vfservice.getUserData().subscribe(
-      data => {
-        var l_user : any = data;
-        this.vfservice.user.email = l_user.name;
-        localStorage.setItem("user_name", l_user.name);
-      },
-      err => {
-        this.vfservice.user.email = this.userupdname;
-        localStorage.setItem("user_name", this.userupdname);
-
-        console.log(err);
-      },
-      () => {
-        console.log('loading done.');
+    err => {
+      this.vfservice.user.name = this.userupdname;
+      localStorage.setItem("user_name", this.userupdname);
+      confirm("Benutzername wurde geändert!");
+      console.log(err);
     }
+
   );
 
 }
 
-    );
 
-  }
 
   deleteDataOnDB(){
   this.vfservice.deleteUserData();

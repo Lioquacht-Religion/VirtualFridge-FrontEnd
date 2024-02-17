@@ -22,10 +22,10 @@ export interface User {
 @Injectable()
 export class VFridgeService {
   base_domain : string =
-    //"http://localhost:8080";
+    "http://localhost:8080";
     //"https://45.129.46.25:8080";
     //"https://virtual-fridge-backend.de:8080";
-    "https://dane-adequate-especially.ngrok-free.app";
+    //"https://dane-adequate-especially.ngrok-free.app";
 
 
   base_api : string  =
@@ -299,6 +299,16 @@ export class VFridgeService {
     getFoodWithAttributes(foodID : number){
       return this.http.get(this.base_api2 + '/storagev2/food/attributes?foodID='+foodID);
     }
+
+    getInstancesOfFoodInStorage(storagev2ID : number){
+      return this.http.get(this.base_api2 + '/storagev2/food/instances?storagev2ID='+storagev2ID);
+    }
+
+    postInstanceOfFoodToStorage(storagev2ID : number, foodInstance : any){
+      return this.http.post(this.base_api2 + '/storagev2/food/instances?storagev2ID='+storagev2ID, foodInstance);
+    }
+
+
 
 
 }

@@ -11,37 +11,42 @@ import { VFridgeService } from '../../vfridge-service';
 export class Storagev2FoodViewComponent implements OnInit {
 
   public curStorageID : number = 0;
-  public food : any;
   public storageName : any;
+  foods : any[] = [];
+  groceries : any[] = [];
 
   constructor(private route: ActivatedRoute, private vfservice: VFridgeService) {
-    this.route.params.subscribe(params => this.curStorageID = params['storageID']);
-    this.route.params.subscribe(params => this.storageName = params['storageName']);
+    this.route.params.subscribe(params => this.curStorageID = params['storagev2ID']);
+    this.route.params.subscribe(params => this.storageName = params['storagev2Name']);
   }
 
   ngOnInit(): void {
     this.getDataFromDB();
+    this.getAllFoodsFromDB();
   }
 
   getDataFromDB(){
-    this.vfservice.getGroceryData(this.curStorageID).subscribe(
-      data => { this.food = data },
+    this.vfservice.getInstancesOfFoodInStorage(this.curStorageID).subscribe(
+      data => {
+        let l_groceries : any = data;
+        this.groceries = l_groceries;
+      },
       err => console.log(err),
-      () => console.log('loading done.:'+this.curStorageID+this.food)
+      () => console.log('loading done.:'+this.curStorageID+this.groceries)
   );
   }
 
   groceryname = '';
   groceryamount = '';
   groceryunit = '';
+  groceryfoodid = -1;
 
   storeDataOnDB(){
     let GroceryToCreate = {
-        name: this.groceryname,
         amount: this.groceryamount,
-        unit: this.groceryunit
+        id: this.groceryfoodid
     };
-    this.vfservice.addGroceryData(GroceryToCreate, this.curStorageID).subscribe(
+    this.vfservice.postInstanceOfFoodToStorage(this.curStorageID, GroceryToCreate).subscribe(
       data => {
         console.log(data);
         this.getDataFromDB();
@@ -57,6 +62,24 @@ export class Storagev2FoodViewComponent implements OnInit {
         () => {this.getDataFromDB();}
         );
       }
+
+    setCurFoodToThis(food : any){
+      this.groceryfoodid = food.id;
+      this.groceryname = food.name;
+    }
+
+
+  getAllFoodsFromDB(){
+    this.vfservice.getAllFoods().subscribe(
+      data => {
+        let temp : any = data;
+        this.foods = temp;
+        console.log(this.foods);
+      },
+      err => console.log("allfoods konnte nicht geladen werden")
+    );
+  }
+
 
 
 }

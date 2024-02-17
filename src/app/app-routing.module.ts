@@ -34,7 +34,8 @@ const routes: Routes = [
   {path: 'link_shopping-list-view/:shoppingListID/:shoppingListName' , component : ShoppingListViewComponent},
 
   {path: 'link_foodcreation' , component : FoodCreationComponent},
-  {path: 'link_storagev2' , component : Storagev2Component}
+  {path: 'link_storagev2/:userID' , component : Storagev2Component},
+  {path: 'link_storagev2-view/:storagev2ID/:storagev2Name' , component : Storagev2FoodViewComponent}
 ];
 
 
